@@ -1,0 +1,21 @@
+public int[] makePi() {
+  // solution from description:
+  // return an array containing the first 3 digits of pi, {3, 1, 4}
+  
+  // translations to pseudocode or code:
+  // create a new array of 3 integers
+  // initialize each element
+  // simplest way is declare array variable and initialize it -> {3, 1, 4}
+  
+  // solution:
+  // create and initialize the array {3, 1, 4} 
+  // return the array
+  
+  //int[] result = {3, 1, 4};
+  
+  //return result;
+  
+  // solution 2:
+  
+  return new int[]{3, 1, 4};
+}
