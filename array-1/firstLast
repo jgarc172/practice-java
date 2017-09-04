@@ -1,0 +1,27 @@
+public boolean firstLast6(int[] nums) {
+  // solution from description:
+  // return true if 6 appears as either the first or last element in the array
+  
+  // Given an array of ints -> int[] nums
+  // array is length 1 or more -> nums.length >= 1
+  // first element -> nums[0]
+  // last element -> nums[nums.length -1]
+  // for an array of one element, nums[0] is both first and last element
+  // 6 appears as first element -> 6 equals first element -> 6 == nums[0]
+  // a appears as last element -> 6 equals last element -> 
+  // 6 == nums[nums.length -1] 
+  // or -> ||
+  
+  // solution:
+  // return true if 6 equals first or 6 equals last
+  // where
+  // length is nums.length
+  // first is nums[0]
+  // last is nums[length -1]
+  
+  int length = nums.length;
+  int first = nums[0];
+  int last = nums[length -1];
+  
+  return 6 == first || 6 == last;
+}
