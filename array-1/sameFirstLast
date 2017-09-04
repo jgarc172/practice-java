@@ -1,0 +1,21 @@
+public boolean sameFirstLast(int[] nums) {
+  // solution from description:
+  // return true if the array is length 1 or more, 
+  // and the first element and the last element are equal
+  
+  // improved description or translation to pseudocode or code
+  // Given an array of ints -> int[] nums
+  // array length -> nums.length
+  // first index -> 0
+  // first element -> nums[0]
+  // last index -> nums.length - 1
+  // last element -> nums[nums.length -1]
+  // and -> &&
+  
+  // solution:
+  // return true if array length >= 1
+  // and first element == last element
+  
+  return nums.length >= 1 && nums[0] == nums[nums.length - 1];
+  
+}
