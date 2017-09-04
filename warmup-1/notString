@@ -1,0 +1,27 @@
+public String notString(String str) {
+  // solution from description:
+  // a string with "not" added to str
+  // except if the str already begins with "not"
+  
+  // improved descriptions or translations to code:
+  // add -> concatenate -> +
+  // add "not " to front of str -> "not " + str
+  // str begins with "not" -> first 3 characters in str are equal to "not"
+  // first 3 characters in str -> str.substring(0,3)
+  // string equal to "not" -> string method equals("not")
+  
+  // constraints:
+  // a string with at least 3 characters -> length() >= 3
+  
+  // solution:
+  // if length of str is >= 3 and str begins with "not"
+  // then return str
+  // else return string str with "not" added to front
+  
+  if (str.length() >= 3 && str.substring(0, 3).equals("not")){
+    return str;
+  } else {
+    return "not " + str;
+  }
+  
+}
