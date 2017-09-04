@@ -1,0 +1,28 @@
+public boolean posNeg(int a, int b, boolean negative) {
+  // solution from description:
+  // return true if one is negative and one is positive
+  // Except if the parameter "negative" is true, 
+  // then return true only if both are negative
+  
+  // improved description and translations to code:
+  // a is negative -> a < 0
+  // a is positive -> a > 0
+  // same for b
+  // both are negative -> a < 0 && b < 0
+  // one is negative and one is positive -> a is negative and b is positive or
+  // a is positive and b is negative
+  // parameter negative is true -> negative
+  // or -> ||
+  
+  // solution:
+  // if the parameter "negative" is true, 
+  // then return true only if both are negative
+  // else return true if one is negative and one is positive
+  
+  if (negative){
+    return (a < 0 && b < 0);
+  } else {
+    return (a < 0 && b > 0) || (a > 0 && b < 0);
+  }
+  
+}
