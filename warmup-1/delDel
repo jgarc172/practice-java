@@ -1,0 +1,27 @@
+public String delDel(String str) {
+  // solution:
+  // a string that removes the string "del" if at position 1
+  
+  // translations:
+  // string "del" appears starting at index 1 -> str.substring(1, 4) matches "del"
+  // string "del" is deleted -> concatenate substrings before and after the "del" string
+  // string before -> str.substring(0,1)
+  // string after -> str.substring(4, str.length())
+  // concatenate -> 
+  
+  // constraints:
+  // to remove "del", string must be equal or greater than 4 characters 
+  // -> str.length() >= 4
+  
+  // solution:
+  // a new string if "del" string starts at index 1
+  // new string with "del" deleted
+  // or
+  // the same string
+  
+  String newStr = str;
+  if ( str.length() >= 4 && str.substring(1, 4).equals("del")){
+    newStr = str.substring(0,1) + str.substring(4, str.length());
+  }
+  return newStr;
+}
