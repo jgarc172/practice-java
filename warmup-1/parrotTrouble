@@ -1,0 +1,17 @@
+public boolean parrotTrouble(boolean talking, int hour) {
+  // solution from description:
+  // return true if the parrot is talking and the hour is before 7 or after 20 
+  
+  // translations:
+  // parrot is talking -> talking
+  // and -> &&
+  // hour is before 7 -> hour < 7
+  // or -> ||
+  // hour is after 20 -> hour > 20
+  
+  // solution:
+  // return true if parrot is talking and 
+  // (the hour is before 7 or the hour is after 20)
+  
+  return talking && (hour < 7 || hour > 20);
+}
