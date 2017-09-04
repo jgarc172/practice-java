@@ -1,0 +1,22 @@
+public String missingChar(String str, int n) {
+  // solution from description:
+  // return a new string where the char at index n has been removed
+  
+  // translations:
+  // length of string str -> str.length()
+  // non-empty string str -> str.length() >= 0
+  // n is a valid index of str -> n >= 0 and n <= str.length() - 1
+  
+  // tools:
+  // the substring(a, b) method to extract strings between positions a and b - 1
+  // concatenation -> +
+  // subsstring before position n -> str.substring(0, n)
+  // substring after position n -> str.substring(n + 1, str.length())
+  
+  // solution:
+  // return substring before position n concatenated to substring after position n
+  
+  
+  return str.substring(0, n) + str.substring(n + 1, str.length());
+  
+}
