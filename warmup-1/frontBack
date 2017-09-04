@@ -1,0 +1,47 @@
+public String frontBack(String str) {
+  // solution from description:
+  // return a new string where the first and last chars have been exchanged
+  //
+  // improved description or translation to pseudocode or code:
+  //
+  // given string str -> String str
+  // visualize str -> first + middle + end
+  // want new string -> end + middle + first
+  // swap or exchange or move cannot be done in java
+  // instead you read one value from one location and write that value 
+  // to another location
+  // 
+  // tools needed: 
+  // to read a character at a particular location use the method 
+  // charAt(i)
+  // a substring from a to b -> str.substring(a, b)
+  //
+  // more translations:
+  // first index -> 0
+  // first character -> str.charAt(0)
+  // last index in str -> str.length() - 1 
+  // last character -> str.charAt(str.length() - 1)
+  //
+  // solution: 
+  // length is the length of str
+  // first is the first character in str
+  // last is the last character in str
+  // middle is a substring between first and last 
+  // -> str.substring(0 + 1, length - 1)
+  // str is first + middle + last 
+  // return last + middle + first
+  
+  int length = str.length();
+  if (length <= 1) {
+    return str;
+  }
+  char first = str.charAt(0);
+  char last = str.charAt(length - 1);
+  String middle = str.substring(1, length - 1);
+  return last + middle + first;
+  
+  
+  
+  
+  
+}
