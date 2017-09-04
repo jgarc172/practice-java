@@ -1,0 +1,18 @@
+public boolean commonEnd(int[] a, int[] b) {
+  // solution from description:
+  // return true if the two arrays have the same first element or 
+  // they have the same last element
+  
+  // Given:
+  // two arrays a and b
+  // arrays are length 1 or more -> a.length >= 1
+  // same first element -> first a element == first b elment -> a[0] == b[0]
+  // same last element -> last a element == last b element
+  // -> a[a.length-1] == b[b.length-1]
+  // or -> ||
+  
+  // solution:
+  // return true if same first element or same last element
+  
+  return a[0] == b[0] || a[a.length-1] == b[b.length-1];
+}
