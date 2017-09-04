@@ -1,0 +1,43 @@
+public int sum2(int[] nums) {
+  // solution from description:
+  // return the sum of the first 2 elements in the array
+  // If the array length is less than 2, just sum up the elements that exist
+  // or return 0 if the array is length 0
+  
+  // improved descriptin or translations to pseudocode or code:
+  // Given an array of ints nums -> int[] nums
+  // typical sets of array values:
+  // empty array -> array length is 0 -> nums.length == 0
+  // non empty array -> length is > 0 -> nums.length > 0
+  // for the non empty array we only care about arrays with length 1 and 2
+  // so, we only care about arrays with lengths 0, 2, and 2
+  
+  // solution 1:
+  // if array is empty, return 0 as the sum
+  // if array length is 1, return nums[0] as the sum
+  // if array length is 2 or more, return nums[0] + nums[1]
+  /*
+  int length = nums.length;
+  if (length == 0){
+    return 0;
+  } else if (length == 1){
+    return nums[0];
+  } else {
+    return nums[0] + nums[1];
+  }
+  */
+  
+  // solution 2:
+  // use a while loop to iterate through the elements in the array
+  // and add each value to the sum -> sum = sum + value
+  // the range of indexes in the loop should be 0 or 0 and 1
+  // -> index < 2 and index < length of array
+  
+  int sum = 0;
+  int index = 0;
+  while (index < 2 && index < nums.length ){
+    sum = sum + nums[index];
+    index = index + 1;
+  }
+  return sum;
+}
