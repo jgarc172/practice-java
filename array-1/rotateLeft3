@@ -1,0 +1,30 @@
+public int[] rotateLeft3(int[] nums) {
+  // solution from description:
+  // return an array with the elements "rotated left" 
+  
+  // Given array nums of ints length 3
+  // int[] nums -> nums[0],nums[1],nums[2]
+  // array nums rotated left:
+  // nums[1],nums[2],nums[0]
+  
+  // solution 1:
+  // return a new array, result, with elements rotated left
+  // int[] result -> nums[1],nums[2],nums[0]
+  
+  // int[] result = {nums[1], nums[2], nums[0]};
+  // return result;
+  
+  // solution 2:
+  // use a for loop excluding the last value (i < nums.length -2)
+  // use a temp variable to save nums[0]
+  // assignt the right value to the left location -> nums[i] = nums[i+1]
+  // assign the temp value to the last location 
+  
+  int temp0 = nums[0];
+  for (int i=0; i< nums.length-1; i++){
+    nums[i] = nums[i+1];
+  }
+  nums[nums.length - 1] = temp0;
+  
+  return nums;
+}
