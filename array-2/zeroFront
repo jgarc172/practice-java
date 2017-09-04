@@ -1,0 +1,42 @@
+public int[] zeroFront(int[] nums) {
+  // solution from description:
+  // Return an array that contains the exact same numbers as the given array, 
+  // but rearranged so that all the zeros are grouped at the start of the array
+  
+  // improved description:
+  // Given array nums -> int[] nums
+  // length of array is unknown
+  // indexes are not important
+  // ends of array are important: front and back
+  // values are important: zero and non-zero
+  // values that are 0 -> nums[i] == 0
+  // two sets of values are mixed
+  // sets must be separated
+  
+  // solution 1: use a separate empty array
+  // create an array result with the same length as nums -> int[] result
+  // identify the front of result with an index front
+  // identify the back of result with an index back
+  // iterate through the nums array by incrementing index i
+  // if the element is zero move it to the front -> result[front] = nums[i]
+  // increment front
+  // if the element is not zero move it to the back -> result[back] = nums[i]
+  // decrement back
+  
+  int length = nums.length;
+  int[] result = new int[length];
+  int front = 0;
+  int back = length - 1;
+  for (int i=0; i < length; i++){
+    int element = nums[i];
+    if (element == 0){
+      result[front] = element;
+      front++;
+    } else {
+      result[back] = element;
+      back--;
+    }
+  }
+  
+  return result;
+}
