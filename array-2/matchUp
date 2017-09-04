@@ -1,0 +1,27 @@
+public int matchUp(int[] nums1, int[] nums2) {
+  // solution from description:
+  // Return the count of the number of times that the two elements differ by 2 
+  // or less, but are not equal
+  
+  // improved description or translation to pseudocode or code:
+  // compare each corresponding pair's value -> nums1[i] and nums2[i]
+  // differ by 2 or less -> absolute difference <= 2
+  // absolute difference Math.abs(a - b)
+  // values are not the same -> absolute difference is not 0
+  // and -> &&
+  
+  // solution:
+  // initialize count to 0
+  // iterate through the indexes of the two arrays
+  // increment the count when their value difference is <= 2 or != 0
+  
+  int matches = 0;
+  int length = nums1.length;
+  for (int i=0; i < length; i++){
+    int diff = Math.abs(nums1[i] - nums2[i]);
+    if (diff <= 2 && diff != 0){
+      matches++;
+    }
+  }
+  return matches;
+}
