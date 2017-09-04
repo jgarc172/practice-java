@@ -1,0 +1,31 @@
+public boolean no23(int[] nums) {
+  // solution from description:
+  // return true if array nums does not contain a 2 or 3
+  
+  // improve description or translate to pseudocode or code:
+  // Given an int array -> int[] nums
+  // array length 2 -> nums.length is equal to 2
+  // array contains a value, a. -> nums[i] == a
+  // two elements in array -> nums[0] and nums[1]
+  // array contains a -> nums[0] == a or nums[1] == a
+  // or -> ||
+  
+  // arriving at solution:
+  // return true if array nums does not contain a 2 or 3
+  // complement:
+  // return false if array nums contain a 2 or 3
+  
+  // solution:
+  // assume result is true
+  // result is false if nums[0] == 2 or nums[1] == 2 or nums[0] == 3 or nums[1] == 3
+  // can use a loop instead from i = 0 to i = 1:
+  // result is false if nums[i] == 2 or nums[i] == 3
+  
+  boolean no23 = true;
+  for (int i = 0; i < nums.length; i++) {
+    if (nums[i] == 2 || nums[i] == 3){
+      no23 = false;
+    }
+  }
+  return no23;
+}
