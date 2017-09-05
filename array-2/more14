@@ -1,0 +1,35 @@
+public boolean more14(int[] nums) {
+  /*
+  Solution from Description:
+    return true if the number of 1's is greater than the number of 4's
+  
+  Intermediate translations:
+    number of 1s -> a count of elements that are 1
+    element is 1 -> element == 1
+    number of 4s -> a count of elements that are 4
+    element is 4 -> element == 4
+    
+  count1 and count4:
+    count1 is 0;
+    count4 is 0;
+    for each element in nums
+      if element is 1, increment count1
+      if element is 4, increment count4
+      
+  Solution:
+    return true if count1 > count4
+  */
+  
+  int count1 = 0;
+  int count4 = 0;
+  for (int element : nums){
+    if (element == 1){
+      count1++;
+    }
+    if (element == 4){
+      count4++;
+    }
+  }
+  
+  return count1 > count4;
+}
