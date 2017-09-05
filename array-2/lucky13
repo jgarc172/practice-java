@@ -1,0 +1,30 @@
+public boolean lucky13(int[] nums) {
+  /*
+  Solution from description:
+    return true if the array contains no 1's and no 3's
+    
+  Intermediate translations:
+    contains a 1 -> nums[i] == 1
+    contains a 3 -> nums[i] == 3
+    
+  Solution:
+    has1 is false
+    has3 is false
+    for each element in array
+      if element contains a 1, has1 is true
+      if element contains a 3, has3 is true
+    return !has1 && !has3
+  */
+  
+  boolean has1 = false;
+  boolean has3 = false;
+  for (int element: nums){
+    if (element == 1){
+      has1 = true;
+    }
+    if (element == 3){
+      has3 = true;
+    }
+  }
+  return !has1 && !has3;
+}
