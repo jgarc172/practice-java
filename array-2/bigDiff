@@ -1,0 +1,25 @@
+public int bigDiff(int[] nums) {
+  /*
+  Solution from description:
+    return the difference between the largest and smallest values in the array
+    
+  Intermediate translations:
+    largest of two values -> Math.max(a, b)
+    smallest of two values -> Math.min(a, b)
+    
+  Solution:
+    max is first element
+    min is first element
+    for each element from the second element to the last element
+      compare the element with the max and min to find new max and min
+    return the difference between max and min
+    
+  */
+  int max = nums[0];
+  int min = nums[0];
+  for (int i=1; i <= nums.length-1; i++){
+    max = Math.max(max, nums[i]);
+    min = Math.min(min, nums[i]);
+  }
+  return max - min;
+}
