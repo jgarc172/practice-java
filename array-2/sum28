@@ -1,0 +1,26 @@
+public boolean sum28(int[] nums) {
+  /*
+  Solution from description:
+    return true if the sum of all the 2's in the array is exactly 8
+  
+  Itermediate translations:
+  
+  sum of all 2's in array nums:
+    sum is 0
+    for each element in nums
+      if element is 2
+        sum += element
+    
+  Solution:
+    return true if sum == 8
+  */
+  
+  int sum = 0;
+  for (int element: nums){
+    if (element == 2){
+      sum += element;
+    }
+  }
+  
+  return sum == 8;
+}
