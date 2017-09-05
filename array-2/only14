@@ -1,0 +1,29 @@
+public boolean only14(int[] nums) {
+  /*
+  Solution from description:
+    return true if every element is a 1 or a 4
+    
+  Intermediate translations:
+    element is 1 -> element == 1
+    element is 4 -> element == 4
+    or -> ||
+    true if element is 1 or element is 4
+    false if not (element is 1 or element is 4)
+
+  Solution:
+    only14 is true;
+    for each element in array
+      if not (element is 1 or element is 4), only14 is false, break
+    return only14
+  */
+  
+  boolean only14 = true;
+  for (int element : nums){
+    if (!(element == 1 || element == 4)){
+      only14 = false;
+      break;
+    }
+  }
+  
+  return only14;
+}
