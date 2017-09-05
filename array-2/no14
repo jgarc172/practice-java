@@ -1,0 +1,33 @@
+public boolean no14(int[] nums) {
+  /*
+  Solution from description:
+    return true if it contains no 1's or it contains no 4's.
+    
+  Intermediate translations:
+    element is 1 -> element == 1
+    element is 4 -> element == 4
+    or -> ||
+
+  Solution:
+    has1 is false;
+    has4 is false;
+    for each element in array
+      if element is 1, has1 is true
+      if element is 4, has4 is true
+
+    return true if !has1 || !has4
+  
+  */
+  
+  boolean has1 = false;
+  boolean has4 = false;
+  for (int element : nums){
+    if (element == 1){
+      has1 = true;
+    }
+    if (element == 4){
+      has4 = true;
+    }
+  }
+  return !has1 || !has4;
+}
