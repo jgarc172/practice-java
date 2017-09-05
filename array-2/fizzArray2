@@ -1,0 +1,24 @@
+public String[] fizzArray2(int n) {
+  /*
+  Solution from description:
+    create and return a new string array of length n, 
+    containing the strings "0", "1" "2" .. through n-1
+    
+  Intermediate translations:
+  
+  fizz array:
+    fizz is new String array of size n
+    for i: 0 to n
+      assign the character i to fizz[i]
+    
+  Solution:
+    return fizz
+  */
+  
+  String[] fizz = new String[n];
+  for (int i=0; i <= n-1; i++){
+    fizz[i] = String.valueOf(i);
+  }
+  
+  return fizz;
+}
