@@ -1,0 +1,24 @@
+public int countEvens(int[] nums) {
+  /*
+  solution from description:
+    return the number of even ints in the given array
+    
+  Intermediate translations:
+    number of evens -> count of evens
+    an even integer a -> true if (a % 2) == 0
+    
+  Solution:
+    count is 0
+    for each value in the array test if the value is even
+      increase count if the value is even
+    return count
+    
+  */
+  int count = 0;
+  for (int i=0; i <= nums.length - 1; i++){
+    if (nums[i] % 2 == 0){
+      count++;
+    }
+  }
+  return count;
+}
