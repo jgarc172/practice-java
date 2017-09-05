@@ -1,0 +1,24 @@
+public int[] fizzArray(int n) {
+  /*
+  Solution from description:
+    create and return a new int array of length n, 
+    containing the numbers 0, 1, 2, ... n-1
+    
+  Intermediate translations:
+  
+  fizz array:
+    fizz is new int array of size n
+    for i: 0 to n
+      assign i to fizz[i]
+      
+  Solution:
+    return fizz;
+  */
+  
+  int[] fizz = new int[n];
+  for (int i=0; i <= fizz.length-1; i++){
+    fizz[i] = i;
+  }
+  
+  return fizz;
+}
