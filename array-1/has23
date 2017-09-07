@@ -1,0 +1,39 @@
+public boolean has23(int[] nums) {
+  /*
+    return true if nums contains a 2 or a 3
+  */
+  
+  for (int i=0; i <= nums.length - 1; i++){
+    if (nums[i] == 2 || nums[i] == 3){
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+/*
+Solution from function name:
+  has23 is boolean
+  
+Solution from description:
+  return true if it contains a 2 or a 3
+  
+Given:
+  an int array nums
+  
+Intermediate translations:
+  return true if nums contains a 2 or a 3
+  contains a 2 -> an element in nums is a 2
+  contains a 3 -> an element in nums is a 3
+  an element in nums -> nums[i] where i is between 0 and length of nums - 1
+  element is 2 -> nums[i] == 2
+  element is 3 -> nums[i] == 3
+  or -> ||
+  
+Solution:
+  true:
+    element in nums is a 2 or  element in nums is a 3
+  false: 
+    when nums is empty (length 0) or when the above is not met
+*/
