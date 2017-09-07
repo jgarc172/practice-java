@@ -1,0 +1,67 @@
+public boolean twoTwo(int[] nums) {
+  
+  boolean found2 = false;
+  int count2 = 0;
+  int lastIndex = nums.length - 1;
+  for (int i=0; i <= lastIndex; i++){
+    
+    if (nums.length == 1 && nums[0] == 2){
+      return false;
+    }
+    if (i == 0 ){
+      if (nums[0] == 2 && nums[1] != 2){
+        return false;
+      }
+      continue;
+    }
+    
+    if (i == lastIndex){
+      if (nums[lastIndex-1] != 2 && nums[lastIndex] == 2){
+        return false;
+      }
+      continue;
+    }
+    
+    if (nums[i] == 2 && nums[i-1] != 2 && nums[i+1] != 2){
+      return false;
+    }
+
+  }
+  return true;
+}
+
+/*
+Solution from function name:
+  twoTwo is boolean
+
+Given:
+  an array of ints nums
+
+Outputs:
+  true: if every 2 that appears in the array is next to another 2
+  false: otherwise
+  
+Solution from description:
+  return true if every 2 that appears in the array is next to another 2
+  
+Intermediate translations:
+  2 appears in the array -> nums[i] == 2 is true
+  2 next to another 2:
+    for three elements at i-1, i, and i+1
+    true if nums[i] == 2 and nums[i-1] == 2 or nums[i+1] == 2 
+  
+Restrictions:
+  when length is 1, test if there is a 2 (return false)
+  for i=0, can only test the next value at i+1
+  for last index i, can only test the previous value
+  
+Solution:
+  default is true
+  for each pair of elements in array from index 1 to last index (length - 2)
+    if length is 1, test if there is a 2, return false
+    test first pair at 0 
+    test last pair
+    if element is 2, test if the element has a 2 on the left or right, 
+      if not return false
+  
+*/
