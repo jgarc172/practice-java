@@ -1,0 +1,37 @@
+public int[] biggerTwo(int[] a, int[] b) {
+  /*
+  Solution:
+    if the sum of b > sum of a, then return b
+    else return a
+  */
+  
+  if (sum(b) > sum(a)){
+    return b;
+  }
+  
+  return a;
+}
+
+public int sum(int[] nums){
+  /*
+  Returns the sum of all the elements
+  */
+  
+  int sum = 0;
+  for (int element : nums){
+    sum += element;
+  }
+  return sum;
+}
+
+/*
+Solution from description:
+  Return the array which has the largest sum
+  
+Given:
+  two arrays of length 2, a and b
+  
+Intermediate translations:
+  sum of the values of an array -> see function sum(int[])
+  
+*/
