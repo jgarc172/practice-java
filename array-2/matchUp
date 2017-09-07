@@ -1,20 +1,11 @@
 public int matchUp(int[] nums1, int[] nums2) {
-  // solution from description:
-  // Return the count of the number of times that the two elements differ by 2 
-  // or less, but are not equal
   
-  // improved description or translation to pseudocode or code:
-  // compare each corresponding pair's value -> nums1[i] and nums2[i]
-  // differ by 2 or less -> absolute difference <= 2
-  // absolute difference Math.abs(a - b)
-  // values are not the same -> absolute difference is not 0
-  // and -> &&
-  
-  // solution:
-  // initialize count to 0
-  // iterate through the indexes of the two arrays
-  // increment the count when their value difference is <= 2 or != 0
-  
+  /*
+      return the count of corresponding elements 
+        when their absolute value difference is <= 2 but not 0
+
+  */
+
   int matches = 0;
   int length = nums1.length;
   for (int i=0; i < length; i++){
@@ -25,3 +16,42 @@ public int matchUp(int[] nums1, int[] nums2) {
   }
   return matches;
 }
+
+/*
+  Solution from function name:
+    matchup is an integer
+    
+  Solution from description:
+    Return the count of the number of times that the two elements differ by 2 
+      or less, but are not equal
+  
+  Given:
+    arrays nums1 and nums2 of the same length
+    
+  Restrictions:
+    for every element in nums1, 
+      - consider the corresponding element in nums2 (at the same index)
+      - count of the number of times that the two elements differ by 2 or less, 
+        but are not equal
+      
+  Intermediate translations:
+    corresponding element in nums1 and nums2 (at the same index) -> nums1[i] and nums2[i]
+    differ by 2 or less -> absolute difference <= 2
+    absolute difference ->  Math.abs(a - b)
+    not equal -> absolute difference is not 0
+    and -> &&
+  
+  Translated solution:
+    
+  Solution:
+  for each element in both arrays
+    increment the count when their value difference is <= 2 but not 0
+
+  Additional intermediate translations:
+  a count:
+    starts at 0 and is incremented when a desired condition is true
+  desired condition for this problem:
+    two elements differ by 2 or less, but are not equal
+  
+
+*/
