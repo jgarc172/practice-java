@@ -1,4 +1,18 @@
 public int[] swapEnds(int[] nums) {
+
+  // solution:
+  // if length is at least 2, swap first element and last element
+  // return modified array
+  
+  if (nums.length > 1){// swap
+    int first = nums[0];
+    nums[0] = nums[nums.length-1];
+    nums[nums.length-1] = first;
+  }
+  
+  return nums;
+}
+
   // solution from description:
   // return the modified array
   // by swapping the first and last elements in the array
@@ -33,17 +47,3 @@ public int[] swapEnds(int[] nums) {
   // modified array -> last + middle + first
   // modified array -> nums[last] + middle + nums[0]
   // if there are no middle elements, then need at least 2 elements to swap
-
-  // solution:
-  // if length is at least 2, swap first element and last element
-  // return modified array
-  
-  if (nums.length > 1){// swap
-    int last = nums.length - 1;
-    int temp = nums[0];
-    nums[0] = nums[last];
-    nums[last] = temp;
-  }
-  
-  return nums;
-}
