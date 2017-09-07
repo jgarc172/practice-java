@@ -1,0 +1,39 @@
+public int[] makeLast(int[] nums) {
+  /*
+  Solution:
+    Return a new array that is twice as long and 
+    contains the same last element as in nums
+  */
+  
+  int[] newArr = new int[2*nums.length];
+  newArr[newArr.length-1] = nums[nums.length-1];
+  
+  return newArr;
+}
+
+  /*
+  Solution from description:
+    return a new array with double the length
+    
+  Given and constraints:
+    an int array nums with length 1 or more
+    its last element is the same as the original array
+    all the other elements are 0
+  
+  Identifiers:
+    nums is int[]
+    newArr is int[]
+    
+  Intermediate translations:
+    
+  a new array with double the length:
+    length of nums -> nums.length
+    length of new array -> 2*nums.length
+    new array newArr -> new int[2*nums.length]
+    all elements of new array are 0
+    last element of nums -> nums[nums.length-1]
+    last element of newArr -> newArr[newArr.length-1]
+    
+  its last element is the same as the original array:
+    copy the last element from nums into the last element of newArr
+  */
