@@ -1,30 +1,30 @@
 public int[] rotateLeft3(int[] nums) {
-  // solution from description:
-  // return an array with the elements "rotated left" 
+  /*
+    nums is an array
+    nums has a length
+    if the array has one or more elements, then you have a
+    beginning element and an end elment.
+    each element can be identified.  how?
+    nums[0], nums[1], nums[2], etc.
+    easy when a few elements; otherwise use 
+    nums[i] in a loop
+    
+    you have an array composed of
+    nums[0], nums[1], nums[2]
+    
+    you want a new array that is like this:
+    nums[1], nums[2], nums[0]
   
-  // Given array nums of ints length 3
-  // int[] nums -> nums[0],nums[1],nums[2]
-  // array nums rotated left:
-  // nums[1],nums[2],nums[0]
+  int temp = nums[0];
+  nums[0] = nums[1];
+  nums[1] = nums[2];
+  nums[2] = temp;
+  */
   
-  // solution 1:
-  // return a new array, result, with elements rotated left
-  // int[] result -> nums[1],nums[2],nums[0]
-  
-  // int[] result = {nums[1], nums[2], nums[0]};
-  // return result;
-  
-  // solution 2:
-  // use a for loop excluding the last value (i < nums.length -2)
-  // use a temp variable to save nums[0]
-  // assignt the right value to the left location -> nums[i] = nums[i+1]
-  // assign the temp value to the last location 
-  
-  int temp0 = nums[0];
-  for (int i=0; i< nums.length-1; i++){
+  int temp = nums[0];
+  for (int i = 0; i <= nums.length - 2; i++){
     nums[i] = nums[i+1];
   }
-  nums[nums.length - 1] = temp0;
-  
+  nums[nums.length - 1] = temp;
   return nums;
 }
