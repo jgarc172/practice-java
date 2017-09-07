@@ -1,0 +1,23 @@
+public int[] maxEnd3(int[] nums) {
+  /*
+    figure out which element is larger
+    of first or last
+    
+    set all the other elements to be that value
+  */
+  int max = max(nums[0], nums[nums.length - 1]);
+
+  for (int i=0; i <= nums.length - 1; i++){
+    nums[i] = max;
+  }
+  
+  return nums;
+}
+
+public int max(int a, int b){
+    if (a > b){
+    return a;
+  } else {
+    return b;
+  }
+}
