@@ -1,0 +1,45 @@
+public boolean has12(int[] nums) {
+ /*
+  return true if there is a 1 in the array with a 2 somewhere later in the array
+ */
+ 
+ for (int i=0; i <= nums.length - 1; i++){
+   if (nums[i] == 1){
+     for (int j=i+1; j <= nums.length - 1; j++){
+       if (nums[j] == 2){
+         return true;
+       }
+     }
+   }
+ }
+ return false;
+}
+
+/*
+Solution from function name:
+  has12 is boolean
+    return true if it has 12
+      
+Solution from description:
+  return true if there is a 1 in the array with a 2 somewhere later in the array
+    
+Given:
+  an array of ints nums
+  
+Intermediate translations:
+  in the array -> elements with index i=0 to length - 1
+  there is a 1 in the array -> nums[i] == 1 
+  later in the array -> for j > i to length - 1
+  there is a 2 later in array -> nums[j] == 2
+  
+Summary of arrays and subarrays (slices)
+  physical array -> elements with indexes from 0 to  length - 1
+  slice in array -> elements starting at index where value is 1, to length - 1
+  
+Solution:
+  use two nested loops: 1 to iterate through the array; another for the slice
+  for each element in array
+    if element is 1, then for each element to the end of the array
+      return true if second element is 2
+      
+*/
