@@ -19,7 +19,7 @@ myArray[0]
 
 ## Size of the Array and the Range of Indexes
 
-The size of the array
+The size of the array determines which indexes can be used to access the array elements.  For example, if the length of the array
 ## For Each Index Loop:
 
 Arrays elements can be accessed by their position, their index value.  For example, to access all the elements of an array:
