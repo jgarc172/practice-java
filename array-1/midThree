@@ -1,0 +1,35 @@
+public int[] midThree(int[] nums) {
+  /*
+    Return new array {nums[first middle], nums[second middle], nums[third middle]}
+  */
+  
+  int middle = nums.length / 2;
+  return new int[]{nums[middle-1], nums[middle], nums[middle+1]};
+}
+
+/*
+Solution from description:
+  return a new array length 3
+  
+Given and constraints:
+  an array of ints nums of odd length and length of 3 or more
+  the new array will contain the middle 3 elements from nums
+  
+Intermediate translations:
+  nums.length / 2 -> the second middle index
+  first middle index -> second - 1
+  third middle index -> second + 1
+  
+  
+Solution:
+  create an empty array newArr of 3 elements
+  copy the 3 middle elements of the nums array into the new one
+  
+More translations:
+  second middle index -> nums.length/2
+  first middle index -> second - 1
+  second element -> nums[second]
+  first element -> nums[second-1]
+  third element -> nums[second+1]
+
+*/
