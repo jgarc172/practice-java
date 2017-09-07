@@ -1,0 +1,32 @@
+public int start1(int[] a, int[] b) {
+  /*
+  Solution:
+    use a counter to increase count if array has 1 as its first element
+  */
+  
+  int count = 0;
+  if (a.length > 0 && a[0] == 1){
+    count++;
+  }
+  if (b.length > 0 && b[0] == 1){
+    count++;
+  }
+  
+  return count;
+}
+
+/*
+Solution from description:
+  Return how many of the arrays have 1 as their first element
+  
+Given:
+  2 int arrays: a and b
+  
+Intermediate translations:
+  a has 1 as its first element -> a[0] == 1
+  b has 1 as its first element -> b[0] == 1
+  
+Restrictions:
+  array with no element (zero length) do not have a first element
+
+*/
