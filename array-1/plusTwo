@@ -1,0 +1,27 @@
+public int[] plusTwo(int[] a, int[] b) {
+  /*
+    Return an array from concatenation of arrays a and b
+  */
+  
+  return new int[]{a[0],a[1],b[0],b[1]};
+}
+
+/*
+Solution from description:
+  return a new array length 4
+  
+Given and constraints:
+  two int arrays a and b of length 2
+  new array has length 4
+  
+Intermediate translations:
+  length 4 -> a.length + b.length
+  containing all their elements -> coppy elements from a and b to new array
+  
+Solution 1:
+  return array {a[0],a[1],b[0],b[1]}
+  
+Solution 2:
+  iterate through each array and copy items to new array
+  
+*/
