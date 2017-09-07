@@ -1,0 +1,46 @@
+public boolean double23(int[] nums) {
+  /*
+    return true if the array nums contains 2 twice, or 3 twice
+  */
+  
+  int count2 = 0;
+  int count3 = 0;
+  for (int element : nums){
+    if (element == 2){
+      count2++;
+    }
+    if (element == 3){
+      count3++;
+    }
+  }
+  
+  return count2 == 2 || count3 == 2;
+}
+
+/*
+Solution from function name:
+  double23 is boolean
+  
+Solution from description:
+  return true if the array contains 2 twice, or 3 twice
+  
+Given:
+  an int array nums
+
+Restrictions:
+  nums is length 0, 1, or 2.
+  
+Intermediate translations:
+  array contains value a -> nums[i] == a
+  contains value a twice -> count the occurrences using a counter (countA)
+  when value is a -> increment countA -> countA++
+  
+Solution:
+  track counters count2 and count3
+  for each element in nums
+    increase the respective counter
+  return true if count2 is 2 or count3 is 2
+  
+Note:
+  length of nums does not matter
+*/
