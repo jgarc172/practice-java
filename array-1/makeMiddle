@@ -1,0 +1,34 @@
+public int[] makeMiddle(int[] nums) {
+  /*
+  Return two middle elements
+  */
+  
+  int second = nums.length / 2;
+  int first = second - 1;
+  
+  return new int[]{nums[first], nums[second]};
+}
+
+/*
+Solution from description:
+  return a new array length 2
+  
+Given and constraints:
+  an array of ints nums of even length and length of 2 or more
+  the new array will contain the middle two elements from nums
+  
+Intermediate translations:
+  nums.length / 2 -> the second middle index
+  the first middle index -> nums.length/2 - 1
+  
+Solution:
+  create an empty array newArr of two elements
+  copy the two middle elements of the nums array into the new one
+  
+More translations:
+  second index -> nums.length/2
+  first index -> second - 1
+  second element -> nums[second]
+  first element -> nums[second-1]
+
+*/
