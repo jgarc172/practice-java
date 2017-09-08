@@ -1,0 +1,89 @@
+public Map<String, Integer> wordCount(String[] strings) {
+  /*
+  Solution:
+  create a new map wordCount
+  for each element in the strings array
+    if the map contains the element as key
+      get the current value
+      increment the value
+      put the new value in the map's key
+    else initialize the key with a 1
+  return the wordCount
+  */
+  
+  Map<String, Integer> wordCount = new HashMap<String, Integer>();
+  
+  for (String key : strings){
+    if (wordCount.containsKey(key)){
+      int count = wordCount.get(key);
+      count++;
+      wordCount.put(key, count);
+    } else {
+      wordCount.put(key, 1);
+    }
+  }
+  return wordCount;
+}
+
+/*
+Solution from function definition:
+  convert an array of Strings to a Map<String, Integer>
+  
+Solution from description:
+  return a Map<String, Integer>
+  
+Given:
+  an array of strings, strings
+  
+Restrictions (conditions):
+  1. with a key (of the map) for each different string
+  2. with the value the number of times that key's string appears in the array
+  
+Solution without any restrictions:
+  create a new empty Map and return it.
+  
+  Map<String, Integer> wourdCount = new HashMap<String, Integer>();
+  return wordCount;
+  
+Understanding Map<String, Int>:
+  - this kind of Map is used to keep "multiple" counters.  A traditional counter
+    is incremented when an event is observed.  In this scenario, multiple events
+    are observed: the occurrence of distinct strings as found in the array strings
+
+Now consider the restrictions:
+  1. with a key for each different string
+  2. with the value being the number of times that the key string appears
+  
+Intermediate translations:
+  1. when a string is observed add it to the map as the key
+  2. the value is incremented
+  
+  the two combined can be translated as follows:
+  - obtain the current value of the key (this is the current count)
+  - increment that value
+  - then replace the key's value with the new value
+  
+  The above can be translated to code as follows:
+  
+  int count = wordCount.get(key);
+  count++;
+  wordCount.put(key, count);
+  
+Restrictions on Maps:
+  before a key's value is accessed, the key must exist in the map
+  
+  this translates to the following code:
+  
+  wordCount.containsKey(key) is true
+  
+Solution:
+  create a new map wordCount
+  for each element in the strings array
+    if the map contains the element as key
+      get the current value
+      increment the value
+      put the new value in the map
+    else this is the first occurrence, put a 1 for the element
+  return the wordCount
+    
+*/
