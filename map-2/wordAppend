@@ -1,0 +1,21 @@
+public String wordAppend(String[] strings) {
+  /*
+  
+  Solution:
+  create a new map wordCount
+  < create a new empty String, result >
+  for each element in the strings array
+    if the element doesn't exist in the map as key
+      initialize the key with a 1
+    else
+      get the key's current value
+      increment the value
+      put the new value in the map's key
+      < if the value is 2, 4, 6, etc. >
+        < append the key to the result string >
+        
+  return the result string
+  
+  */
+  
+}
