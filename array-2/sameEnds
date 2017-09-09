@@ -1,0 +1,72 @@
+public boolean sameEnds(int[] nums, int len) {
+  /*
+  Solution:
+    Return true if ends are the same
+
+    two groups: start and end
+    star begins at 0 and ends at len
+    end begins at nums.length - len and ends at nums.length - 1
+  */
+  
+  for(int i=0; i<= len-1; i++){
+    if (nums[i] != nums[nums.length - len + i]){
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+/*
+Solution from function signature:
+  sameEnds is boolean
+  given an int array nums and and int len, return true or false
+  
+Interpretation:
+  sameEnds is true if array has same ends of length len
+  but don't know orientation of ends.  examples given assume same orientation
+  
+Solution from description:
+  return true
+  otherwise return false
+  
+Given:
+  - an int array nums, and an int len
+  - assume len is in the range 0..nums.length inclusive
+  
+Restrictions:
+  - true if the group of len numbers at the start and end of the array are the same
+  - false if groups are not the same
+  
+Immediate translations:
+  - visualize an array nums and two groups of elements at both ends 
+    -> one array; two subarrays
+
+  - group of len numbers at the start and end of the array
+    for len 0 -> there are no elements in each group
+    for len 1 -> 0 and length-1
+    for len 2 -> 0,1  and length-2,length-1
+    etc.
+    pattern of corresponding elements for len 2:
+      0 -> length - 2
+      1 -> length - 1
+      i -> length - len + i
+    an element in the start group at index i corresponds to an index length-len+i
+      at end group
+    Summary:
+      start group starts at 0, ends at len-1
+      end group starts at nums.length-len, ends at nums.length-1
+      
+
+Solution:
+  based on len, calculate the start group
+  for each element in start group
+    compare the element with the corresponding element in the end group
+    if the elements are not the same return false
+  otherwise return true;
+
+  
+  
+  
+
+*/
