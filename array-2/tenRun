@@ -1,0 +1,62 @@
+public int[] tenRun(int[] nums) {
+  /*
+    return a modified nums that replaces values to the last multiple of 10 found
+  */
+  
+  boolean follows = false;
+  int lastMult = 0;
+
+  for (int i=0; i <= nums.length-1; i++){
+    if (nums[i] % 10 == 0){
+      lastMult = nums[i];
+      follows = true;
+    } else if (follows){
+      nums[i] = lastMult;
+    }
+  }
+  return nums;
+}
+
+/*
+Solution from function definition:
+  tenRun is an array of integers
+  
+Solution from description:
+  return nums with changed values
+  
+Given:
+  an int array nums
+  
+Restrictions:
+  - For each multiple of 10 in the given array, change all the values 
+    following it to be that multiple of 10, until encountering another 
+    multiple of 10
+    
+Solution without restrictions:
+  return the nums array unchanged as follows:
+  
+Intermediate translation of restrictions:
+  1. a value is a multiple of ten -> 10 divides the value
+  2. all the values following it until another multiple -> a sub-array (slice) of nums
+  3. change all the values to that multiple of 10 -> replace the elements value
+    with the multiple of 10
+    
+More translations:
+  1. true if value modulus 10 is 0 -> value % 10 == 0
+  2. a boolean flag, follows, can determine if the element is in the sub-array
+  3. remember the last multiple value and use it to assign to elements in the 
+    sub-array
+    
+Solution with restrictions:
+  initialize a boolean flag follows to false
+  declare a variable multiple to remember the last variable
+  for each element in nums array
+    if the element is a multiple of 10
+      replace multiple value with the element's value
+      set follows flag to true
+    else the element is not multiple of 10
+      if follows is true
+        replace the element's value with the last multiple's value
+  return changed nums array
+      
+*/
