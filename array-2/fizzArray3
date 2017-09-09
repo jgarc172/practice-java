@@ -1,0 +1,50 @@
+public int[] fizzArray3(int start, int end) {
+  /*
+    return a new array containing the sequence of integers 
+      from start up to but not including end,
+  */
+    int[] result = new int[end - start];
+    int lastIndex = result.length - 1;
+    int count = start;
+    for (int i=0; i <= lastIndex; i++){
+      result[i] = count;
+      count++;
+    }
+
+  return result;
+}
+
+/*
+Solution from function definition:
+  fizzArray3 is an array of integers
+  
+Solution from description:
+  return a new array
+  
+Given:
+  two integers start and end
+  
+Restrictions:
+  - the new array contains the sequence of integers 
+    from start up to but not including end
+    
+Solution without restriction:
+  return a new array of length 0
+  
+Intermediate translations of restrictions:
+  - length of new array -> end - start
+  - sequence of integers -> values from a counter incremented by 1
+  - counter starts at start value -> assign start to count variable
+  - in a loop, for each index of new array
+      assign the counter's value to the element at that index
+      increment the counter
+      
+Solution with restrictions:
+  create a new array of length end - start
+  initialize counter to the value of start
+  for each element in the array
+    assign the counter's value to the elment
+    increment the counter by 1
+  return new array
+
+*/
