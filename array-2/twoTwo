@@ -1,10 +1,12 @@
 public boolean twoTwo(int[] nums) {
+  /*
+    return true if every 2 that appears in the array is next to another 2
+  */
   
   boolean found2 = false;
   int count2 = 0;
   int lastIndex = nums.length - 1;
   for (int i=0; i <= lastIndex; i++){
-    
     if (nums.length == 1 && nums[0] == 2){
       return false;
     }
@@ -47,17 +49,18 @@ Solution from description:
 Intermediate translations:
   2 appears in the array -> nums[i] == 2 is true
   2 next to another 2:
+    for a 2, there is another 2 on the left or on the right
     for three elements at i-1, i, and i+1
     true if nums[i] == 2 and nums[i-1] == 2 or nums[i+1] == 2 
   
 Restrictions:
   when length is 1, test if there is a 2 (return false)
-  for i=0, can only test the next value at i+1
-  for last index i, can only test the previous value
+  when i=0, can only test the next value at i+1
+  when i is the last index, can only test the previous value at i-1
   
 Solution:
   default is true
-  for each pair of elements in array from index 1 to last index (length - 2)
+  for each triple  elements in array from index 1 to last index (length - 2)
     if length is 1, test if there is a 2, return false
     test first pair at 0 
     test last pair
