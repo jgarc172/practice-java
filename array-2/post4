@@ -1,0 +1,58 @@
+public int[] post4(int[] nums) {
+  /*
+    return a new array containing the elements from the original array that 
+      come after the last 4 in the original array
+  */
+  
+  int index = lastIndexAt(nums, 4);
+  if (index < 0){
+    return new int[0];
+  }
+  int length = nums.length - (index+1);
+  int[] newArr = new int[length];
+  
+  int to = 0;
+  for (int from=index+1; from <= nums.length-1; from++){
+    newArr[to] = nums[from];
+    to++;
+  }
+  return newArr;
+}
+
+public int lastIndexAt(int[] nums, int element){
+  int index = -1;
+  for (int i=0; i <= nums.length-1; i++){
+    if (nums[i] == element){
+      index = i;
+    }
+  }
+  return index;
+}
+
+/*
+Solution from function definition:
+  post4 takes an int array and returns an int array
+  
+Given:
+  a non-empty array of ints nums
+  
+Solution from description:
+  return a new array
+  
+Restrictions:
+  1. new array contains the elements from the original array that come 
+    after the last 4 in the original array
+  2. original array will contain at least one 4
+  
+Intermediate translations:
+  2. the last 4 will be located at some index i
+  3. the length of the new array will be the difference of the length 
+    of nums minus i+1
+  1. copy the elements from nums to the new array from 
+    index+1 up to the last index of nums
+
+Solution:
+  - define a function that locates the index of the last 4
+  - use the function to get length and create new array
+  - copy last elements from nums to the new array
+*/
