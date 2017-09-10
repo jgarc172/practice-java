@@ -1,0 +1,169 @@
+public int[] withoutTen(int[] nums) {
+/*
+  Solution A, using new array:
+  
+  create new array, same length as nums
+  for each element in nums
+    if element is not 10
+      copy element to next available position
+        increment j
+  return new array
+
+  int[] newArr = new int[nums.length];
+  int j = 0;
+  for (int i=0; i <= nums.length-1; i++){
+    if (nums[i] != 10){
+      newArr[j] = nums[i];
+      j++;
+    }
+  }
+  return newArr;
+
+
+  Solution to B, modifyin same array:
+  
+  no available position yet, j is -1
+  for each element in nums
+    if there is no space available yet
+      if element is not 10
+        skip
+      else element is 10
+        this is the first available space
+        clear the element
+        assign j to i
+    else space is available
+      if element is not 10
+        copy element to next available position
+        clear that element
+        increment j
+    else remaining 10s or 0s
+      clear the element
+*/ 
+
+  int j = -1;
+  for (int i=0; i <= nums.length-1; i++){
+    if (j < 0){
+      if (nums[i] != 10){
+        continue;
+      } else {
+        nums[i] = 0;
+        j = i;
+        continue;
+      }
+    } else {
+      if (nums[i] != 10){
+        nums[j] = nums[i];
+        nums[i] = 0;
+        j++;
+      } else {
+        nums[i] = 0;
+      }
+    }
+  }
+  
+  return nums;
+
+}
+
+/*
+Solution from function definition:
+  withoutTen takes an int array and returns an int array
+  
+Given:
+  an array of int nums
+  
+Solution from description without restrictions:
+  Return a version of the given array
+  
+Restrictions:
+  1. A) make a new array or B) may modify and return the given array 
+  2. all the 10's of the given array have been removed
+  3. The remaining elements should shift left towards 
+    the start of the array as needed
+  4. the empty spaces at the end of the array should be 0
+  5. in Java a new array of ints defaults to 0 values
+  
+For both solutions A and B, there are two arrays to visualize:
+  - the nums array that contains both 10s and other numbers
+  - a second array or area in the original array that is available for replacement
+
+A is easier to visualize and will help to visualize B.
+
+A: Using a new array newArr:
+  - the index i in nums indicates the current element to consider
+  - the index j in newArr indicates the next available position
+
+nums    [3] [10] [7] [10] [5] [10] [8] 
+                           i
+newArr  [3 ] [7] [0] [0] [0] [0] [0]
+                  j
+and the copying is just
+
+  if nums[i] is not 10
+    newArr[j] = nums[i];
+    i++
+    j++
+  else
+    i++
+
+Solution to A:
+  create new array, same length as nums
+  next available position j is 0
+  for each element in nums
+    if element is not 10
+      copy element to next available position
+        increment j
+  return new array
+
+
+B: modifying array nums:
+  - the index i in nums indicates the current element to consider
+  - the index j in nums indicates the next available position
+
+before
+nums    [3] [10] [7] [10] [5] [10] [8] 
+      j  i
+later:
+nums    [3] [7] [0] [10] [5] [10] [8] 
+                 j        i
+
+and the copying is just
+
+  if j < 0
+    if nums[i] is not 10
+      increment i
+    else element is 10
+      j = i
+      increment i
+  else j >= 0 (space available)
+    if nums[i] is not 10
+      newArr[j] = nums[i];
+      nums[i] = 0;
+      increment i
+      increment j
+    else element is 10
+      nums[i] = 0;
+      increment i
+
+Solution to B:
+  no available position yet, j is -1
+  for each element in nums
+    if there is no space available yet
+      if element is not 10
+        skip
+      else element is 10
+        this is the first available space
+        clear the element
+        assign j to i
+    else space is available
+      if element is not 10
+        copy element to next available position
+        clear that element
+        increment j
+    else remaining 10s or 0s
+      clear the element
+
+*/
+
+
+
