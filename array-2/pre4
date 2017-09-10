@@ -2,6 +2,12 @@ public int[] pre4(int[] nums) {
   /*
     return a new array containing the elements from the original array that 
      come before the first 4 in the original array
+    
+  Solution:
+  - find the index of the first 4 to get length of new array
+  - create new array
+  - copy elements from original array from 0 to lengngth - 1
+
   */
   
   int length = indexAt(nums, 4);
