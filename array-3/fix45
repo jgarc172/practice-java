@@ -14,7 +14,6 @@ public int[] fix45(int[] nums) {
     if (nums[i] == 4 && nums[i+1] != 5){
       next5 = next5(nums, next5+1);
       nums[next5] = nums[i+1];
-      //nums[next5] = 55;
       nums[i+1] = 5;
     }
   }
