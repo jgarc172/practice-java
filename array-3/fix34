@@ -1,6 +1,6 @@
 public int[] fix34(int[] nums) {
   /*
-  Solution with restrictions:
+  Solution:
   define a function next4 that returns the next index of a valid 4
   for each element in nums using index i
     if element is a 3 and the next element is not 4
