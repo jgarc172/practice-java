@@ -1,0 +1,97 @@
+public int[] fix45(int[] nums) {
+  /*
+  Solution:
+  define a function next5 that returns the next index of valid 5
+  for each element in nums using index i
+    if element is a 4 and next element is not a 5
+      find index of next 5
+      swap that value with the value at i+1
+  return nums
+  */
+  
+  int next5 = -1;
+  for (int i=0; i <= nums.length-1; i++){
+    if (nums[i] == 4 && nums[i+1] != 5){
+      next5 = next5(nums, next5+1);
+      nums[next5] = nums[i+1];
+      //nums[next5] = 55;
+      nums[i+1] = 5;
+    }
+  }
+  return nums;
+}
+
+public int next5(int[] nums, int start){
+  /*
+    return the index of the next 5
+      except when the 5 is after a 4
+  */
+  int next = -1;
+  for (int i=start; i <= nums.length-1; i++){
+    if (i == 0 && nums[i] == 5){
+      next = 0;
+      break;
+    }
+    if (i > 0 && nums[i] == 5 && nums[i-1] != 4){
+      next = i;
+      break;
+    }
+  }
+  return next;
+}
+
+/*
+Solution from function definition:
+  fix45 takes an int array and returns an int array
+  
+Given:
+  an int array nums
+  
+Solution from description without restrictions:
+  Return an array that contains exactly the same numbers as the given array
+  
+  
+Restrictions:
+  1. the elements in the returned array are rearranged so that every 4 is 
+    immediately followed by a 5
+  2. do not move the 4s
+  3. every other number may move
+  4. the array contains the same number of 4s and 5s
+  5. every 4 has a number after it that is not a 4
+  6. 5s may appear anywhere in the original array
+  7. dont move a 5 that is already after a 4
+  
+Intermediate translations:
+  1. if the element at position i is 4, then at position i+1 should be 5
+  2. the element 4 at position i stays the same 
+  4. all the 3s and 4s will be paired
+  5. the next element after a 4 may swap with the next available 5
+  6. 5s may appear before a 4
+  7. when searching for the next 5 skip the 5 after a 4
+
+  
+More translations:
+  - the elements in the array can be identified by index i
+  - the next position after 4 can be identified by i+1
+  - the next position of a valid 5 can be identified by a different index j
+  
+before
+nums    [4] [5] [4] [1] [5]
+      j  i
+before first swap:
+nums    [4] [5] [4] [1] [5] 
+                 i       j
+after swap:
+nums    [4] [5] [4] [5] [1] 
+                 i       j
+  
+Solution with restrictions:
+  define a function next5 that returns the next index of valid 5
+  for each element in nums using index i
+    if element is a 4 and next element is not a 5
+      find index of next 5
+      swap that value with the value at i+1
+  return nums
+      
+
+*/
