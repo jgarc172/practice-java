@@ -3,7 +3,7 @@ public int[] fix34(int[] nums) {
   Solution with restrictions:
   define a function nextIndexOf that returns the next index of a value
   for each element in nums using index i
-    if element is a 3 and next element is not a 4
+    if element is a 3
       find index of next 4
       swap that value with the value at i+1
   return nums
@@ -11,7 +11,7 @@ public int[] fix34(int[] nums) {
   
   int next4 = -1;
   for (int i=0; i <= nums.length-1; i++){
-    if (nums[i] == 3 && nums[i+1] != 4){
+    if (nums[i] == 3){
       next4 = nextIndexOf(nums, next4+1, 4);
       nums[next4] = nums[i+1];
       nums[i+1] = 4;
