@@ -1,0 +1,92 @@
+public int[] evenOdd(int[] nums) {
+  /*
+    Solution with new array:
+
+  int[] newArr = new int[nums.length];
+  int fromLast = nums.length - 1;
+  int from0 = 0;
+  
+  for (int element : nums){
+    if (element % 2 == 0){
+      newArr[from0] = element;
+      from0++;
+    } else {
+      newArr[fromLast] = element;
+      fromLast--;
+    }
+  }
+  return newArr;
+  
+  Solution with same array:
+  */
+  
+  for (int i=0; i <= nums.length-1; i++){
+    int element = nums[i];
+    if (element % 2 != 0){
+      int j = lastEven(nums, i+1);
+      if (j > 0){
+        int even = nums[j];
+        nums[j] = nums[i];
+        nums[i] = even;
+      }
+    }
+  }
+  
+  return nums;
+}
+
+public int lastEven(int[] nums, int to){
+  int last = -1;
+  int from = nums.length - 1;
+  for (int i=from; i >= to; i--){
+    if (nums[i] % 2 == 0)  {
+      last = i;
+      break;
+    }
+  }
+  return last;
+}
+
+/*
+Solution from function definition:
+  evenOdd takes an int array and returns an int array
+  
+Given:
+  an int array nums
+  
+Solution from definition without restrictions:
+  Return an array (nums or new array)
+  
+Restrictions:
+  1. the returned array contains the exact same numbers as the given array
+  2. elements are rearranged so that all the even numbers come before all the odd numbers
+  3. numbers can be in any order
+
+Intermeditate translations:
+  1. no elements are ignored
+  2. there are two slices: even and odd
+  3. since no order, odd numbers can start from last index in reverse
+  3. even slice starts at index 0
+  4. odd slice starts in reverse from last index
+  
+Solution with new array:
+  create newArr of the same type and length as nums
+  initialize indexes from0 and fromLast
+  for each element in nums
+    if element is even
+      copy the element to newArr at index from0
+      increment from0
+    else it is odd
+      copy element to newArr at index fromLast
+      increment fromLast
+  return newArr
+  
+Solution with same array:
+  for each element in nums
+    if element is odd
+      find the last even location to the right of this element
+        if found an even location
+          swap the values
+  return nums
+
+*/
