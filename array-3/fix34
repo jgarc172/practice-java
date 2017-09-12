@@ -1,9 +1,9 @@
 public int[] fix34(int[] nums) {
   /*
   Solution with restrictions:
-  define a function nextIndexOf that returns the next index of a value
+  define a function next4 that returns the next index of a valid 4
   for each element in nums using index i
-    if element is a 3
+    if element is a 3 and the next element is not 4
       find index of next 4
       swap that value with the value at i+1
   return nums
@@ -11,8 +11,8 @@ public int[] fix34(int[] nums) {
   
   int next4 = -1;
   for (int i=0; i <= nums.length-1; i++){
-    if (nums[i] == 3){
-      next4 = nextIndexOf(nums, next4+1, 4);
+    if (nums[i] == 3 && nums[i+1] != 4){
+      next4 = next4(nums, next4+1);
       nums[next4] = nums[i+1];
       nums[i+1] = 4;
     }
@@ -20,10 +20,10 @@ public int[] fix34(int[] nums) {
   return nums;
 }
 
-public int nextIndexOf(int[] nums, int start, int value){
+public int next4(int[] nums, int start){
   int next = -1;
   for (int i=start; i <= nums.length-1; i++){
-    if (nums[i] == value){
+    if (nums[i] == 4 && nums[i-1] != 3){
       next = i;
       break;
     }
@@ -60,12 +60,22 @@ Intermediate translations:
 More translations:
   - the elements in the array can be identified by index i
   - the next position after 3 can be identified by i+1
-  - the next position of a 4 can be identified by a different index
+  - the next position of a valid 4 can be identified by a different index j
   
+before
+nums    [3] [1] [1] [3] [4] [4]
+      j  i
+before first swap:
+nums    [3] [1] [1] [3] [4] [4] 
+         i                   j
+after swap:
+nums    [3] [4] [1] [3] [4] [1] 
+         i                   j
+                 
 Solution with restrictions:
-  define a function nextIndexOf that returns the next index of a value
+  define a function next4 that returns the next index of a valid 4
   for each element in nums using index i
-    if element is a 3
+    if element is a 3 and the next element is not 4
       find index of next 4
       swap that value with the value at i+1
   return nums
