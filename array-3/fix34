@@ -1,0 +1,74 @@
+public int[] fix34(int[] nums) {
+  /*
+  Solution with restrictions:
+  define a function nextIndexOf that returns the next index of a value
+  for each element in nums using index i
+    if element is a 3 and next element is not a 4
+      find index of next 4
+      swap that value with the value at i+1
+  return nums
+  */
+  
+  int next4 = -1;
+  for (int i=0; i <= nums.length-1; i++){
+    if (nums[i] == 3 && nums[i+1] != 4){
+      next4 = nextIndexOf(nums, next4+1, 4);
+      nums[next4] = nums[i+1];
+      nums[i+1] = 4;
+    }
+  }
+  return nums;
+}
+
+public int nextIndexOf(int[] nums, int start, int value){
+  int next = -1;
+  for (int i=start; i <= nums.length-1; i++){
+    if (nums[i] == value){
+      next = i;
+      break;
+    }
+  }
+  return next;
+}
+
+/*
+Solution from function definition:
+  fix34 takes an int array and returns an int array
+  
+Given:
+  an int array nums
+  
+Solution from description without restrictions:
+  return the same version of the given array
+  
+Restrictions:
+  1. the resulting array contains exactly the same numbers as the given array
+  2. every 3 is immediately followed by a 4
+  3. do not move the 3s. Other numbers may move
+  4. the number of 3s is the same as the number of 4s
+  5. 3s have a number that is not a 3
+  6. a 3 appears before any 4
+
+Intermediate translations:
+  1. if a new array, the new array's length is the same as nums' length
+  2. if the element at position i is 3, then at position i+1 is not a 3
+  3. other numbers move by swaping their positions
+  4. all the 3s and 4s will be paired
+  5. find the next position after 3, to swap with the next 4
+  6. after finding the first 3, find the next 4
+  
+More translations:
+  - the elements in the array can be identified by index i
+  - the next position after 3 can be identified by i+1
+  - the next position of a 4 can be identified by a different index
+  
+Solution with restrictions:
+  define a function nextIndexOf that returns the next index of a value
+  for each element in nums using index i
+    if element is a 3
+      find index of next 4
+      swap that value with the value at i+1
+  return nums
+      
+
+*/
