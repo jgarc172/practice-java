@@ -1,0 +1,81 @@
+public String[] fizzBuzz(int start, int end) {
+  /*
+  Solution:
+  create a new String array of length end - start
+  initialize counter to the value of start
+  for each empty element in the array
+    initialize an empty String str
+    if counter value divides 3
+      add "Fizz" to str
+    if counter value divides 5
+      add "Buzz" to str
+    if str is empty
+      convert the counter to a String and add it to str
+    assign string str to the elment
+    increment the counter by 1
+  return new array
+  
+  */
+  
+  int length = end - start;
+  String[] fizzBuzz = new String[length];
+  int count = start;
+  String str;
+  for (int i=0; i < length; i++){
+    str = "";
+    if (count % 3 == 0){
+      str += "Fizz";
+    } 
+    if (count % 5 == 0){
+      str += "Buzz";
+    } 
+    if (str == ""){
+      str = String.valueOf(count);
+    } 
+    fizzBuzz[i] = str; 
+    count++;
+  }
+  return fizzBuzz;
+}
+
+/*
+Solution from function definition:
+  fizzBuzz takes two integers and returns one array of strings
+  
+Given:
+  integers start and end
+  
+Solution from description without restrictions:
+  return a new String array of length end - start
+  
+Restrictions:
+  1. contains the String numbers beginning at start to but not including end
+  2. for multiples of 3 use "Fizz" instead of the number
+  3. for multiples of 5 use "Buzz"
+  4. for multiples of both 3 and 5 use "FizzBuzz"
+  
+Intermediate translations of restrictions:
+  -  integers start and end determine length of new array (end - start)
+  1. integer values starts at start value -> initialize a counter and increment
+     convert integer value to a String, except as follows
+  2. if value divides 3 use "Fizz"
+  3. if value divides 5 use "Buzz"
+  4. if value divides both use "FizzBuzz"
+  
+Solution with restrictions:
+  create a new String array of length end - start
+  initialize counter to the value of start
+  for each empty element in the array
+    initialize an empty String str
+    if counter value divides 3
+      add "Fizz" to str
+    if counter value divides 5
+      add "Buzz" to str
+    if str is empty
+      convert the counter to a String and add it to str
+    assign string str to the elment
+    increment the counter by 1
+  return new array
+  
+*/
+
