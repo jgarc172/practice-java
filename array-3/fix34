@@ -21,6 +21,10 @@ public int[] fix34(int[] nums) {
 }
 
 public int next4(int[] nums, int start){
+  /*
+    return the index of the next 4
+      except when the 4 is after a 3
+  */
   int next = -1;
   for (int i=start; i <= nums.length-1; i++){
     if (nums[i] == 4 && nums[i-1] != 3){
