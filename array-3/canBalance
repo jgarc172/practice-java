@@ -1,0 +1,69 @@
+public boolean canBalance(int[] nums) {
+  /*
+    return true if for any split of the array the sum on the left
+    is the same as the sum on the right
+  */
+ 
+ int sumL = 0;
+ int sumR = 0;
+ for (int i=0; i <= nums.length-1; i++){
+   sumL = sum(nums, 0, i);
+   sumR = sum(nums, i+1, nums.length-1);
+   if (sumL == sumR){
+     return true;
+   }
+ }
+ return false; 
+}
+
+public int sum(int[] nums, int start, int end){
+  int sum = 0;
+  for (int i=start; i <= end; i++){
+    sum += nums[i];
+  }
+  return sum;
+}
+/*
+Solution from function definition:
+  canBalance takes an int array and returns a boolean
+  
+Given:
+  an int array nums
+  
+Translation:
+  there is a property of nums that makes it true, otherwise it is false
+  
+Solution from description without restrictions:
+  return true or false
+  
+Restrictions:
+  1. array nums is non-empty
+  2. array nums can be split in two sides of numbers
+  3. the numbers in each side can be added together
+  4. return true if the sum on the left is the same as the sum on the right
+  
+Intermediate translations:
+  1. nums.length > 0
+  2. for each element in the array the element and those in the left are one side;
+     the elements to the right is the other side; so there will be a total of pairs
+     equal to the length of the array nums
+  3. elements are integers and can be added in a sum.  There will be two sums
+     one per each side
+  4. return true if there is a split with the two sums being the same
+  
+Enhanced translations:
+  2. left elements are from 0 to i; the right elements 
+     are from i+1 to nums.length-1
+     
+nums    [L] [L] [R] [R] [R]
+             i
+  4. return true if there is an i where the left sum is equal to the right sum
+  
+Solution with restrictions:
+  define a function that returns the sum of elements in an array from start to end
+  initialize sumL and sumR to 0 before each split of the array
+  for each element in the array
+    get the sum of the elements in the left and the sum in the right 
+    return true if the two sums are the same
+  return false
+*/
