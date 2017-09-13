@@ -1,10 +1,5 @@
 public int[] makeLast(int[] nums) {
-  /*
-  Solution:
-    Return a new array that is twice as long and 
-    contains the same last element as in nums
-  */
-  
+
   int[] newArr = new int[2*nums.length];
   newArr[newArr.length-1] = nums[nums.length-1];
   
@@ -12,28 +7,34 @@ public int[] makeLast(int[] nums) {
 }
 
   /*
-  Solution from description:
-    return a new array with double the length
-    
-  Given and constraints:
-    an int array nums with length 1 or more
-    its last element is the same as the original array
-    all the other elements are 0
+  Solution from function definition:
+    makeLast takes an int array and returns an int array
   
-  Identifiers:
-    nums is int[]
-    newArr is int[]
+  Given:
+    an int array nums
+  
+  Translations:
+    the same array nums is returned or a version of it is returned
+
+  Solution from description without restrictions:
+    return a new int array
     
+  Restrictions:
+    1. new array is double the length of nums, which is 1 or more
+    2. its last element is the same as the original array
+    3. all the other elements are 0
+  
   Intermediate translations:
     
-  a new array with double the length:
-    length of nums -> nums.length
-    length of new array -> 2*nums.length
-    new array newArr -> new int[2*nums.length]
-    all elements of new array are 0
-    last element of nums -> nums[nums.length-1]
-    last element of newArr -> newArr[newArr.length-1]
-    
-  its last element is the same as the original array:
-    copy the last element from nums into the last element of newArr
-  */
+    1. a new array with double the length:
+      length of nums -> nums.length
+      length of new array -> 2*nums.length
+    2. last element of nums -> nums[nums.length-1]
+       last element of newArr -> newArr[newArr.length-1]
+    3. all elements of new array are 0.  In Java the default value is 0
+
+Soluton with restrictions:
+  create a new array of twice the length of nums
+  copy the last element from nums into the last element of newArr
+
+*/
