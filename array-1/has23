@@ -13,23 +13,34 @@ public boolean has23(int[] nums) {
 }
 
 /*
-Solution from function name:
-  has23 is boolean
-  
-Solution from description:
-  return true if it contains a 2 or a 3
-  
+Solution from function definition:
+  has23 takes an int array and returns a boolean
+
 Given:
   an int array nums
   
+Translation:
+  there is a property of the array that is true
+    otherwise it is false
+  
+Solution from description without restrictions:
+  return true or false
+  
+Restrictions:
+  1. array has length 2
+  3. return true if it contains a 2 or a 3
+  
 Intermediate translations:
-  return true if nums contains a 2 or a 3
-  contains a 2 -> an element in nums is a 2
-  contains a 3 -> an element in nums is a 3
-  an element in nums -> nums[i] where i is between 0 and length of nums - 1
-  element is 2 -> nums[i] == 2
-  element is 3 -> nums[i] == 3
-  or -> ||
+  1. nums.length is 2, also, for short length, can list the elements:
+    nums[0] and nums[1].  For longer lengths, the index i can be used
+    as in nums[i] and the index starts at 0 and ends at index nums.length-1
+  2. return true if nums contains a 2 or a 3
+    contains a 2 -> an element in nums is a 2
+    contains a 3 -> an element in nums is a 3
+    an element in nums -> nums[i] where i is between 0 and length of nums - 1
+    element is 2 -> nums[i] == 2
+    element is 3 -> nums[i] == 3
+    or -> ||
   
 Solution:
   true:
