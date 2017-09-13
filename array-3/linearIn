@@ -1,0 +1,94 @@
+public boolean linearIn(int[] outer, int[] inner) {
+  /*
+    return true if all of the numbers in inner appear in outer.
+    an element is found if an index is found in the outer array
+  */
+  int from = 0;
+  for (int i=0; i <= inner.length-1; i++){
+    from = indexOf(outer, from, inner[i]);
+    if (from < 0){
+      return false;
+    }
+    from++;
+  }  
+  
+  return true;
+}
+
+public int indexOf(int[] nums, int from, int value){
+  /*
+    return the index if the value is found in the nums array
+    starting from index from
+  */
+  int index = -1;
+  for (int i=from; i <= nums.length-1; i++){
+    if (nums[i] == value){
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+/*
+Solution from function definition:
+  linearIn takes two int arrays and returns a boolean value
+  
+Given:
+  two int arrays: outer and inner
+  
+Translation:
+  there is a combined property of outer and inner that is true or false
+  
+Solution from description without restrictions:
+  return true or false
+  
+Restrictions:
+  1. given arrays are sorted in increasing order
+  2. assume outer length is greater or equal to inner
+  3. return true if all of the numbers in inner appear in outer
+  
+Intermediate translations:
+  1. for a given inner array index i, nums[i-1] <= nums[i] <= nums[i+1];
+     the same for outer array index j, nums[j-1] <= nums[j] <= nums[j+1]
+  2. when looping, the outer loop is done on the inner array
+  3. for each element in inner array, the element is found in the outer array
+  
+Combined translations:
+  1 and 3. 
+    keep track of where an inner element is found in the outer array
+      this index can be used as the starting index for the search of 
+      the next element
+  summary: the searchable slice in the other array becomes smaller as elements
+           are found
+
+      start:
+inner    [5] [8]
+          i
+outer    [1] [4] [5] [7] [8] [9]
+          j
+          
+      found it at j:
+inner    [5] [8]
+          i
+outer    [1] [4] [5] [7] [8] [9]
+                  j
+      increment j and search the next element starting at j:
+inner    [5] [8]
+              i
+outer                [7] [8] [9]
+                      j
+
+Solution with restrictions:
+  define a function indexOf that returns 
+    the index of an array where a value is found, starting at an index
+  initialize j to 0, used to track the outer elements position
+  for each element in inner array, using index i
+    - determine the index from the outer array of the element, using the current
+      value of j as the starting index
+    if the index is < 0, the element was not found
+      return false
+    else the element was found and the index can be used to updated j
+  return true, as all the elements were found
+  
+  
+*/
