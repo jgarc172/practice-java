@@ -1,24 +1,7 @@
 public int centeredAverage(int[] nums) {
   /*
-  Solution from description:
-    return the "centered" average of an array of ints nums
-  
-  Intermediate translations:
-    average of an array of ints -> sum of array values / length of array
-    except: ignoring largest and smallest values
-    
-    sum -> num[0] + . . . nums[nums.length-1]
-    max is largest in the array
-    min is smallest in the array
-    total sum is sum - max - min
-    count is nums.length - 2
-    
-  Solution:
-    sum is the sum of values in the array
-    max is the largest value in the array
-    min is the minimum value in the array
-    
-    return (sum - max - min)/ (length of array - 2)
+    return the "centered" average of an array of ints nums without
+      the largest and smallest values
   */
   
   int sum = 0;
@@ -32,3 +15,44 @@ public int centeredAverage(int[] nums) {
   
   return (sum - max - min) / (nums.length - 2);
 }
+
+/*
+  Solution from function definition:
+    centeredAverage takes an int array and returns an int
+    
+  Given:
+    an int array nums
+    
+  Translation:
+    given an int array return one of those values or an int
+      property of that array
+    
+  Solution from description without restrictions:
+    return an int value
+    
+  Restrictions:
+    1. Return the "centered" average of an array of ints
+    2. centered average is the mean average of the values in the array
+    3. ignore the largest and smallest values 
+  
+  Intermediate translations:
+    average of an array of ints -> sum of array values / length of array
+    except: ignoring largest and smallest values
+    
+    sum -> num[0] + . . . nums[nums.length-1]
+    max is largest in the array
+    min is smallest in the array
+    total sum is sum - max - min
+    count is nums.length - 2
+  
+  Solution from description with restrictions:
+    return the "centered" average of an array of ints nums without
+      the largest and smallest values
+
+  Solution:
+    sum is the sum of values in the array
+    max is the largest value in the array
+    min is the minimum value in the array
+    
+    return (sum - max - min)/ (length of array - 2)
+  */
