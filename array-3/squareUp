@@ -1,0 +1,118 @@
+public int[] squareUp(int n) {
+  /*
+  Solution:
+      return a new array with a pattern of n groups j=1 to n
+    each group is of size n and the values
+    in each group is in descending order starting from k=n to 1
+    shifted to the right
+*/
+  
+  int[] nums = new int[n*n];
+  int i=0;
+  for (int j=1; j <= n; j++){
+    for (int k=n; k >= 1; k--){
+      if (k <= j){
+        nums[i] = k;
+      }
+      i++;
+    }
+  }
+  return nums;
+}
+
+
+/*
+note: this problem doesn't provide the solution neither from the description
+      nor from the function definition; so we have to find the solution
+      from the patterns given
+      
+Solution from function definition:
+  squareUp takes an int and returns an int array
+  
+Given:
+  an int n
+  
+Translation:
+  from an int n, create an int array
+  
+Solution from description without restrictions:
+  return an int array
+  
+Restrictions:
+  1. n is equal or grater than 0
+  2. length of new array in n*n -> part of the name of the function
+  3. the new array has a pattern that is not obvious, except for the length and
+     for n=3, there are three separate groups
+  4. no "solution" to the pattern.  We then need to find the solution to the pattern
+  
+Intermediate translations:
+  1. n >= 0
+  2. new array as new int[n*n]
+  3. here are some of the patterns given:
+  
+0    empty array
+1    [1]
+2    [0] [1]  [2] [1] 
+3    [0] [0] [1]   [0] [2] [1]  [3] [2] [1]
+4    [0] [0] [0] [1]  [0] [0] [2] [1]  [0] [3] [2] [1]  [4] [3] [2] [1]
+
+Enhanced translations, and translations from patterns:
+  2. array has n*n elements
+  3a. array has n groups of elements, each of n elements
+  3b. groups are associated starting with 1. for n=4: 1, 2, 3, 4
+  3c. for each group, elements are arranged in descending order 
+      of their value down to 1
+n=4  
+g1  1
+g2  2 1
+g3  3 2 1
+g4  4 3 2 1
+
+  3d. to fill the elements in a group, 0s are added to the left
+g1  0 0 0 1
+g2  0 0 2 1
+g3  0 3 2 1
+g4  4 3 2 1
+
+  3d. Or since the default value for an array of int is 0, the elements to the
+      left are ignored and only those at the right are replaced with the pattern
+
+Some Translations to code
+  1. n is give
+  2. total of n*n elements, from index i = 0 to n*n - 1
+  3ab. n groups, from index j = 1 to n
+  3c.  n elements, from descending index k = n to 1
+  3c.  element values are dependent on j and k
+  3c.  when k <= j, generate values in descending order
+       from k, k-1, etc.  This shifts to the right
+  3d. all elements will default to zero when array is created
+
+for g2, j is 2 
+k       4 3 2 1
+before:
+value   0 0 0 0
+after:
+value   0 0 2 1
+
+Combined translations:
+  - two loops that iterate over j then over k
+    i can be computed from j and k or can be incremented for each value
+    
+Solution with restrictions:
+    return a new array with a pattern of n groups j=1 to n
+    each group is of size n and the values
+    in each group is in descending order starting from k=n to 1
+    shifted to the right
+
+Translated solution:
+  create new array nums, length n*n
+  initialize i to 0
+  for each j=1 to n
+    for each k=n to 1
+      if k <= j
+        nums[i] = k
+      increment i
+  return nums
+
+
+*/
