@@ -1,11 +1,33 @@
 public int bigDiff(int[] nums) {
   /*
-  Solution from description:
     return the difference between the largest and smallest values in the array
+  */
+
+  int max = nums[0];
+  int min = nums[0];
+  for (int i=1; i <= nums.length-1; i++){
+    max = Math.max(max, nums[i]);
+    min = Math.min(min, nums[i]);
+  }
+  return max - min;
+}
+
+  /*
+  Solution from function definition:
+    bigDiff takes an int array and returns an int
+
+  Given:
+    an int array nums
+    
+  Solution from description without restrictions:
+    return an int value
     
   Intermediate translations:
     largest of two values -> Math.max(a, b)
     smallest of two values -> Math.min(a, b)
+
+  Solution with restrictions:
+    return the difference between the largest and smallest values in the array
     
   Solution:
     max is first element
@@ -15,11 +37,3 @@ public int bigDiff(int[] nums) {
     return the difference between max and min
     
   */
-  int max = nums[0];
-  int min = nums[0];
-  for (int i=1; i <= nums.length-1; i++){
-    max = Math.max(max, nums[i]);
-    min = Math.min(min, nums[i]);
-  }
-  return max - min;
-}
