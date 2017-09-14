@@ -1,0 +1,100 @@
+public int[] seriesUp(int n) {
+  /*
+  Solution:
+    return a new array with a pattern of n groups j=1 to n
+    each group is of size j and the values
+    in each group is in increasing order starting from k=1 to j
+  */
+  
+  int[] nums = new int[n*(n+1)/2];
+  int i = 0;
+  for (int j=1; j <= n; j++){
+    for (int k=1; k <= j; k++){
+      nums[i] = k;
+      i++;
+    }
+  }
+  return nums;
+}
+
+/*
+note: this problem doesn't provide the solution neither from the description
+      nor from the function definition; so we have to find the solution
+      from the patterns given
+      
+Solution from function definition:
+  seriesUp takes an int and returns an int array
+  
+Given:
+  an int n
+  
+Translation:
+  from an int n, create an int array
+  
+Solution from description without restrictions:
+  return an int array
+  
+Restrictions:
+  1. n is equal or grater than 0
+  2. length of new array is n*(n+1)/2)
+  3. the new array has a pattern that is not obvious, except for the length and
+     for n=3, there are three separate groups
+  4. no "solution" to the pattern.  We then need to find the solution to 
+     the pattern before it can be translated to code.
+  
+Intermediate translations:
+  1. n >= 0
+  2. create new array as new int[n*(n+1)/2)]
+  3. here are some of the patterns given:
+  
+0    empty array
+1    [1]
+2    [1]  [1][2]
+3    [1]  [1][2]  [1][2][3] 
+4    [1]  [1][2]  [1][2][3] [1][2][3][4]
+
+Enhanced translations, and translations from patterns:
+  2. array has n*(n+1)/2 elements
+  3a. array has n groups of elements
+  3b. size of groups is of increasing size: 1,2,...,n
+  3c. for each group, elements are arranged in increasing order 
+      starting fom 1 to the size of the group
+n=4  
+g1  1
+g2  1 2
+g3  1 2 3
+g4  1 2 3 4
+
+
+Some Translations to code
+  1. n is given
+  2. total of n*(n+1)/2 elements, from index i = 0 to n*(n+1)/2 - 1
+  3ab. n groups, from index j = 1 to n
+  3c.  in each group, j elements, from k = 1 to j
+  3c.  element values are dependent on k
+
+for g2, j is 2 
+k       1 2
+value   1 2
+
+Combined translations:
+  - two loops that iterate over j then over k
+    i can be computed from j and k or can be incremented for each value
+    
+Solution with restrictions:
+    return a new array with a pattern of n groups j=1 to n
+    each group is of size j and the values
+    in each group is in increasing order starting from k=1 to j
+
+
+Translated solution:
+  create new array nums, length n*(n+1)/2
+  initialize i to 0
+  for each j=1 to n
+    for each k=1 to j
+      nums[i] = k
+      increment i
+  return nums
+
+
+*/
