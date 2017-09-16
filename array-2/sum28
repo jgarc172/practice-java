@@ -1,18 +1,6 @@
 public boolean sum28(int[] nums) {
   /*
-  Solution from description:
-    return true if the sum of all the 2's in the array is exactly 8
-  
-  Itermediate translations:
-  
-  sum of all 2's in array nums:
-    sum is 0
-    for each element in nums
-      if element is 2
-        sum += element
-    
-  Solution:
-    return true if sum == 8
+    return true if the sum of all the 2's in the array is exactly 8.
   */
   
   int sum = 0;
@@ -24,3 +12,38 @@ public boolean sum28(int[] nums) {
   
   return sum == 8;
 }
+
+/*
+Solution from function definition:
+  sum28 takes an int array and returns true or false
+  
+Given:
+  an int array nums
+
+Solution from description without restrictions:
+  return true or false
+
+Restrictions:
+  1. access all the values in the array.  Element positions are not needed
+  2. sum of all the 2s
+  3. sum is 8
+  
+Intermediate translations:
+  1. loop to access all elements: for (int value : nums)
+  2a. value is 2 -> value == 2
+  2b. use an int sum variable to accumulate all the 2s found
+  3.  int sum is 0 before the loop, is 8 after the loop
+
+Solution from description with restrictions:
+  - accumulate the sum of all the values that are 2
+  - return true if the sum of all the 2's in the array is exactly 8
+  
+sum of all 2's in array nums:
+  sum is 0
+  for each element in nums
+    if element is 2
+      sum += element
+  return sum
+    
+ 
+  */
