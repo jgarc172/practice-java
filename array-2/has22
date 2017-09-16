@@ -1,18 +1,7 @@
 public boolean has22(int[] nums) {
   /*
-  Solution from description:
-    return true if the array contains a 2 next to a 2 somewhere.
-    
-  Intermediate translations:
-    contains a 2 -> nums[i] == 2
-    two adjacent 2 elements -> nums[i] == 2 && nums[i+1] == 2
-    
-  Solution:
-    for each element from index 0 to last index - 1
-      return true if two adjacent 2 elements
-      
+    return true if two adjacent elements have a value of 2
   */
-  
   for (int i=0; i <= nums.length-2; i++){
     if (nums[i] == 2 && nums[i+1] == 2){
       return true;
@@ -21,3 +10,35 @@ public boolean has22(int[] nums) {
   
   return false;
 }
+
+/*
+Solution from function definition:
+  has22 takes an int array and returns true if it "has" a "22"
+  
+Given:
+  an int array nums
+  
+Solution from description without restrictions:
+  return true or false
+  
+Restriction:
+  1. true if the array contains a 2 next to a 2 somewhere
+    
+Intermediate translations:
+  1a. contains a 2 -> nums[i] == 2
+  1b. a 2 next to a 2 -> nums[i] == 2 && nums[i+1] == 2
+  2.  when accessing two elements at a time, and the index starts at 0,
+      the loop ends at 1 element before the last index
+      -> i=0 to i <= last index - 1
+ i    0                V
+nums [ ][ ][ ][ ][][ ][ ][ ]
+     [ ][ ]           [ ][ ]
+
+Solution from description without restrictions:
+  return true if two adjacent elements have a value of 2
+
+Solution:
+  for each element from index 0 to last index - 1
+    return true if two adjacent 2 elements
+      
+*/
