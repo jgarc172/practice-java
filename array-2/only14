@@ -1,29 +1,47 @@
 public boolean only14(int[] nums) {
   /*
-  Solution from description:
-    return true if every element is a 1 or a 4
-    
-  Intermediate translations:
-    element is 1 -> element == 1
-    element is 4 -> element == 4
-    or -> ||
-    true if element is 1 or element is 4
-    false if not (element is 1 or element is 4)
-
-  Solution:
-    only14 is true;
-    for each element in array
-      if not (element is 1 or element is 4), only14 is false, break
-    return only14
+    return false if any element is not (a 1 or a 4)
+    else return true
   */
   
-  boolean only14 = true;
   for (int element : nums){
     if (!(element == 1 || element == 4)){
-      only14 = false;
-      break;
+      return false;
     }
   }
   
-  return only14;
+  return true;
 }
+
+/*
+Solution from function definition:
+  only14 takes an int array and returns true or false
+  
+Given:
+  an int array nums
+  
+Solution from description with restrictions:
+  return true or false
+  
+Restrictions:
+  1. access all element values to test if value is 1 or 4. no need for index
+  2. an element is a 1 or a 4
+  3. every element passes  test 2 above
+  
+Intermeditate translations:
+  1. for(int value : nums)
+  2a. true when (value == 1 || value == 4)
+  2b. the converse: false when !(value == 1 || value == 4)
+  3.  use the converse to immediately fail the test and return false
+  
+Solution from description with restrictions and converse:
+    return false if any element is not a 1 or a 4
+    else return true
+
+Translated solution:
+    for each element in array
+      if not (element is 1 or element is 4)
+        return false
+    return true
+    
+  */
