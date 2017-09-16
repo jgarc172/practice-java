@@ -1,21 +1,8 @@
 public boolean lucky13(int[] nums) {
   /*
-  Solution from description:
-    return true if the array contains no 1's and no 3's
-    
-  Intermediate translations:
-    contains a 1 -> nums[i] == 1
-    contains a 3 -> nums[i] == 3
-    
-  Solution:
-    has1 is false
-    has3 is false
-    for each element in array
-      if element contains a 1, has1 is true
-      if element contains a 3, has3 is true
-    return !has1 && !has3
+  return true if the array contains no 1's and no 3's.
   */
-  
+ 
   boolean has1 = false;
   boolean has3 = false;
   for (int element: nums){
@@ -28,3 +15,41 @@ public boolean lucky13(int[] nums) {
   }
   return !has1 && !has3;
 }
+
+/*
+Solution from function definition:
+  lucky13 takes an int array and returns a boolean
+  
+Given:
+  an int array nums
+  
+Solution from description without constraints:
+  return true or false
+    
+Intermediate translations:
+  1. access the array one element at a time
+  2. test if contains no 1s
+  3. test if contains no 3s
+  4. and
+
+Translations to code:
+  1. loop from first element to last
+  1a. for (int element : nums)
+  1b. for (int i; i <= nums.length-1; i++)
+  2 and 3.  contains a val -> nums[i] == val is true
+            contain no val -> nums[i] != val is true
+  4. and -> &&
+  
+Solution from description with constraints:
+  return true if the array contains no 1's and no 3's
+
+Solution:
+  has1 is false
+  has3 is false
+  for each element in array
+    if element contains a 1, has1 is true
+    if element contains a 3, has3 is true
+  return !has1 && !has3
+
+*/
+ 
