@@ -1,20 +1,7 @@
 public int[] fizzArray(int n) {
   /*
-  Solution from description:
-    create and return a new int array of length n, 
-    containing the numbers 0, 1, 2, ... n-1
-    
-  Intermediate translations:
-  
-  fizz array:
-    fizz is new int array of size n
-    for i: 0 to n
-      assign i to fizz[i]
-      
-  Solution:
-    return fizz;
+   return a new int array of length n, containing the numbers 0, 1, 2, ... n-1
   */
-  
   int[] fizz = new int[n];
   for (int i=0; i <= fizz.length-1; i++){
     fizz[i] = i;
@@ -22,3 +9,36 @@ public int[] fizzArray(int n) {
   
   return fizz;
 }
+
+/*
+Solution from function definition:
+  fizzArray takes an int and returns an int array
+
+Given:
+  an int n
+  
+Solution from description without restrictions:
+  return an int array of length n
+  
+Restrictions:
+  1. create a new int array of length n. Array will contain 0 as the default value
+  2. all elements in the array will need to be accessed to replace the 0 with
+     the correct value
+  3. array contains the numbers 0, 1, 2, ... n-1 as the values
+  
+Intermediate translation:
+  1. create new array fizz which will contains 0s
+     -> int[] fizz = new int[n]
+  2. use this for loop: for (int i=0; i <=n-1; i++)
+     change element's value -> fizz[i] = new value
+  3. since the index i has the same pattern, 0, 1, 2, ... n-1
+     use i as the new value for the ith element
+  
+  
+Solution from description with restrictions:
+  create a new int array fizz of length n, 
+  for each element in fizz with index i from 0 to n-1
+    repleace the element's value with the i value
+  return the new array
+  
+  */
