@@ -1,0 +1,41 @@
+few times each year, Rally Health holds HealthFests in major cities 
+across the United States. During a HealthFest, Rally shows the community 
+how to take charge of their health and see how simple changes to their l
+ifestyles can be fun and result in significant benefits.
+
+As part of a HealthFest, we often have participants run or walk a 5k. 
+While seasoned and enthusiastic runners take off from the get go, others 
+only participate by watching people around them run.  There are people who 
+will always run no matter what, and always walk no matter what, but a lot 
+of the participants who aren’t certain how they’re going to participate 
+will only run if they see a certain other number of people running first.
+
+Since you want to get as many people to run as possible, how many Rally 
+employees (who are all runners, of course) do you need to add to the race 
+in order to make sure that everyone who will consider running does so? 
+(You can assume you have as many Rallyers as you need.)
+
+Your program’s input will be pairs of positive integers, the first of 
+which is the number of other runners that group will need to see running 
+in order to run themselves, and the second of which is the number of 
+runners who share that “run number.”  Read pairs, one per line, until 
+end of file is found, which signals the end of your input.
+
+Example:
+
+In:
+2 1 (“one person will need to see two runners before running”)
+3 1 (“one person will need to see three runners before running”)
+6 3 (“three people will need to see six runners before running”)
+7 6 (“six people will need to see seven runners before running”)
+
+Out: 4
+
+In:
+0 1 (“one person will run no matter what”)
+1 1 (“one person will need to see one runner before running”)
+2 1 (“one person will need to see two runners before running”)
+3 1 (“one person will need to see three runners before running”)
+4 1 (“one person will need to see four runners before running”)
+
+Out: 0

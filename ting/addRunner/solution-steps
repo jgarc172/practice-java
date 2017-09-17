@@ -1,0 +1,114 @@
+* Revised Problem Description *
+
+	Given a list of pairs, (total-runners-needed, potential-runners),
+	and the initial total-runners as 0 and initial employee-runners as 0, 
+	calculate both the number of employee-runners needed for the 
+	potential-runners to join the race for each pair, and the new number 
+	of total-runners.   Finally, return	or print the final 
+	employee-runners that joined in the race.
+
+	Also given:
+		- some potential-runners will join regardless; that is,
+			their total-runners-needed is 0 or no employee-runners are added
+
+Intermediate translations:
+	- employee-runners have to be added when the current total-runners is
+		less than the total-runners-needed
+	- the number of total-runners is updated when both the employee-runners 
+		and the potential-runners join
+	- when the total-runners is equal or greater than the 
+		total-runnders-needed, no employee-runners are added--only the 
+		potential-runners are added to the total-runners
+
+
+
+* SOLUTION *
+
+  initialize employee-runners to 0
+  total-runners to 0
+  for each pair (total-runners-needed, potential-runners)
+	 if (total-runners < total-runners-needed)
+       employee-runners += total-runners-needed - total-runners
+       total-runners = employee-runners + potential-runners
+     else (no employee-runners are needed)
+       total-runners += potential-runners
+
+  return or print employee-runners
+
+
+STEPS TAKEN TO ARRIVE TO SOLUTION:
+
+Key information from description.  From here the solution is identified
+	without restrictions, and a list of restrictions will be identified. 
+	Then the solution is rephrased with the restrictions.
+
+1. how many Rally employees (who are all runners) do you need to add to 
+	 the race in order to make sure that everyone who will consider 
+	 running does so?
+
+2. There are people who will always run no matter what, and always 
+	 walk no matter what, but a lot of the participants who aren’t certain 
+	 how they’re going to participate will only run if they see a certain 
+	 other number of people running first.
+
+3. pairs of positive integers, the first of which is the number of other 
+	 runners that group will need to see running in order to run 
+	 themselves, and the second of which is the number of runners who 
+	 share that “run number.”
+
+4. In pairs
+	2 1
+	3 1
+	6 3
+	7 6
+	 Out: 4
+
+Intermediate translations:
+
+1. number of employee-runners (int) are added to the number of 
+	 total-runners (int) in the race; such that potential-runners will run.
+
+2a. some potential-runners will run/walk regardless of total-runners
+	translated:
+	  add the potential-runners to total-runners, regardless
+
+2b. other potential-runners need to see some total-runners
+	translated:
+	  if total-runners < total-runners-needed
+		determine employee-runners needed
+		  employee-runners == total-runners-needed - total-runners 
+        add both employee-runners and potential-runners to total-runners
+          
+3. pair: 
+	first is the number of total-runners-needed
+	second is the number of potential-runners
+
+4. In pairs
+	2 total-runners-needed for 1 potential-runner
+	3 total-runners-needed for 1 potential-runner
+	6 total-runners-needed for 3 potential-runners
+	7 total-runners-needed for 6 potential-runners
+	number of employee-runners: 4
+
+
+Solution without restrictions: 
+  the number of employee-runners (int)
+
+Restrictions:
+1. number of employee-runners (int) are added to the number of 
+   total-runners (int) in the race
+
+2a. add the potential-runners to total-runners, regardless
+2b. employee-runners = total-runners-needed - total-runners
+
+Solution with restrictions:
+  initialize employee-runners to 0
+  total-runners to 0
+  for each pair (total-runners-needed, potential-runners)
+	 if (total-runners < total-runners-needed)
+       employee-runners += total-runners-needed - total-runners
+       total-runners = employee-runners + potential-runners
+     else
+       total-runners += potential-runners
+   
+   return or print employee-runners

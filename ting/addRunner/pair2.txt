@@ -1,0 +1,5 @@
+2 1 (“one person will need to see two runners before running”)
+3 1 (“one person will need to see three runners before running”)
+6 3 (“three people will need to see six runners before running”)
+7 6 (“six people will need to see seven runners before running”)
+

@@ -1,0 +1,36 @@
+* Revised Problem Description *
+
+	Given a list of pairs, (total-runners-needed, potential-runners),
+	and the initial total-runners as 0 and initial employee-runners as 0, 
+	calculate both the number of employee-runners needed for the 
+	potential-runners to join the race for each pair, and the new number 
+	of total-runners.   Finally, return	or print the final 
+	employee-runners that joined in the race.
+
+	Also given:
+		- some potential-runners will join regardless; that is,
+			their total-runners-needed is 0 or no employee-runners are added
+
+Intermediate translations:
+	- employee-runners have to be added when the current total-runners is
+		less than the total-runners-needed
+	- the number of total-runners is updated when both the employee-runners 
+		and the potential-runners join
+	- when the total-runners is equal or greater than the 
+		total-runnders-needed, no employee-runners are added--only the 
+		potential-runners are added to the total-runners
+
+
+
+* SOLUTION *
+
+  initialize employee-runners to 0
+  total-runners to 0
+  for each pair (total-runners-needed, potential-runners)
+	 if (total-runners < total-runners-needed)
+       employee-runners += total-runners-needed - total-runners
+       total-runners = employee-runners + potential-runners
+     else (no employee-runners are needed)
+       total-runners += potential-runners
+
+  return or print employee-runners
