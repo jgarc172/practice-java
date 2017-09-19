@@ -1,3 +1,6 @@
+description:
+We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array, at least one of the pair is that value. Return true if the given value is everywhere in the array.
+
 public boolean isEverywhere(int[] nums, int val) {
   /*
     Return true if the given value is in every pair in the array
@@ -13,23 +16,17 @@ public boolean isEverywhere(int[] nums, int val) {
 }
 
 /*
-From function definition and descritpion:
-  given an int array nums and an int val, return true or false
-  
-Restrictions for
-True:
-  val is everywhere in every pair of values in nums
-False:
-  at least one pair in nums doesn't include val
+Improved description:
+  given an int array nums and an int val, return true if the given value 
+  is in every pair in the array
   
 Intermediate translations:
-  every pair -> for all pairs of elements in nums
-  at least one pair -> for one of the pairs of elements
-  a pair -> nums[i] and nums[i+1]
-  first pair -> nums[0] and nums[1]
-  last pair -> nums[nums.length-2] and nums[nums.length-1]
+  - every pair -> must test all the pairs for condition to be true
+    can test for false and stop when the first pair fails
+  - test fails when val is not in any of the pair elements
+  - when testing pairs of elements, the for loop must stop at nums.length - 2
 
-Solution with restrictions:
+Solution:
   return true if every pair of values in nums has an element with value val
   or return false if one pair doesn't contain val in its elements
   
