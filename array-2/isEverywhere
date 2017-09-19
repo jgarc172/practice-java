@@ -21,6 +21,7 @@ Improved description:
   is in every pair in the array
   
 Intermediate translations:
+  - a pair -> nums[i] and nums[i+1]
   - every pair -> must test all the pairs for condition to be true
     can test for false and stop when the first pair fails
   - test fails when val is not in any of the pair elements
