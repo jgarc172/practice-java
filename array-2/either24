@@ -19,25 +19,28 @@ public boolean either24(int[] nums) {
 }
 
 /*
-Solution from function name:
-  either24 is boolean
-  
-Solution from description:
-  return true if the array contains a 2 next to a 2 or a 4 next to a 4
-    but not both
-  
-Given:
-  array of ints nums
-  
-Constraints:
-  interpret the array as a pair of elements to test for the pairs 2,2 and 4,4
-  index starts at 0 but ends at 1 less than last element
-  
+Improved description:
+  Given an int array nums, return 
+  - true if in all pairs of nums there is at least  one pair of 2s or 
+    there is at least one pair of 4s.
+  - false if no pairs of 2s in nums or no pairs of 4 in nums or both pairs are 
+    in nums
+
 Intermediate translations:
-  pair of elements -> nums[i] nums[i+1]
-  contains a 2 next to a 2 -> nums[i] == 2 and nums[i+1] == 2
+  - to test each pair in nums, the index i in nums starts at 0 and ends at
+    nums.length-2
+  - a pair of elements -> nums[i] and nums[i+1]
+  - test when both elements are 2
+  - test when both elements are 4
+  - the first pair that meets the test passes
   
-Solutions:
-  keep track of booleans has22 and has44 when searching pairs of elements
-  assume false and change to true if a  pair matches
+Solution:
+  assume has22 is false and has44 is false
+  for each pair in nums from index i=0 to nums.length-2
+    if both pair elements are 2
+      has22 is true
+    if both pair elements are 4
+      has44 is true
+  return true if (has22 or has44) and not (has22 and has44)
+
 */
