@@ -31,12 +31,13 @@ Translated description:
 
 Intermediate translations:
   - three adjacent numbers -> numbers in positions i, i+1, i+2
-  - increasing numbers -> nums[i+1] == nums[i] + 1 && nums[i+2] == nums[i+1] + 1
+  - increasing numbers -> each next number is 1 more than the previous number
+    nums[i+1] == nums[i] + 1 && nums[i+2] == nums[i+1] + 1
   - access all three adjacent elements using an index form 0 to nums.length-3
   
 Solution:
   for each triple elements in nums from index 0 to nums.length-3
-    if the three adjacent elements are increasing
+    if each next element is 1 more than the previous element
       return true
   otherwise return false
 
