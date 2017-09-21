@@ -7,6 +7,7 @@ shiftLeft([1]) → [1]
 public int[] shiftLeft(int[] nums) {
   /*
     return a modified nums array with the numbers shifted to the left
+       the left of the first element is the last element
   */
 
   if (nums.length < 2){
