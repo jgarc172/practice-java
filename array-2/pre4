@@ -43,7 +43,13 @@ Translated description:
     newArr[i] = nums[i]
 
 Intermediate translations:
-  1. Identify the index location of the first 4 in nums
+  1. Identify the index location of the first 4 in nums.  This splits nums
+     array into two subarrays (slices): from index 0 to index before 4;
+     and from index at 4 to the last index of nums
+     
+nums    [ ][ ][ ][4][ ][ ][4 ][ ][ ][ ][ ]
+slices  [  pre  ][       post           ]
+
      define a function indexAt that returns the index of the first 4
   2. the index of the first 4 is used to determine the length of the new array
       length = indexAt(nums, 4)
