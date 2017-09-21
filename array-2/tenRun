@@ -1,3 +1,9 @@
+For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
+
+tenRun([2, 10, 3, 4, 20, 5]) → [2, 10, 10, 10, 20, 20]
+tenRun([10, 1, 20, 2]) → [10, 10, 20, 20]
+tenRun([10, 1, 9, 20]) → [10, 10, 10, 20]
+
 public int[] tenRun(int[] nums) {
   /*
     return a modified nums that replaces values to the last multiple of 10 found
@@ -18,45 +24,41 @@ public int[] tenRun(int[] nums) {
 }
 
 /*
-Solution from function definition:
-  tenRun is an array of integers
+Translated descripton:
+  tenRun takes an int array and modifies its element values in the following way:
   
-Solution from description:
-  return nums with changed values
-  
-Given:
-  an int array nums
-  
-Restrictions:
-  - For each multiple of 10 in the given array, change all the values 
-    following it to be that multiple of 10, until encountering another 
-    multiple of 10
+  1. if the value is a multiple of 10, the value is not changed but the value
+     will be used to replace the value of elements after it
+  2. if the element follows a multiple of ten that value is replaced with that 
+     of the multiple value
+  3. otherwise, ignore the element as it is not a multiple and it is located
+     before the first multiple of ten is found
+
+Intermediate translation:
+  - the array is partitioned in several sub-arrays or slices delimited by
+    the location of the different multiples of 10.  One way to distinguis these
+    slices is to identifying them as "follows" a multiple or "not follows"
     
-Solution without restrictions:
-  return the nums array unchanged as follows:
+nums [ ][ ][30][ ][ ][ ][10 ][ ][ ][ ][ ]
+    !follow    follow           follow
   
-Intermediate translation of restrictions:
-  1. a value is a multiple of ten -> 10 divides the value
-  2. all the values following it until another multiple -> a sub-array (slice) of nums
-  3. change all the values to that multiple of 10 -> replace the elements value
-    with the multiple of 10
-    
-More translations:
-  1. true if value modulus 10 is 0 -> value % 10 == 0
-  2. a boolean flag, follows, can determine if the element is in the sub-array
-  3. remember the last multiple value and use it to assign to elements in the 
-    sub-array
+  1a. a value is a multiple of ten -> true when value % 10 == 0
+  1b. values are now in the "follows" slice
+  2. an element in the follows slice and not a multiple of ten is replaced with
+     thant multiple
+  3. ignore
     
 Solution with restrictions:
   initialize a boolean flag follows to false
-  declare a variable multiple to remember the last variable
+  declare a variable lastMult to remember the last variable
   for each element in nums array
     if the element is a multiple of 10
-      replace multiple value with the element's value
-      set follows flag to true
+      replace lastMult value with the element's value
+      follows is true
     else the element is not multiple of 10
       if follows is true
-        replace the element's value with the last multiple's value
+        replace the element's value with lastMult
+      else ignore
   return changed nums array
       
 */
