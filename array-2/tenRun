@@ -7,6 +7,7 @@ tenRun([10, 1, 9, 20]) → [10, 10, 10, 20]
 public int[] tenRun(int[] nums) {
   /*
     return a modified nums that replaces values to the last multiple of 10 found
+      nums[i] = lastMult;
   */
   
   boolean follows = false;
