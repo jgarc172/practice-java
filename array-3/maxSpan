@@ -1,67 +1,53 @@
+Consider the leftmost and righmost appearances of some value in an array. We'll say that the "span" is the number of elements between the two inclusive. A single value has a span of 1. Returns the largest span found in the given array. (Efficiency is not a priority.)
+
+maxSpan([1, 2, 1, 1, 3]) → 4
+maxSpan([1, 4, 2, 1, 4, 1, 4]) → 6
+maxSpan([1, 4, 2, 1, 4, 4, 4]) → 6
+
 public int maxSpan(int[] nums) {
   /*
     Returns the largest span found in the given array
   */
   int max = 0;
   for (int i=0; i <= nums.length-1; i++){
-    int last = lastIndexOf(nums, nums[i]);
-    int span = span(i, last);
-    if (span > max){
-      max = span;
+    for (int j=nums.length-1; j >= 0; j--){
+      if (nums[j] == nums[i]){
+        int span = j - i + 1;
+        if (span > max){
+          max = span;
+        }
+      }
     }
   }
   
   return max;
 }
 
-public int lastIndexOf(int[] nums, int value){
-  int last = -1;
-  for (int i = nums.length-1; i >= 0; i--){
-    if (nums[i] == value){
-      last = i;
-      break;
-    }
-  }
-  return last;
-}
-
-public int span(int a, int b){
-  if (b < 0){
-    return 1;
-  }
-  return b - a + 1;
-}
-
 /*
-Solution from function definition:
-  maxSpan takes an int array and returns a number
-
-Given:
-  an int array nums
-  
-Solution from description without restrictions:
-  return a default int value, 0 as the max span
-  
-Restrictions: 
-  1. for each value, consider the leftmost and rightmost appearance of it
-  2. a span is the number of elements between the two inclusive 
-  3. a single value has a span of 1
-  4. find the largest span in the array and return it
+Translated description:
+  maxSpan takes an int array nums and returns as an int the maximum span
+  in the nums array, where the span is the number of elements between the 
+  leftmost location of a value and the rightmost location of the same value. A 
+  single value in the array has a span of 1.
   
 Intermediate translations:
-  1. the leftmost position is the first occurrance from the left, index 0
-     the rightmost position is the first occurrance from the right, lastIndex
-  2. the span is the difference of the two positions plus 1, right - left + 1
-  3. left is equal to right, the span is 1
-  4. keep track of the current maximum span found, replace it if find a larger span
-  
-Solution with restrictions:
-  define a function lastIndexOf that returns the last index of the element given
-  define a function span that calculates the span
+  1. identify the leftmost location of a value starting from index i=0  and 
+     increasing to nums.length-1
+       for value nums[i] the location is i
+  2. identify the rightmost location of the same value starting from index 
+     j=nums.length-1 and decreasing to 0
+       if nums[j] == nums[i] the rightmost location is j
+  3. the span is the number of locations in between, inclusive
+       j - i + 1
+  4. the maximum span can be tracked in a variable max and its value updated
+     as larger spans are found
+
+Solution:
   initialize max to 0
-  for each element in nums
-    get the value's last index
-    calculate its span
-    if the span is > than max, replace max with it
+  for each element in nums using index i=0 to nums.length-1
+    for each element in nums using index j=nums.length-1 to 0
+      if the two elements are the same
+        calculate its span using their indexes
+        if the span is greater than max, replace max with it
   return max.
 */
