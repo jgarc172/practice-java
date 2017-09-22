@@ -1,80 +1,77 @@
+This is slightly more difficult version of the famous FizzBuzz problem which is sometimes given as a first problem for 
+job interviews. (See also: FizzBuzz Code.) Consider the series of numbers beginning at start and running up to but not 
+including end, so for example start=1 and end=5 gives the series 1, 2, 3, 4. Return a new String[] array containing the 
+string form of these numbers, except for multiples of 3, use "Fizz" instead of the number, for multiples of 5 use "Buzz", 
+and for multiples of both 3 and 5 use "FizzBuzz". In Java, String.valueOf(xxx) will make the String form of an int or 
+other type. This version is a little more complicated than the usual version since you have to allocate and index into an 
+array instead of just printing, and we vary the start/end instead of just always doing 1..100.
+
+fizzBuzz(1, 6) → ["1", "2", "Fizz", "4", "Buzz"]
+fizzBuzz(1, 8) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
+fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
+
 public String[] fizzBuzz(int start, int end) {
   /*
-  Solution:
-  create a new String array of length end - start
-  initialize counter to the value of start
-  for each empty element in the array
-    initialize an empty String str
-    if counter value divides 3
-      add "Fizz" to str
-    if counter value divides 5
-      add "Buzz" to str
-    if str is empty
-      convert the counter to a String and add it to str
-    assign string str to the elment
-    increment the counter by 1
-  return new array
+    returs a String array with sequence values from start to end-1, except
+    for multiples of 3 the value is "Fizz", for multiples of 5 the value 
+    is "Buzz", and for both multiples of 3 and 5 the value is "FizzBuzz"
   
   */
   
-  int length = end - start;
-  String[] fizzBuzz = new String[length];
-  int count = start;
-  String str;
-  for (int i=0; i < length; i++){
-    str = "";
-    if (count % 3 == 0){
+  String[] fizzBuzz = new String[end - start];
+  
+  for (int i=start; i <= end-1; i++){
+    String str = "";
+    if (i % 3 == 0){
       str += "Fizz";
     } 
-    if (count % 5 == 0){
+    if (i % 5 == 0){
       str += "Buzz";
     } 
     if (str == ""){
-      str = String.valueOf(count);
+      str = String.valueOf(i);
     } 
-    fizzBuzz[i] = str; 
-    count++;
+    fizzBuzz[i-start] = str; 
   }
+  
   return fizzBuzz;
 }
 
 /*
-Solution from function definition:
-  fizzBuzz takes two integers and returns one array of strings
+Translated description:
+  fizzBuzz takes two int numbers, start and end, and returns an array of strings.
+  Eeach element in the array is a string value constructed from the transformation
+  of the sequence from start to end (not including end) to the following cases:
   
-Given:
-  integers start and end
+  1. if the sequence value is a multiple of 3 use "Fizz";
+  2. if the sequence value is a multiple of 5 use "Buzz"
+  3. if the sequence value is a multiple of both 3 and 5 use "fizzBuzz"
+  4. otherwise use the string value of the sequence value
   
-Solution from description without restrictions:
-  return a new String array of length end - start
+Intermediate translations:
+  - length of new array -> end - start
+  - the index of elements in the new array begins from start and ends at end-1
+  - use the index value as the sequence value
+  - initialize the string value to "" then concatenate the following to the
+    string value
+  1. "Fizz" if i % 3 is 0
+  2. "Buzz" if i % 5 is 0
+  3. the string value would already be "FizzBuzz" if the sequence value
+     is both multiple of 3 and 5
+  4. otherwise if the string value is still empty use the string of i
+  - set the value of the element to the string value
   
-Restrictions:
-  1. contains the String numbers beginning at start to but not including end
-  2. for multiples of 3 use "Fizz" instead of the number
-  3. for multiples of 5 use "Buzz"
-  4. for multiples of both 3 and 5 use "FizzBuzz"
-  
-Intermediate translations of restrictions:
-  -  integers start and end determine length of new array (end - start)
-  1. integer values starts at start value -> initialize a counter and increment
-     convert integer value to a String, except as follows
-  2. if value divides 3 use "Fizz"
-  3. if value divides 5 use "Buzz"
-  4. if value divides both use "FizzBuzz"
-  
-Solution with restrictions:
+Solution:
   create a new String array of length end - start
-  initialize counter to the value of start
-  for each empty element in the array
+  for each index value i from start to end-1
     initialize an empty String str
-    if counter value divides 3
+    if i divides 3
       add "Fizz" to str
-    if counter value divides 5
+    if i divides 5
       add "Buzz" to str
     if str is empty
-      convert the counter to a String and add it to str
+      convert the i to a String and add it to str
     assign string str to the elment
-    increment the counter by 1
   return new array
   
 */
