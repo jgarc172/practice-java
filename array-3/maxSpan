@@ -31,9 +31,11 @@ Translated description:
   single value in the array has a span of 1.
   
 Intermediate translations:
+  - for each element in nums, repeat the following:
   1. identify the leftmost location of a value starting from index i=0  and 
      increasing to nums.length-1
        for value nums[i] the location is i
+  - for each element in nums, repeat the following:
   2. identify the rightmost location of the same value starting from index 
      j=nums.length-1 and decreasing to 0
        if nums[j] == nums[i] the rightmost location is j
