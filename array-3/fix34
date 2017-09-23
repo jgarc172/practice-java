@@ -31,7 +31,7 @@ public int[] fix34(int[] nums) {
 /*
 Translated description:
   fix34 takes an int array nums and returns it rearranged so that every 3 is
-  immediately followed by a 4
+  immediately followed by a 4, by moving the next availabe 4 after each 3
   
 Intermediate translations:
   - for each two elements in nums, repeat the following:
