@@ -1,3 +1,10 @@
+Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. Return the number of clumps 
+in the given array.
+
+countClumps([1, 2, 2, 3, 4, 4]) → 2
+countClumps([1, 1, 2, 1, 1]) → 2
+countClumps([1, 1, 1, 1, 1]) → 1
+
 public int countClumps(int[] nums) {
   /*
     return the count of series of 2 or more elements of the same value
@@ -5,57 +12,52 @@ public int countClumps(int[] nums) {
   
   int lastIndex = nums.length-1;
   int clumps = 0;
-  boolean inClump = false;
+  
   for (int i=0; i <= lastIndex-1; i++){
+    // beginning of series
     if (nums[i] == nums[i+1]){
-        if (!inClump){
-          clumps++;
-          inClump = true;
+      clumps++;
+      int j;
+      for (j=i+1; j <= lastIndex-1; j++){
+        // end of series
+        if (nums[j] != nums[j+1]){
+          break;
         }
-      } else {
-        inClump = false;
       }
+      i=j;
+    }
   }
   return clumps;
 }
 
 /*
-Solution from function definition:
-  countClumps takes an int array and returns an int value as the count of clumps
+Translation of description:
+  countClumps takes an int array nums and returns the count of series of 2 or
+  more adjacent elements of the same value (clumps)
   
-Given:
-  an int array nums
+Intermediate translation:
+  - initializes clumps to 0
+  - for each two elements in nums, it repeats the following:
+  1. identifies the beginning of the series and increments clumps
+     nums[i] == nums[i+1]
+     clumps++
+  - for each two elements in nums, beginning at i+1, it repeats the following:
+  2. identifies the location of the end of the series, and exits the nested loop
+     nums[j] != nums[j+1]
+     break
+  3. it moves the index of the outer loop
+     i=j
+  - returns the clumps
   
-Solution from description without restrictions:
-  return an int
-  
-Restrictions:
-  1. return the numbers of clumps in the given array
-  2. a clump is a series of 2 or more adjacent elements of the same value
-  
-Intermeditate definitions:
-  1. use a counter and increment it when a clump is observed
-  2a. adjacent elements -> elements at i and i+1
-  2b. same value -> true when nums[i] == nums[i+1]
-  2c. 2 or more elements -> don't increase the counter when series is longer
-      than 2
-  3.  when accessing two elements at a time, and the index starts at 0,
-      the loop ends at 1 element before the last index
-      -> i=0 to i <= last index - 1
- i    0                V
-nums [ ][ ][ ][ ][][ ][ ][ ]
-     [ ][ ]           [ ][ ]
-  
-Solution with restrictions:
+Solution:
   initialize clumps to 0
-  initialinq inClump to false
-  for each pair of elements in nums
-    compare the two elements
-      if the elements are the same and not inClump
-        increment the counter
-        set inClump to true
-      else set inClump to false
-  return clumps
-  
-
+  for each pair of elements in nums from index i=0 to nums.length-2
+    if pair elements are the same
+      increments clumps
+      for each pair of elements in nums from index j=i+1 to nums.length-2
+        finds the index where pairs are not the same
+        exits the nested loop
+      moves the i index to last value of j
+  returns clumps
+      
 */
