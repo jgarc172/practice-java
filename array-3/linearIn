@@ -1,94 +1,66 @@
+Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.
+
+linearIn([1, 2, 4, 6], [2, 4]) → true
+linearIn([1, 2, 4, 6], [2, 3, 4]) → false
+linearIn([1, 2, 4, 4, 6], [2, 4]) → true
+
 public boolean linearIn(int[] outer, int[] inner) {
   /*
-    return true if all of the numbers in inner appear in outer.
-    an element is found if an index is found in the outer array
+    return false if any of the numbers in inner don't appear in outer
   */
-  int from = 0;
+  
+  int j = 0;
   for (int i=0; i <= inner.length-1; i++){
-    from = indexOf(outer, from, inner[i]);
-    if (from < 0){
+    // search in outer starting where j left off
+    for (; j < outer.length; j++){
+      if (inner[i] == outer[j]){
+        break;
+      }
+    }
+    // an inner number did not appear in outer
+    if (j == outer.length){
       return false;
     }
-    from++;
   }  
   
   return true;
 }
 
-public int indexOf(int[] nums, int from, int value){
-  /*
-    return the index if the value is found in the nums array
-    starting from index from
-  */
-  int index = -1;
-  for (int i=from; i <= nums.length-1; i++){
-    if (nums[i] == value){
-      index = i;
-      break;
-    }
-  }
-  return index;
-}
 /*
-Solution from function definition:
-  linearIn takes two int arrays and returns a boolean value
+Translated description:
+  linearIn takes two arrays of ints sorted in increasing order, outer and inner,
+  and it returns a boolean
   
-Given:
-  two int arrays: outer and inner
-  
-Translation:
-  there is a combined property of outer and inner that is true or false
-  
-Solution from description without restrictions:
-  return true or false
-  
-Restrictions:
-  1. given arrays are sorted in increasing order
-  2. assume outer length is greater or equal to inner
-  3. return true if all of the numbers in inner appear in outer
+  true: if all of the numbers in inner appear in outer
+  false: if any of the numbers in inner don't appear in outer
   
 Intermediate translations:
-  1. for a given inner array index i, nums[i-1] <= nums[i] <= nums[i+1];
-     the same for outer array index j, nums[j-1] <= nums[j] <= nums[j+1]
-  2. when looping, the outer loop is done on the inner array
-  3. for each element in inner array, the element is found in the outer array
+  - for each element in inner, repeat the following
+  - for each element in outer, repeat the following
+  1. when a number in inner appears in outer, continue with the next inner number
+       inner[i] == outer[j]
+  2. when the outer index reaches its length, an inner number did not appear in
+     outer. return false
+       j == outer.length
+  - return true
   
-Combined translations:
-  1 and 3. 
-    keep track of where an inner element is found in the outer array
-      this index can be used as the starting index for the search of 
-      the next element
-  summary: the searchable slice in the other array becomes smaller as elements
-           are found
+Last match:
+  index j points to the last match and splits the outer array: elements to the
+  left of j have already been searched; elements to the right of j are yet to be
+  searched.
+  
+An inner number not found in outer:
+  an inner number was not found when j reached its length, outer.length.
 
-      start:
-inner    [5] [8]
-          i
-outer    [1] [4] [5] [7] [8] [9]
-          j
-          
-      found it at j:
-inner    [5] [8]
-          i
-outer    [1] [4] [5] [7] [8] [9]
-                  j
-      increment j and search the next element starting at j:
-inner    [5] [8]
-              i
-outer                [7] [8] [9]
-                      j
-
-Solution with restrictions:
-  define a function indexOf that returns 
-    the index of an array where a value is found, starting at an index
-  initialize j to 0, used to track the outer elements position
-  for each element in inner array, using index i
-    - determine the index from the outer array of the element, using the current
-      value of j as the starting index
-    if the index is < 0, the element was not found
+Solution:
+  initialize index j to 0
+  for each element in inner using index i=0 to inner.length-1
+    for each element in outer using index j to outer.length-1
+      if inner element is the same as outer element
+        break and continue with the next inner element, starting at j
+    if j is outer.length
+      one of the inner elements was not found
       return false
-    else the element was found and the index can be used to updated j
-  return true, as all the elements were found
-  
+  return true
   
 */
