@@ -1,88 +1,56 @@
+Return an array that contains exactly the same numbers as the given array, but rearranged so that every 3 is immediately followed by a 4. Do not move the 3's, but every other number may move. The array contains the same number of 3's and 4's, every 3 has a number after it that is not a 3, and a 3 appears in the array before any 4.
+
+fix34([1, 3, 1, 4]) → [1, 3, 4, 1]
+fix34([1, 3, 1, 4, 4, 3, 1]) → [1, 3, 4, 1, 1, 3, 4]
+fix34([3, 2, 2, 4]) → [3, 4, 2, 2]
+
 public int[] fix34(int[] nums) {
   /*
-  Solution:
-  define a function next4 that returns the next index of a valid 4
-  for each element in nums using index i
-    if element is a 3 and the next element is not 4
-      find index of next 4
-      swap that value with the value at i+1
-  return nums
+    return nums rearranged so that every 3 is immediately followed by a 4
   */
   
-  int next4 = -1;
-  for (int i=0; i <= nums.length-1; i++){
+  int next4 = 0;
+  for (int i=0; i <= nums.length-2; i++){
     if (nums[i] == 3 && nums[i+1] != 4){
-      next4 = next4(nums, next4+1);
-      nums[next4] = nums[i+1];
-      nums[i+1] = 4;
+      while (next4 <= nums.length-1){
+        if (nums[next4] == 4){
+          int temp = nums[i+1];
+          nums[i+1] = nums[next4];
+          nums[next4] = temp;
+          break;
+        }
+          next4++;
+      }
     }
   }
   return nums;
 }
 
-public int next4(int[] nums, int start){
-  /*
-    return the index of the next 4
-      except when the 4 is after a 3
-  */
-  int next = -1;
-  for (int i=start; i <= nums.length-1; i++){
-    if (nums[i] == 4 && nums[i-1] != 3){
-      next = i;
-      break;
-    }
-  }
-  return next;
-}
-
 /*
-Solution from function definition:
-  fix34 takes an int array and returns an int array
+Translated description:
+  fix34 takes an int array nums and returns it rearranged so that every 3 is
+  immediately followed by a 4
   
-Given:
-  an int array nums
-  
-Solution from description without restrictions:
-  return the same version of the given array
-  
-Restrictions:
-  1. the resulting array contains exactly the same numbers as the given array
-  2. every 3 is immediately followed by a 4
-  3. do not move the 3s. Other numbers may move
-  4. the number of 3s is the same as the number of 4s
-  5. 3s have a number that is not a 3
-  6. a 3 appears before any 4
-
 Intermediate translations:
-  1. if a new array, the new array's length is the same as nums' length
-  2. if the element at position i is 3, then at position i+1 is not a 3
-  3. other numbers move by swaping their positions
-  4. all the 3s and 4s will be paired
-  5. find the next position after 3, to swap with the next 4
-  6. after finding the first 3, find the next 4
+  - for each two elements in nums, repeat the following:
+  1. identify a pair, 3 followed by a non 4
+       nums[i] == 3 and nums[i+1] != 4
+  2. identify the location of the next available 4 in the remaining subarray of nums
+       nums[j] == 4
+  3. swap the values at locations i+1 and j
   
-More translations:
-  - the elements in the array can be identified by index i
-  - the next position after 3 can be identified by i+1
-  - the next position of a valid 4 can be identified by a different index j
-  
-before
-nums    [3] [1] [1] [3] [4] [4]
-      j  i
-before first swap:
-nums    [3] [1] [1] [3] [4] [4] 
-         i                   j
-after swap:
-nums    [3] [4] [1] [3] [4] [1] 
-         i                   j
-                 
-Solution with restrictions:
-  define a function next4 that returns the next index of a valid 4
-  for each element in nums using index i
-    if element is a 3 and the next element is not 4
-      find index of next 4
-      swap that value with the value at i+1
-  return nums
-      
+Next available 4:
+  index j splits the nums array: 4s that are to the left of j are already placed
+  next to a 3; 4s that are to the right of j are available for placement 
 
+Solution:
+  initialize index j to 0
+  for each pair of elements in nums using index i=0 to nums.length-2
+    if nums[i] == 3 and nums[i+1] != 4
+      for each element in nums using index j to nums.length-1
+        if nums[j] == 4 and nums[j-1] != 3
+          swap the values at locations i+1 and j
+          break
+        increment j
+  return nums.
 */
