@@ -1,69 +1,87 @@
+Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one side is 
+equal to the sum of the numbers on the other side.
+
+canBalance([1, 1, 1, 2, 1]) → true
+canBalance([2, 1, 1, 2, 1]) → false
+canBalance([10, 10]) → true
+
 public boolean canBalance(int[] nums) {
   /*
-    return true if for any split of the array the sum on the left
-    is the same as the sum on the right
+    return true when the sum of some front elements is equal to the sum of all the 
+    remaining elements
+    
+    frontSum == remainingSum && j == nums.length-1
   */
  
- int sumL = 0;
- int sumR = 0;
- for (int i=0; i <= nums.length-1; i++){
-   sumL = sum(nums, 0, i);
-   sumR = sum(nums, i+1, nums.length-1);
-   if (sumL == sumR){
-     return true;
-   }
- }
- return false; 
+  int frontSum = 0;
+  int remainingSum = 0;
+  int j;
+  
+  for (int i=0; i <= nums.length-1; i++){
+    frontSum += nums[i];
+    
+    remainingSum = 0;
+    for (j=i+1; j <= nums.length-1; j++){
+      remainingSum += nums[j];
+      if (frontSum <= remainingSum){
+        break;
+      }
+    }
+    
+    if (frontSum == remainingSum && j == nums.length-1){
+      return true;
+    }
+  }
+  
+  return false; 
 }
 
-public int sum(int[] nums, int start, int end){
-  int sum = 0;
-  for (int i=start; i <= end; i++){
-    sum += nums[i];
-  }
-  return sum;
-}
 /*
-Solution from function definition:
+Translated description:
   canBalance takes an int array and returns a boolean
   
-Given:
-  an int array nums
-  
-Translation:
-  there is a property of nums that makes it true, otherwise it is false
-  
-Solution from description without restrictions:
-  return true or false
-  
-Restrictions:
-  1. array nums is non-empty
-  2. array nums can be split in two sides of numbers
-  3. the numbers in each side can be added together
-  4. return true if the sum on the left is the same as the sum on the right
+  true: when the sum of some front elements is equal to the sum of all the 
+        remaining elements
+  false: otherwise
   
 Intermediate translations:
-  1. nums.length > 0
-  2. for each element in the array the element and those in the left are one side;
-     the elements to the right is the other side; so there will be a total of pairs
-     equal to the length of the array nums
-  3. elements are integers and can be added in a sum.  There will be two sums
-     one per each side
-  4. return true if there is a split with the two sums being the same
+  - initialize frontSum and remainingSum to 0
+  - for each element in nums, repeat the following
+  1. add the element to the frontSum
+       frontSum += nums[i]
+       reset remainingSum to 0
+  - for each element in the remaining part of nums, repeat the following
+  2. add the element to the remainingSum
+       remainingSum += nums[j]
+  3. break the nested loop when remainingSum is already greater than frontSum
+     or both are equal
+  4. return true when all the remaining elements have been reached and
+     the frontSum is equal to remainingSum
+  - otherwise return false
   
-Enhanced translations:
-  2. left elements are from 0 to i; the right elements 
-     are from i+1 to nums.length-1
-     
+Front elements and Remaining elements:
+  index j points to the current split of the array: elements to the
+  left of j have been added to frontSum; elements to the right of j will be 
+  added to remainingsum and will be compared with frontSum.
+
 nums    [L] [L] [R] [R] [R]
-             i
-  4. return true if there is an i where the left sum is equal to the right sum
-  
-Solution with restrictions:
-  define a function that returns the sum of elements in an array from start to end
-  initialize sumL and sumR to 0 before each split of the array
-  for each element in the array
-    get the sum of the elements in the left and the sum in the right 
-    return true if the two sums are the same
+             i   j
+             
+Remaining elements:
+  adding elements to the remainingSum continues until the sum is unnecessarily
+  greater than the frontSum or the sums are equal.
+
+Solution:
+  initialize frontSum and remainingSum to 0
+  for each element in nums using index i=0 to inner.length-1
+    add the element to frontSum
+    for each element in the remaining nums using index j=i+1 to outer.length-1
+      add the element to remainingSum
+      if remainingSum is unnecessarily greater than frontSum or equal to frontSum
+        break and try another slice of front and remaining
+    if all the remaining elements have been reached and the frontSum is equal 
+    to remainingSum
+      return true
   return false
+  
 */
