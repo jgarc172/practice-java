@@ -1,0 +1,90 @@
+We'll say that a "mirror" section in an array is a group of contiguous elements such that somewhere in the array, the same 
+group appears in reverse order. For example, the largest mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3 
+(the {1, 2, 3} part). Return the size of the largest mirror section found in the given array.
+
+maxMirror([1, 2, 3, 8, 9, 3, 2, 1]) → 3
+maxMirror([1, 2, 1, 4]) → 3
+maxMirror([7, 1, 2, 9, 7, 2, 1]) → 2
+
+public int maxMirror(int[] nums) {
+  
+  int lastIndex = nums.length-1;
+  int max = 0;
+  for (int i=0; i <= lastIndex; i++){
+    int size = 0;
+    int left = i;
+    for (int right=lastIndex; right >= 0 && left <= lastIndex; right--){
+      if (nums[left] == nums[right]){
+        size++;
+      }else {
+        max = Math.max(max, size);
+        size = 0;
+      }
+      left = i + size;
+    }
+    
+    max = Math.max(max, size);
+  }
+  
+  return max;
+}
+
+
+/*
+Translation of description:
+  maxMiror takes an int array nums and returns the largest count of elements that
+  are adjacent in one group and are also adjacent in a reversed group (mirror group)
+  
+Intermediate translation:
+
+Mirror group of elements:
+  - elements in a group in one location are found in reverse in another or same
+    location in the array.  For example, group 3 and 4 at i has two reverse
+    groups at j and at k
+  - that is, for a given element at i find all the places that the element
+    is found in the reverse array and start counting its size by repeating
+    in a separate loop the matching of elements
+    
+nums    [3] [4] [ ] [ ] [4] [3] [ ] [ 4] [3 ] [ ]
+         i                   j            k
+      nums[i] == nums[j] == nums[k]
+      nums[i+1] == nums[j-1] == nums[k-1]
+
+Size of mirror elements:
+  the count of elements that match is the size of the mirror
+
+Maximum size found:
+  replace the current maximum with the next size that is greater than  the current
+  maximum
+  
+Summary:
+  - for each element from the left in nums, repeat the following
+  - for each element from the right in nums, repeat the following
+  1. elements are a mirror when two elements match, increment size and repeat
+     left == right
+     size++
+  3. else end of this mirror section, update max, reset size to 0 and find the 
+     next mirror
+     max is now the maximum of size and current max
+     size is 0
+     continue to the next mirror section
+  4. at end of nested loop update max
+  - return max
+
+Solution:
+  initialize max to 0
+  for each element in nums from index i=0 to nums.length-1
+    initialize size to 0
+    initialize left to i
+    for each element in nums from index right=nums.length-1 to 0
+      if left element is the same as right element
+        increment size of mirror group
+        continue with next element to match
+      else the end of mirror group
+        update the new max based on the new size
+        reset size to 0 and continue with next mirror group
+      update left index to i + size
+    update the new max based on the last size found
+  returns max
+      
+*/
