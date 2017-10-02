@@ -1,27 +1,28 @@
-/*
-  solution from function name:
-    sleepIn is true or false (boolean)
-    
-  solution from description:  
-    return true if we sleep in
-    We sleep in if it is not a weekday or we're on vacation
-    
-  Given:
-    The parameter weekday is true if it is a weekday, and
-    the parameter vacation is true if we are on vacation
-    
-  Intermediate translations:
-    solution: 
-      return true if it is not a weekday or we're on vacation
-    
-    no weekday -> !weekday
-    or -> ||
-    on vacation -> vacation
-    
-  solution: 
-   return true if (not weekday or on vacation)
-*/
+The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation. 
+We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.
+
+sleepIn(false, false) → true
+sleepIn(true, false) → false
+sleepIn(false, true) → true
+
 public boolean sleepIn(boolean weekday, boolean vacation) {  
+  /*
+    return true when it is not a weekday or on vacation
+  */
   
   return (!weekday || vacation);
 }
+
+/*
+Translation of Description:
+  sleepIn takes two booleans, weekday and vacation, and returns true if it is 
+  not a weekday or we're on vacation  
+
+Intermediate translations:
+  not a weekday -> !weekday
+  on vacation -> vacation
+  or -> ||
+  
+solution: 
+   return true when (not weekday or on vacation)
+*/
