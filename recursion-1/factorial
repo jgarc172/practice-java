@@ -18,23 +18,24 @@ public int factorial(int n) {
 
 /*
 Translation of description:
-  factorial takes an int n and returns the factorial value of n as an integer
+  factorial takes an int n and returns an int as the factorial value of n, by
+  repeatedly multiplying n to the factorial value and replacing n with n-1
   
 Intermediate translations:
   - factorial of n -> total multiplication of n, n-1, n-2, . . ., 1
   
 Translated recursive definition of factorial(n):
-  total is 1 when n is 1
-  total is n * factorial(n-1)
-  returns total
+  factorial is 1 when n is 1
+  factorial is n * factorial(n-1)
+  returns factorial
   
 Solution:
   return 1 if n is 1
   else return n * factorial(n-1)
   
 Translated iterative definition of factorial(n):
-  total is 1
+  factorial is 1
   for each decreasing value n from n to 1
-    replace total with n * total
-  return total
+    replace factorial with n * factorial
+  return factorial
 */
