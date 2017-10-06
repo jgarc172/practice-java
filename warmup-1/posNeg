@@ -1,23 +1,16 @@
+Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative" is true, 
+then return true only if both are negative.
+
+posNeg(1, -1, false) → true
+posNeg(-1, 1, false) → true
+posNeg(-4, -5, true) → true
+
 public boolean posNeg(int a, int b, boolean negative) {
-  // solution from description:
-  // return true if one is negative and one is positive
-  // Except if the parameter "negative" is true, 
-  // then return true only if both are negative
-  
-  // improved description and translations to code:
-  // a is negative -> a < 0
-  // a is positive -> a > 0
-  // same for b
-  // both are negative -> a < 0 && b < 0
-  // one is negative and one is positive -> a is negative and b is positive or
-  // a is positive and b is negative
-  // parameter negative is true -> negative
-  // or -> ||
-  
-  // solution:
-  // if the parameter "negative" is true, 
-  // then return true only if both are negative
-  // else return true if one is negative and one is positive
+  /*
+    returns true
+    when negative is true and both a and b are negative, or
+    when negative is false and one of them is negative and the other is positive
+  */
   
   if (negative){
     return (a < 0 && b < 0);
@@ -26,3 +19,22 @@ public boolean posNeg(int a, int b, boolean negative) {
   }
   
 }
+
+/*
+Translated description:
+  posNeg takes two integers, a and b, a boolean negative, and returns true
+  when negative is true and both a and b are negative, or
+  when negative is false and one of them is negative and the other is positive
+  
+Intermediate translations:
+  value a is negative -> true when a < 0
+  value b is positive -> true when a > 0
+  
+Solution:
+  if negative is true
+    return true when a < 0 and b < 0
+  else negative is false
+    return true when a < 0 && b >0 or a > 0 && b < 0
+ 
+*/
+
