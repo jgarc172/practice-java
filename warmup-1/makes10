@@ -1,21 +1,29 @@
+Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
+
+makes10(9, 10) → true
+makes10(9, 9) → false
+makes10(1, 9) → true
+
 public boolean makes10(int a, int b) {
-  // solution from description:
-  // return true if one if them is 10 or if their sum is 10
-  
-  // improved description:  
-  // one of them is 10 -> a is 10 or b is 10
-  
-  // translations to code:
-  // a is 10 -> a == 10
-  // b is 10 -> b == 10
-  // sum of a and b -> a + b
-  // sum is 10 -> sum == 10
-  // or -> ||
-  
-  // solution:
-  // sum is a + b
-  // return true if a is 10 or b is 10 or sum is 10
-  
+  /*
+    return true if one if a or b is 10 or if their sum is 10
+  */
+
   int sum = a + b;
   return a == 10 || b == 10 || sum == 10;
 }
+
+/*
+Translated description:
+  makes10 takes two integers, a and b, and returns true if one of them is 10
+  or if their sum is 10
+  
+Intermediate translations:
+  one of them is 10 -> a is 10 or b is 10 -> a == 10 || b == 10
+  their sum is 10 -> true if a + b == 10
+  
+Solution:
+  return true when a is 10 or b is 10 or a + b is 10
+  
+*/
+
