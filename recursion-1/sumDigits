@@ -1,0 +1,47 @@
+Given a non-negative int n, return the sum of its digits recursively (no loops). Note that mod (%) by 10 yields the 
+rightmost digit (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit (126 / 10 is 12).
+
+sumDigits(126) → 9
+sumDigits(49) → 13
+sumDigits(12) → 3
+
+public int sumDigits(int n) {
+  /*
+    returns the sum of the digits of of n, by adding the digits of n from right 
+    to left
+  */
+  if (n == 0){
+    return 0;
+  }
+  int rightDigit = n % 10;
+ int leftDigits = n / 10;
+  return rightDigit + sumDigits(leftDigits);
+}
+
+/*
+Translated description:
+  sumDigits takes an int n and returns an int as the sum of the digits of n, by
+  repeatedly adding the rightmost digit of n to the sum and by replacing n  with 
+  its remaining left digits
+  
+Intermediate translations:
+  - n -> composed of 0 or more left digits and one right digit
+  - right digit of n -> n % 10
+  - number represented by left digits of n -> integer division of n by 10 -> n / 10
+
+Translated recursive definition of sumDigits(n):
+  sum is 0 when n is 0
+  sum is right digit + sumDigits of left digits
+  returns sum
+  
+Solution:
+  return 0 if n is 0
+  return (n % 10) + sumDigits(n / 10)
+  
+Translated iterative definition of sumDigits(n):
+  sum is 0
+  while n is > 0
+    add the right digit to sum
+    replace n with the left digits number of n
+  return sum
+*/
