@@ -7,8 +7,9 @@ countX("hi") → 0
 public int countX(String str) {
   /*
     returns the count of 'x' characters in the characters of str, by repeatedly
-    accessing the first character in str and by replacing str with the remaining
-    substring
+    adding a 1 when the first character in str matches 'x' and by replacing 
+    str with the remaining substring
+      1 + countX(remaining)
   */
   
   if (str.length() == 0){
