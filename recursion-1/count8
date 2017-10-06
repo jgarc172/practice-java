@@ -11,6 +11,8 @@ public int count8(int n) {
     return the count of 8s in the digits of n, by accessing each digit from the 
     right and by adding 1 to each 8 and by adding 2 to each 8 followed by 
     another 8
+      2 + count8(leftDigits)
+      1 + count8(leftDigits)
   */
   
   if (n == 0){
