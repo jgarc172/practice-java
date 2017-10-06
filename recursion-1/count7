@@ -10,6 +10,7 @@ public int count7(int n) {
   /*
     return the count of 7s in the digits of n, by counting each digit from right
     to left
+      1 + count7(leftDigits)
   */
  if (n == 0){
    return 0;
