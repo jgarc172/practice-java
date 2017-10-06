@@ -1,0 +1,41 @@
+Given base and n that are both 1 or more, compute recursively (no loops) the value of base to the n power, 
+so powerN(3, 2) is 9 (3 squared).
+
+powerN(3, 1) → 3
+powerN(3, 2) → 9
+powerN(3, 3) → 27
+
+public int powerN(int base, int n) {
+  /*
+    returns the n power of base, by repeatedly multiplying base by the next
+    smaller power of n-1
+  */
+  
+  if (n == 0){
+    return 1;
+  }
+  return base * powerN(base, n-1);
+}
+
+/*
+Translated description:
+  powerN takes an int base and and an int n, and returns an int as the n power 
+  of the base, by repeatedly multiplying base to the power of the next smaller
+  number n-1
+  
+Translated recursive definition of powerN(n):
+  power is 1 when n is 0
+  power is base * powerN(base, n-1)
+  returns power
+  
+Solution:
+  return 1 if n is 0
+  return base * powerN(power, n-1)
+  
+Translated iterative definition of count8(n):
+  power is 1
+  while n is > 0
+    replace power with base * power
+    decrement n
+  return power
+*/
