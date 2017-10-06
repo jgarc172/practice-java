@@ -1,0 +1,60 @@
+We have bunnies standing in a line, numbered 1, 2, ... The odd bunnies (1, 3, ..) have the normal 2 ears. The even 
+bunnies (2, 4, ..) we'll say have 3 ears, because they each have a raised foot. Recursively return the number of "ears" 
+in the bunny line 1, 2, ... n (without loops or multiplication).
+
+bunnyEars2(0) → 0
+bunnyEars2(1) → 2
+bunnyEars2(2) → 5
+
+public int bunnyEars2(int bunnies) {
+  /*
+    returns the number of ears from a group of bunnies numbered 1 to bunnies, by
+    adding the ears of each numbered bunny. Even numbered bunnies have 2 ears, 
+    odd numbered bunnies have 3 ears.
+  */
+  
+  if (bunnies == 0){
+    return 0;
+  }
+  if (bunnies % 2 == 0){
+    return 3 + bunnyEars2(bunnies-1);
+  } else {
+    return 2 + bunnyEars2(bunnies-1);
+  }
+}
+
+/*
+Translated description:
+  bunnyEars takes an int bunnies and returns an int as the total number of bunny 
+  ears.  Bunnies describes the sequence of numbered bunnies: 1, 2, 3, . . ., bunnies.
+  Odd numbered bunnies add 2 ears to the total and even numbered bunnies add 
+  3 ears to the total.
+  
+Intermediate translations:
+  - when there are no bunnies, the total is 0
+  - an odd bunny adds 2 to the total
+  - an even bunny adds 3 to the total
+  - an even bunny -> bunnies % 2 == 0 is true
+  - an odd bunny -> bunnies % 2 == 0 is false
+  
+Translated recursive definition of bunnyEars2(bunnies):
+    total is 0 when bunnies is 0
+    when bunnies is odd, total is 2 + bunnyEars2(bunnies-1)
+    when bunnies is even, total is 3 + bunnyEars2(bunnies-1)
+    return total
+  
+Solution:
+  return 0 if bunnies is 0
+  if bunnies is even
+    return 3 + bunnyEars2(bunnies-1)
+  if bunnies is odd
+    return 2 + bunnyEars2(bunnies-1)
+  
+Translated iterative definition of bunnyEars2(bunnies):
+  total is 0
+  for each decreasing value of bunnies, from bunnies to 0, repeat the following:
+    add 2 to the total for odd bunnies or
+    add 3 to the total for even bunnies
+  return total
+
+*/
