@@ -1,0 +1,78 @@
+Given a non-negative int n, compute recursively (no loops) the count of the occurrences of 8 as a digit, except that 
+an 8 with another 8 immediately to its left counts double, so 8818 yields 4. Note that mod (%) by 10 yields the 
+rightmost digit (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit (126 / 10 is 12).
+
+count8(8) → 1
+count8(818) → 2
+count8(8818) → 4
+
+public int count8(int n) {
+  /*
+    return the count of 8s in the digits of n, by accessing each digit from the 
+    right and by adding 1 to each 8 and by adding 2 to each 8 followed by 
+    another 8
+  */
+  
+  if (n == 0){
+    return 0;
+  }
+  int rightDigit = n % 10;
+  int leftDigits = n / 10;
+  int nextRight = leftDigits % 10;
+  
+  if (rightDigit == 8){
+    if (nextRight == 8){
+      return 2 + count8(leftDigits);
+    } else {
+      return 1 + count8(leftDigits);
+    }
+  }
+  return count8(leftDigits);
+}
+
+/*
+Translated description:
+  count8 takes an int n and returns an int as the count of the occurrences of 8
+  in the digits of n, by repeatedly accessing the rightmost digit of n and replacing n
+  with its remaining left digits; and adding 1 to the count for each 8 and 
+  adding 2 to the  count for each 8 with another 8 to its left
+  
+Intermediate translations:
+  - n -> composed of 0 or more left digits and one right digit
+  - right digit of n
+    n % 10
+  - number represented by left digits of n -> integer division of n by 10
+    n / 10
+  - the left digit of the right digit is the right digit of the left digits
+    (n / 10) % 10
+
+Translated recursive definition of count8(n):
+  count is 0 when n is 0
+  if right digit is 8
+    if the next right digit is 8, count is 2 + count8 of left digits
+    else count is 1 + count8 of left digits
+  else count is count8 of left digits
+  returns count
+  
+Solution:
+  return 0 if n is 0
+  rightDigit is n % 10
+  leftDigits is n / 10
+  nextRight is leftDigits % 10
+  if rightDigit is 8 
+    if nextRight is 8, return 2 + count8(leftDigits)
+    else return 1 + count8(leftDigits)
+  else return count8(leftDigits)
+  
+Translated iterative definition of count8(n):
+  count is 0
+  while n is > 0
+    rightDigit is n % 10
+    leftDigits is n / 10
+    nextRight is leftDigits % 10
+    if rightDigit is 8
+      if nextRight is 8, add 2 to count
+      else add 1 to count
+    replace n with leftDigits
+  return count
+*/
