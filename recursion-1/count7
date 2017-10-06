@@ -1,0 +1,53 @@
+Given a non-negative int n, return the count of the occurrences of 7 as a digit, so for example 717 yields 2. (no loops). 
+Note that mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit 
+(126 / 10 is 12).
+
+count7(717) → 2
+count7(7) → 1
+count7(123) → 0
+
+public int count7(int n) {
+  /*
+    return the count of 7s in the digits of n, by counting each digit from right
+    to left
+  */
+ if (n == 0){
+   return 0;
+ }
+ int rightDigit = n % 10;
+ int leftDigits = n / 10;
+ if (rightDigit == 7){
+  return 1 + count7(leftDigits); 
+ }
+ return count7(leftDigits);
+}
+
+/*
+Translated description:
+  count7 takes an int n and returns an int as the count of the occurrences of 7
+  as a digit, by repeatedly accessing the rightmost digit of n and replacing n
+  with its remaining left digits
+  
+Intermediate translations:
+  - n -> composed of 0 or more left digits and one right digit
+  - right digit of n -> n % 10
+  - number represented by left digits of n -> integer division of n by 10 -> n / 10
+
+Translated recursive definition of count7(n):
+  count is 0 when n is 0
+  if right digit is 7, count is 1 + count7 of left digits
+  else count is count7 of left digits
+  returns count
+  
+Solution:
+  return 0 if n is 0
+  if n % 10 == 7, return 1 + count7(n / 10)
+  else return count7(n / 10)
+  
+Translated iterative definition of count7(n):
+  count is 0
+  while n is > 0
+    if right digit is 7, add 1 to count
+    replace n with the left digits number of n
+  return count
+*/
