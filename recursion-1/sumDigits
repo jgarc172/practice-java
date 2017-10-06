@@ -9,6 +9,7 @@ public int sumDigits(int n) {
   /*
     returns the sum of the digits of of n, by adding the digits of n from right 
     to left
+      rightDigit + sumDigits(leftDigits)
   */
   if (n == 0){
     return 0;
