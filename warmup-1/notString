@@ -1,27 +1,36 @@
+Given a string, return a new string where "not " has been added to the front. However, if the string already begins 
+with "not", return the string unchanged. Note: use .equals() to compare 2 strings.
+
+notString("candy") → "not candy"
+notString("x") → "not x"
+notString("not bad") → "not bad"
+
 public String notString(String str) {
-  // solution from description:
-  // a string with "not" added to str
-  // except if the str already begins with "not"
-  
-  // improved descriptions or translations to code:
-  // add -> concatenate -> +
-  // add "not " to front of str -> "not " + str
-  // str begins with "not" -> first 3 characters in str are equal to "not"
-  // first 3 characters in str -> str.substring(0,3)
-  // string equal to "not" -> string method equals("not")
-  
-  // constraints:
-  // a string with at least 3 characters -> length() >= 3
-  
-  // solution:
-  // if length of str is >= 3 and str begins with "not"
-  // then return str
-  // else return string str with "not" added to front
-  
-  if (str.length() >= 3 && str.substring(0, 3).equals("not")){
+  /*
+    returns a string that starts with "not"
+  */
+  if (str.startsWith("not")){
     return str;
   } else {
     return "not " + str;
   }
   
 }
+
+/*
+Translated description:
+  notString takes a string str and returns a string that starts with "not" by 
+  returning the same string str starts with "not"; or
+  by adding "not" to the front of str
+  
+Intermediate translations:
+  str starts with "not" -> str.startsWith("not") is true
+  adding "not" to the front of str -> "not" + str
+  
+Solution:
+  if str starts with "not"
+    return str
+  else 
+    return "not" + str
+*/
+
