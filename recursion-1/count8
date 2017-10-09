@@ -8,11 +8,14 @@ count8(8818) → 4
 
 public int count8(int n) {
   /*
-    return the count of 8s in the digits of n, by accessing each digit from the 
-    right and by adding 1 to each 8 and by adding 2 to each 8 followed by 
-    another 8
+    return the count of 8s in the digits of n, by repeatedly adding a 1, 2, or 
+    nothing to the count of the remaining left digits; adds a 1 when the right 
+    digit is 8 or adds a 2 when the right digits is 8 and the next right digit 
+    is 8; otherwise it adds nothing
+    
       2 + count8(leftDigits)
       1 + count8(leftDigits)
+      count8(leftDigits)
   */
   
   if (n == 0){
@@ -35,25 +38,36 @@ public int count8(int n) {
 /*
 Translated description:
   count8 takes an int n and returns an int as the count of the occurrences of 8
-  in the digits of n, by repeatedly accessing the rightmost digit of n and replacing n
-  with its remaining left digits; and adding 1 to the count for each 8 and 
-  adding 2 to the  count for each 8 with another 8 to its left
-  
-Intermediate translations:
-  - n -> composed of 0 or more left digits and one right digit
-  - right digit of n
-    n % 10
-  - number represented by left digits of n -> integer division of n by 10
-    n / 10
-  - the left digit of the right digit is the right digit of the left digits
-    (n / 10) % 10
+  in the digits of n, by repeatedly adding a 1, 2, or nothing to the count of the 
+  remaining left digits; adds a 1 when the right digit is 8 or adds a 2 when the
+  right digits is 8 and the next right digit is 8; otherwise it adds nothing
 
+Intermediate translations:
+  - base case
+      0 when n is 0
+  - n -> composed of 0 or more left digits and one right digit
+      left digits and right digit
+  - right digit of n 
+      n % 10
+  - number represented by left digits of n 
+      integer division of n by 10 -> n / 10  
+  - the next right digit (the right digit of remaining left digits)
+    (n / 10) % 10
+  - count of the remaining left digits
+      count8(n / 10)
+  - adding a 1 to the count of the remaining left digits
+      1 + count8(n / 10)
+  - adding a 2 to the count of the remaining left digits
+      2 + count8(n / 10)
+  - nothing is added to the count of the remaining left digits
+      count8(n / 10)
+      
 Translated recursive definition of count8(n):
   count is 0 when n is 0
   if right digit is 8
-    if the next right digit is 8, count is 2 + count8 of left digits
-    else count is 1 + count8 of left digits
-  else count is count8 of left digits
+    if the next right digit is 8, count is 2 + count of the remaining left digits
+    else count is 1 + count of the remaining left digits
+  else count is count of the remaining left digits
   returns count
   
 Solution:
@@ -78,3 +92,4 @@ Translated iterative definition of count8(n):
     replace n with leftDigits
   return count
 */
+
