@@ -8,8 +8,10 @@ count7(123) → 0
 
 public int count7(int n) {
   /*
-    return the count of 7s in the digits of n, by counting each digit from right
-    to left
+    return the count of 7s in the digits of n, by repeatedly adding a 1 to the 
+    count of the remaining left digits; otherwise nothing is added to the 
+    count of the remaining left digits
+    
       1 + count7(leftDigits)
   */
  if (n == 0){
@@ -26,18 +28,29 @@ public int count7(int n) {
 /*
 Translated description:
   count7 takes an int n and returns an int as the count of the occurrences of 7
-  as a digit, by repeatedly accessing the rightmost digit of n and replacing n
-  with its remaining left digits
-  
-Intermediate translations:
-  - n -> composed of 0 or more left digits and one right digit
-  - right digit of n -> n % 10
-  - number represented by left digits of n -> integer division of n by 10 -> n / 10
+  as a digit, by repeatedly adding a 1 to the count of the remaining left digits;
+  otherwise nothing is added to the count of the remaining left digits
 
+Intermediate translations:
+  - base case
+      0 when n is 0
+  - n -> composed of 0 or more left digits and one right digit
+      left digits and right digit
+  - right digit of n 
+      n % 10
+  - number represented by left digits of n 
+      integer division of n by 10 -> n / 10  
+  - count of the remaining left digits
+      count7(n / 10)
+  - adding a 1 to the count of the remaining left digits
+      1 + count7(n / 10)
+  - nothing is added to the count of the remaining left digits
+      count7(n / 10)
+  
 Translated recursive definition of count7(n):
   count is 0 when n is 0
-  if right digit is 7, count is 1 + count7 of left digits
-  else count is count7 of left digits
+  if right digit is 7, count is 1 + count of the remaining left digits
+  else count is count of the remaining left digits
   returns count
   
 Solution:
