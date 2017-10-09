@@ -9,7 +9,8 @@ fibonacci(2) → 1
 
 public int fibonacci(int n) {
   /*
-    returns the nth fibonacci number by adding the two previous fibonacci numbers
+    returns the nth fibonacci number by repeatedly adding the two previous 
+    fibonacci numbers
   */
   
   if (n < 2){
@@ -20,15 +21,21 @@ public int fibonacci(int n) {
 
 /*
 Translated description:
-  fibonacci takes an int n and returns the fibonacci number by adding the two
-  previous fibonacci numbers.  The first two fibonacci numbers are 0 and 1
+  fibonacci takes an int n and returns the nth fibonacci number by repeatedly 
+  adding the two previous fibonacci numbers.  The first two fibonacci numbers 
+  are 0 and 1
   
 Intermediate translations:
-  - fibonacci sequence -> 0, 1, 1, 2, 3, 5, 8, 13, 21 and so on
-
-Fibonacci recursive definition, fibonacci(n):
-  is n when n is < 2
-  is the sum of fibonacci(n-1) and fibonacci(n-2)
+  - base case
+    fibonacci number is n when n < 2
+  - the two previous numbers
+    n-1 and n-1
+  - the two previous fibonacci numbers
+    fibonacci(n-1) and fibonacci(n-2)
+    
+Translated recursive definition, fibonacci(n):
+  fibonacci is n when n is < 2
+  fibonacci is the sum of the two previous fibonacci numbers
   
 Solution:
   return n when n < 2
@@ -44,10 +51,7 @@ Fibonacci iterative definition, fibonacci(n):
     repeat the following n - 2 times
       fib is fib1 + fib2
       fib2 is fib1
-      fib1 is result
+      fib1 is fib
   return fib
-    
-  is n when n is < 2
-  is the sum of fibonacci(n-1) and fibonacci(n-2)
-  
+
 */
