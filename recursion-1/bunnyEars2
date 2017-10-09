@@ -8,9 +8,9 @@ bunnyEars2(2) → 5
 
 public int bunnyEars2(int bunnies) {
   /*
-    returns the number of ears from a group of bunnies numbered 1 to bunnies, by
-    adding the ears of each numbered bunny. Even numbered bunnies have 2 ears, 
-    odd numbered bunnies have 3 ears.
+    returns the total number of bunny ears, by repeatedly adding 2 or 3 to
+    the total ears of the next lower number, bunnies-1.  When bunnies is odd,
+    adds 2; when bunnies is even, adds 3
   */
   
   if (bunnies == 0){
@@ -26,35 +26,44 @@ public int bunnyEars2(int bunnies) {
 /*
 Translated description:
   bunnyEars takes an int bunnies and returns an int as the total number of bunny 
-  ears.  Bunnies describes the sequence of numbered bunnies: 1, 2, 3, . . ., bunnies.
-  Odd numbered bunnies add 2 ears to the total and even numbered bunnies add 
-  3 ears to the total.
+  ears, by reapeatedly adding ears to the total ears of the next lower number.  
+  Adds two ears when bunnies is odd and adds three ears when bunnies is even
   
 Intermediate translations:
-  - when there are no bunnies, the total is 0
-  - an odd bunny adds 2 to the total
-  - an even bunny adds 3 to the total
-  - an even bunny -> bunnies % 2 == 0 is true
-  - an odd bunny -> bunnies % 2 == 0 is false
+  - base case
+    total is 0 when bunnies is 0
+  - next lower number
+    bunnies - 1
+  - total ears of the next lower number
+    bunnyEars2(bunnies-1)
+  - bunnies is even
+    true when bunnies % 2 == 0
+  - bunnies is odd
+    false when bunnies % 2 == 0
+  - adding two ears to the total ears of the next lower number 
+    2 + bunnyEars(bunnies-1)
+  - adding three ears to the total ears of the next lower number 
+    3 + bunnyEars(bunnies-1)
   
 Translated recursive definition of bunnyEars2(bunnies):
     total is 0 when bunnies is 0
-    when bunnies is odd, total is 2 + bunnyEars2(bunnies-1)
-    when bunnies is even, total is 3 + bunnyEars2(bunnies-1)
+    when bunnies is odd, total is 2 + total ears of the next lower number
+    when bunnies is even, total is 3 + total ears of the next lower number
     return total
   
 Solution:
   return 0 if bunnies is 0
   if bunnies is even
     return 3 + bunnyEars2(bunnies-1)
-  if bunnies is odd
+  else if bunnies is odd
     return 2 + bunnyEars2(bunnies-1)
   
 Translated iterative definition of bunnyEars2(bunnies):
   total is 0
-  for each decreasing value of bunnies, from bunnies to 0, repeat the following:
+  repeat bunnies times the following:
     add 2 to the total for odd bunnies or
     add 3 to the total for even bunnies
+    decrement bunnies
   return total
 
 */
