@@ -8,8 +8,8 @@ triangle(2) → 3
 
 public int triangle(int rows) {
   /*
-    returns the number of blocks in a triangle of rows of blocks by adding
-    each row of blocks
+    returns the total number of blocks in a triangle of rows of blocks by 
+    repeatedly adding the rows of blocks to the total blocks of the next row
   */
  
  if (rows == 0){
@@ -21,14 +21,18 @@ public int triangle(int rows) {
 /*
 Translated description:
   triangle takes an int rows that represents a triangle of rows of blocks and 
-  returns an int as the total number of blocks, by repeatedly adding each row 
-  of blocks and by replacing rows with the next smaller number rows-1
-  
+  returns an int as the total number of blocks, by repeatedly adding the rows 
+  of blocks to the total blocks of the next row (rows-1)
+
 Intermediate translations:
-  - rows -> number of rows
-  - the bottom row -> has rows blocks
-  - the next row -> has rows-1 blocks
-  - the top row -> has 1 row
+  - base case
+    total is 0 when rows is 0
+  - next row
+    rows - 1
+  - total blocks of the next row
+    triangle(rows-1)
+  - adding the rows of blocks to the total blocks of the next row 
+    rows + triangle(rows-1)
   - a triangle of 3 rows looks like this
     []
    [][]
@@ -36,7 +40,7 @@ Intermediate translations:
   
 Translated recursive definition of triange(rows):
   total is 0 when rows is 0
-  total is rows + triange(rows-1)
+  total is rows + total blocks of the next row
   return total
   
 Solution:
@@ -45,8 +49,9 @@ Solution:
   
 Translated iterative definition of triangle(rows):
   total is 0
-  for each decreasing value of rows, from rows to 0, repeat the following:
+  repeat rows times the following:
     add rows to the total
+    decrement rows
   return total
   
   */
