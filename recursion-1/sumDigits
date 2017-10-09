@@ -7,8 +7,9 @@ sumDigits(12) → 3
 
 public int sumDigits(int n) {
   /*
-    returns the sum of the digits of of n, by adding the digits of n from right 
-    to left
+    returns the sum of the digits of of n, by repeatedly adding the rightmost 
+    digit to the sum of the remaining left digits
+    
       rightDigit + sumDigits(leftDigits)
   */
   if (n == 0){
@@ -22,17 +23,25 @@ public int sumDigits(int n) {
 /*
 Translated description:
   sumDigits takes an int n and returns an int as the sum of the digits of n, by
-  repeatedly adding the rightmost digit of n to the sum and by replacing n  with 
-  its remaining left digits
+  repeatedly adding the rightmost digit to the sum of the remaining left digits
   
 Intermediate translations:
+  - base case
+      0 when n is 0
   - n -> composed of 0 or more left digits and one right digit
-  - right digit of n -> n % 10
-  - number represented by left digits of n -> integer division of n by 10 -> n / 10
+      left digits and right digit
+  - right digit of n 
+      n % 10
+  - number represented by left digits of n 
+      integer division of n by 10 -> n / 10  
+  - sum of the remaining left digits
+      sumDigits(n / 10)
+  - adding the rightmost digit to the sum of the remaining left digits
+      n % 10 + sumDigits(n / 10)
 
 Translated recursive definition of sumDigits(n):
   sum is 0 when n is 0
-  sum is right digit + sumDigits of left digits
+  sum is right digit + sum of the remaining left digits
   returns sum
   
 Solution:
