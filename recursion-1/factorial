@@ -7,7 +7,8 @@ factorial(3) → 6
 
 public int factorial(int n) {
   /*
-    returns the factorial n * (n-1) * (n-2) ... 1
+    returns the factorial of n by repeatedly multiplying n with the 
+    factorial of the next lower value
   */
   
   if (n == 1){
@@ -19,14 +20,21 @@ public int factorial(int n) {
 /*
 Translation of description:
   factorial takes an int n and returns an int as the factorial value of n, by
-  repeatedly multiplying n to the factorial value and replacing n with n-1
+  repeatedly multiplying n with the factorial of the next lower value n-1
   
 Intermediate translations:
-  - factorial of n -> total multiplication of n, n-1, n-2, . . ., 1
+  - base case
+    factorial 1 when n is 1
+  - next lower value
+    n-1
+  - factorial of the next lower value
+    factorial(n-1)
+  - multiplying n with the factorial of the next lower value
+    n * factorial(n-1)
   
 Translated recursive definition of factorial(n):
   factorial is 1 when n is 1
-  factorial is n * factorial(n-1)
+  factorial is n * factorial of the next lower value
   returns factorial
   
 Solution:
@@ -35,7 +43,8 @@ Solution:
   
 Translated iterative definition of factorial(n):
   factorial is 1
-  for each decreasing value n from n to 1
+  repeat n times the following:
     replace factorial with n * factorial
+    decrement n
   return factorial
 */
