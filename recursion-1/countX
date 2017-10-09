@@ -7,52 +7,56 @@ countX("hi") → 0
 public int countX(String str) {
   /*
     returns the count of 'x' characters in the characters of str, by repeatedly
-    adding a 1 when the first character in str matches 'x' and by replacing 
-    str with the remaining substring
-      1 + countX(remaining)
+    adding a 1 to the count when the first character in str matches 'x' 
+    
+      1 + countX(str.substring(1))
   */
   
-  if (str.length() == 0){
+  if (str.equals("")){
     return 0;
   }
   
   char firstChar = str.charAt(0);
-  String remaining = "";
-  if (str.length() > 1 ){
-    remaining = str.substring(1);
-  }
-  
-  if (firstChar == 'x'){
-    return 1 + countX(remaining);
+ if (firstChar == 'x'){
+    return 1 + countX(str.substring(1));
   } else {
-    return countX(remaining);
+    return countX(str.substring(1));
   }
 }
 
 /*
 Translated description:
   countX takes a string str and returns an int as the count of lowercase 'x' 
-  characters in the characters of str, by repeatedly accessing the first character
-  in str and replacing str with the remaining substring of str
+  characters in the characters of str,  by repeatedly adding a 1 to the count 
+  of the remaining substring of str when the first character in str matches 'x'; 
+  otherwise nothing is added to the count of the remaining substring
   
 Intermediate translations:
+  - base case
+      0 when length of str is less than 2
+  - str is composed of two components:
+      first character + remaining characters
   - accessing the first character of str
      str.charAt(0)
   - the remaining substring of str
-      str.substring(1)  for length > 1
-      "" for length 1
-      
+      str.substring(1)  
+  - the count of the remaining substring
+      countX(str.substring(1))
+  - adding a 1 to the count of the remaining substring
+      1 + countX(str.substring(1))
+  - not adding a 1 to the count
+      countX(str.substring(1))
+
 Translated recursive definition of countX(str):
   count is 0 when str is ""
-  if first character is 'x' count is 1 + countX of remaining substring
-  else count is countX of remaining substring
+  if first character is 'x' count is 1 + count of the remaining substring 
+  else count is the count of the remaining substring 
   returns count
   
 Solution:
   return 0 if str is ""
-  remaining is "" for str length 1 or remaining is str.substring(1)
-  if str.charAt(0).equals('x'), return 1 + countX(remaining)
-  else return countX(remaining)
+  if str.charAt(0) is "x", return 1 + countX(str.substring(1))
+  else return countX(str.substring(1))
   
 Translated iterative definition of count8(n):
   count is 0
@@ -61,3 +65,4 @@ Translated iterative definition of count8(n):
     replace str with remaining substring
   return count
 */
+
