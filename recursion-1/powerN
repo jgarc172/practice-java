@@ -7,8 +7,8 @@ powerN(3, 3) → 27
 
 public int powerN(int base, int n) {
   /*
-    returns the n power of base, by repeatedly multiplying base by the next
-    smaller power of n-1
+    returns the n power of base, by repeatedly multiplying the base with the 
+    power of the next lower number
   */
   
   if (n == 0){
@@ -20,17 +20,25 @@ public int powerN(int base, int n) {
 /*
 Translated description:
   powerN takes an int base and and an int n, and returns an int as the n power 
-  of the base, by repeatedly multiplying base to the power of the next smaller
-  number n-1
+  of the base, by repeatedly multiplying the base with the power of the next 
+  lower number n-1
   
+Intermediate translations:
+  - base case
+    1 when n is 0
+  - next lower number
+    n-1 
+  - power of the next lower number
+      powerN(base, n-1)
+      
 Translated recursive definition of powerN(n):
   power is 1 when n is 0
-  power is base * powerN(base, n-1)
+  power is base * power of the next lower number
   returns power
   
 Solution:
   return 1 if n is 0
-  return base * powerN(power, n-1)
+  return base * powerN(base, n-1)
   
 Translated iterative definition of count8(n):
   power is 1
