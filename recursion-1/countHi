@@ -6,55 +6,67 @@ countHi("hi") → 1
 
 public int countHi(String str) {
   /*
-    returns the count of "hi" in str, by repeatedly adding a 1 to the count
-    when "hi" matches the the first two characters of str and by replacing str
-    with the remaining characters after the first character
-      1 + countHi(remaining)
+    returns the count of "hi" in str, by repeatedly adding a 1 to the count of 
+    the remaining substring of str when "hi" matches the the first two characters 
+    of str 
+    
+      1 + countHi(str.substring(2))
     */
   if (str.length() < 2){
     return 0;
   }
   String firstTwo = str.substring(0,2);
-  String remaining = "";
-  if (str.length() > 2){
-    remaining = str.substring(1);
-  }
   if (firstTwo.equals("hi")){
-    return 1 + countHi(remaining);
+    return 1 + countHi(str.substring(2));
   }
-  return countHi(remaining);
+  return countHi(str.substring(1));
 }
 
 /*
 Translated description:
-  countHi takes a string str and returns an int as the count of "hi" in str, by
-  repeatedly comparing the front two characters with "hi" and by replacing str
-  with the remaining substring of str without the first character
+  countHi takes a string str and returns an int as the count of "hi" in str, 
+  by repeatedly adding a 1 to the count of the remaining substring of str when 
+  "hi" matches the the first two characters of str; otherwise nothing is added 
+  to the count of the remaining substring
   
 Intermediate translations:
+  - base case
+      0 when length of str is less than 2
+  - str is composed of two components in two differen ways
+    when "hi" is in the front
+      "hi" + remaining characters
+    when "hi" is not in the front
+      first character + remaining characters
   - accessing the first two characters of str
      str.substring(0, 2)
   - the remaining substring of str
-      str.substring(1)  for length > 2
-      "" for length <= 2
+      str.substring(1) when "hi" is not present at front
+      str.substring(2) when "hi" is present at front
+  - the count of the remaining substring of str
+      countHi(str.substring(1)) when "hi" is not present at front
+      countHi(str.substring(2)) when "hi" is present at front
+  - adding a 1 to the count of the next index
+      1 + countHi(str.substring(2))
+  - nothing is added to the count of the next index
+      countHi(str.substring(1))
       
 Translated recursive definition of countHi(str):
   count is 0 when length of str is < 2
-  if front two is 'hi' count is 1 + countHi of remaining substring
-  else count is countHi of remaining substring
+  if front two is 'hi' count is 1 + count of the remaining substring of str
+  else count is count of the remaining substring of str
   returns count
   
 Solution:
   return 0 if length of str is < 2
-  remaining is "" for str length <= 2 or remaining is str.substring(2)
-  if str.substring(0,2).equals('hi'), return 1 + countX(remaining)
-  else return countX(remaining)
+  if str.substring(0,2).equals('hi'), return 1 + countHi(str.substring(2))
+  else return countHi(str.substring(1))
   
-Translated iterative definition of count8(n):
+Translated iterative definition of countHi(n):
   count is 0
   while str is not ""
     if front two are 'hi', increment count
     replace str with remaining substring
   return count
 */
+
 
