@@ -1,0 +1,70 @@
+Given a string, compute recursively (no loops) a new string where all appearances of "pi" have been replaced by "3.14".
+
+changePi("xpix") → "x3.14x"
+changePi("pipi") → "3.143.14"
+changePi("pip") → "3.14p"
+
+public String changePi(String str) {
+  /*
+    returns a new string, by repleatedly copying the first character in str to 
+    the new string of the remaining substring of str, except when the first 
+    two characters are "pi" add "3.14" instead 
+      
+      str.charAt(0) + changePi(str.substring(1))
+        or
+      "3.14" + changePi(str.substring(2))
+  */
+  
+  if (str.length() < 2){
+    return str;
+  }
+  String firstTwo = str.substring(0,2);
+  if (firstTwo.equals("pi")){
+    return "3.14" + changePi(str.substring(2));
+  }
+  return str.charAt(0) + changePi(str.substring(1));
+}
+
+/*
+Translated description:
+  changePi takes a string str and returns a new string, by repleatedly copying
+  the first character in str to the new string of the remaining substring of str, 
+  except when the first two characters are "pi" add "3.14" instead
+  
+Intermediate translations:
+  - base case
+    new string is "" when str is ""
+  - a new string can be created by the concatenation operator (+)
+  - str is composed of two components:
+      first character + remaining substring of str
+  - accessing the first character of str
+     str.charAt(0)
+  - the remaining substring of str
+      str.substring(1)  when there is no "pi" or
+      str.substring(2) when it matches "pi"  
+  - the new string of the remaining substring of str
+      changePi(str.substring(1))
+  - copying the first character to the new string
+      str.charAt(0) + changePi(str.substring(1))
+  - adding "3.14" to the remaining substring
+      "3.14" + changePi(str.substring(1)) 
+      
+Translated recursive definition of changePi(str):
+  new string is str when length of str is < 2
+  if first two characters are 'pi' new string is '3.14' + changePi of remaining substring
+  else new string is first two characters + changeXY of remaining substring
+  returns new string
+  
+Solution:
+  return str if length of str is < 2
+  if first two chars are "pi", return '3.14' + changePi(str.substring(2))
+  else return str.charAt(0) + changePi(str.substring(1))
+  
+Translated iterative definition of changePy(str):
+  new string is ""
+  while str is not ""
+    if first two chars is 'pi', add '3.14' to new string
+    else, add first character to new string
+    replace str with remaining substring
+  return new string
+*/
