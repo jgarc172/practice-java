@@ -10,10 +10,12 @@ public String allStar(String str) {
     the character "*" to the new string of the remaining substring of str, 
     except for the last character
   */
+
   if (str.length() <= 1){
     return str;
   }
   return str.charAt(0) + "*" + allStar(str.substring(1));
+
 }
 
 /*
@@ -46,10 +48,10 @@ Solution:
   return str if str.length() <= 1
   return str.charAt(0) + "*" + allStar(str.substring(1)
   
-Translated iterative definition of allStar(nums, index):
+Translated iterative definition of allStar(nums):
   new string is ""
-  while str is not ""
-    if str length is > 1
-      add first character and "*" to new string
+  for each character at index i, from 0 to str.lengt()-2
+    add character and "*" to right of new string 
+  add the last character to right of new string
   return new string
 */
