@@ -1,10 +1,16 @@
+description:
+We'll say that a value is "everywhere" in an array if for every pair of adjacent elements 
+in the array, at least one of the pair is that value. Return true if the given value is 
+everywhere in the array.
+
 public boolean isEverywhere(int[] nums, int val) {
   /*
-    Return true if the given value is everywhere in the array
+    Return true if the given value is in every pair in the array
+    return false if for any one pair, none of the elements is the given value
   */
   
   for (int i=0; i <= nums.length - 2; i++){
-    if (!(val == nums[i] || val == nums[i+1]) ){
+    if ((nums[i] != val && nums[i+1] != val) ){
       return false;
     }
   }
@@ -12,41 +18,24 @@ public boolean isEverywhere(int[] nums, int val) {
 }
 
 /*
-Solution from function name:
-  isEverywhere is boolean
-  with parameters, then
-    true if val isEverywhere in array nums
-    
-Solution from description:
-  Return true if the given value is everywhere in the array
-  
-Given:
-  int array nums and int val
-  
-Restrictions:
-  if for every pair of adjacent elements in the array, 
-    at least one of the pair is that value
-    
-Solution without restrictions:
-  the test will be on every element
-  assume isThere is true
-  for every element in array
-     if the given value doesn't match the element, then isThere is false, break
-     
-Solution with restrictions:
-  the test will be on every possible pair
-  assume isThere is true
-  for every pair in array
-     if the given value doesn't match any element in pair, then isThere is false, break
+Improved description:
+  given an int array nums and an int val, return true if the given value 
+  is in every pair in the array
   
 Intermediate translations:
-  iterating an array visits element from index, i, 0 to the last element
-  to visit pairs in array:
-    for each index, a pair is two elements at indexes i and i+1
-    to fit the last pair, the index i has to be 1 less than the last index
-  the given value matches the element -> val == nums[i] is true
-  the given value matches any element in pair -> true when val == nums[i] and nums[i+1]
+  - a pair -> nums[i] and nums[i+1]
+  - every pair -> must test all the pairs for condition to be true
+    can test for false and stop when the first pair fails
+  - test fails when val is not in any of the pair elements
+  - when testing pairs of elements, the for loop must stop at nums.length - 2
+
+Solution:
+  return true if every pair of values in nums has an element with value val
+  or return false if one pair doesn't contain val in its elements
   
-Hints:
-  for these kinds of tests, it is better to assume true and then test for false
+Translated solution:
+  for each pair of elements from index i to nums.length-2
+    return false if nums[i] is not val && nums[i+1] is not val
+  return true
+
 */

@@ -1,11 +1,13 @@
+Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive.
+
+sameEnds([5, 6, 45, 99, 13, 5, 6], 1) → false
+sameEnds([5, 6, 45, 99, 13, 5, 6], 2) → true
+sameEnds([5, 6, 45, 99, 13, 5, 6], 3) → false
+
 public boolean sameEnds(int[] nums, int len) {
   /*
-  Solution:
-    Return true if ends are the same
-
-    two groups: start and end
-    star begins at 0 and ends at len
-    end begins at nums.length - len and ends at nums.length - 1
+  return true if the group of len numbers at the start of nums is the same as 
+    the group of len numbers at the end of nums
   */
   
   for(int i=0; i<= len-1; i++){
@@ -18,55 +20,35 @@ public boolean sameEnds(int[] nums, int len) {
 }
 
 /*
-Solution from function signature:
-  sameEnds is boolean
-  given an int array nums and and int len, return true or false
-  
-Interpretation:
-  sameEnds is true if array has same ends of length len
-  but don't know orientation of ends.  examples given assume same orientation
-  
-Solution from description:
-  return true
-  otherwise return false
-  
-Given:
-  - an int array nums, and an int len
-  - assume len is in the range 0..nums.length inclusive
-  
-Restrictions:
-  - true if the group of len numbers at the start and end of the array are the same
-  - false if groups are not the same
-  
-Immediate translations:
-  - visualize an array nums and two groups of elements at both ends 
-    -> one array; two subarrays
-
-  - group of len numbers at the start and end of the array
-    for len 0 -> there are no elements in each group
-    for len 1 -> 0 and length-1
-    for len 2 -> 0,1  and length-2,length-1
-    etc.
-    pattern of corresponding elements for len 2:
-      0 -> length - 2
-      1 -> length - 1
-      i -> length - len + i
-    an element in the start group at index i corresponds to an index length-len+i
-      at end group
-    Summary:
-      start group starts at 0, ends at len-1
-      end group starts at nums.length-len, ends at nums.length-1
-      
+Translated description:
+  sameEnds takes an int array nums and an int len and returns a boolean
+  true:
+    if the group of len numbers at the start of nums is the same as the group of 
+    len numbers at the end of nums
+  false:
+    if any two corresponding elements in the groups are not the same
+    
+Intermediate translations:
+  1. two groups -> two slices of nums
+    start:
+      from index 0 to len - 1
+    end:
+      from index nums.length - len to nums.length-1
+  2. corresponding indexes:
+    start:
+      index i
+    end
+    index nums.length - len + i
+  corresponding elements:
+    start:
+      nums[i]
+    end:
+      nums[nums.length - len + i]
 
 Solution:
-  based on len, calculate the start group
-  for each element in start group
-    compare the element with the corresponding element in the end group
-    if the elements are not the same return false
-  otherwise return true;
-
-  
-  
-  
-
+  for each element at the start of nums using index i from 0 to len-1
+    return false if the element is not the same as its corresponding element
+          at the end of nums
+  return true
+      
 */

@@ -1,41 +1,45 @@
+Return an array that is "left shifted" by one -- so {6, 2, 5, 3} returns {2, 5, 3, 6}. You may modify and return the given array, or return a new array.
+
+shiftLeft([6, 2, 5, 3]) → [2, 5, 3, 6]
+shiftLeft([1, 2]) → [2, 1]
+shiftLeft([1]) → [1]
+
 public int[] shiftLeft(int[] nums) {
-  // solution from description:
-  // Return an array that is "left shifted" by one
-  
-  // improved description or translation to pseudocode or code:
-  // based on the circular example, the last element is to the left of the first element
-  // Given array of integers -> int[] nums
-  // length of nums -> length = nums.length
-  // index i from 0 to lenght - 1
-  // left shift -> value from right element is assigned to left element
-  // one way -> nums[i] = nums[i+1]
-  // second way -> nums[i-1] = nums[i]
-  // special case pair: nums[length - 1] and nums[0]
-  // left shift is nums[length-1] = nums[0]
-  
-  // special iteration of the index and the pairs involved:
-  // example, length is 4, index i is from 0 to 3
-  // pairs for left shifting: 0 and 1, 1 and 2, 2 and 3, 3 and 0 (not 4)
-  // the last special pair should be done outside of the loop
-  // also the value at index 0 should be temporarily saved
-  
-  // solution:
-  // if array is empty, return the array without shifting
-  // save the firs element
-  // iterate through all the pairs, except the special pair last,first
-  // shift the special pair
-  // return the modified array
-  
-  int length = nums.length;
-  if (length == 0){
+  /*
+    return a modified nums array with the numbers shifted to the left
+       the left of the first element is the last element
+  */
+
+  if (nums.length < 2){
     return nums;
   }
-  int i = 0;
   int temp = nums[0];
-  while (i < length - 1){
+  for (int i=0; i<= nums.length-2; i++){
     nums[i] = nums[i + 1];
-    i++;
   }
-  nums[length - 1] = temp;
+  nums[nums.length - 1] = temp;
   return nums;
 }
+
+/*
+Translated description:
+  shiftLeft takes an int array nums and returns a new int array or modified nums
+  array where each element's value is the value from the next element
+
+Intermediate translation using a new int array newArr:
+  1. newArr will be the same length as of num
+  2. the default values in newArr will be 0
+  3. the values from nums will be copied to newArr as follows:
+     for an index i=0 to nums.length-2
+       newArr[i] = nums[i+1]
+  4. the last element in newArr will be the value of the first element of nums
+  
+Intermediate translation modifying nums:
+  - if the length of nums < 2, return nums
+  1. assign the first element to a temp variable
+  2. for an index i=0 to nums.length-2
+       nums[i] = nums[i+1]
+  3. the last element is assigned the value in temp
+  
+*/
+

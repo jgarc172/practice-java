@@ -1,3 +1,9 @@
+Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
+
+haveThree([3, 1, 3, 1, 3]) → true
+haveThree([3, 1, 3, 3]) → false
+haveThree([3, 4, 3, 3, 4]) → false
+
 public boolean haveThree(int[] nums) {
   /*
     return true if the value 3 appears in the array exactly 3 times, 
@@ -19,43 +25,22 @@ public boolean haveThree(int[] nums) {
 }
 
 /*
-Solution from function definition:
-  haveThree takes an int array and return a  boolean
+Translated description:
+  haveThree takes an int array and returns a boolean
   
-Given:
-  an array of ints nums
-  
-Translations:
-  there is a property in the array nums that makes it true; otherwise false
-  
-Solution from description without constraints:
-  return false 
-  
-Restrictions:
-  1. true if the value 3 appears in the array exactly 3 times
-  2. no 3s are next to each other
-  3. false otherwise
+  true: there are exactly three elements that are 3 and
+        there are no pair of elements that are 3
+  false: otherwise
   
 Intermediate translations:
-  1. use a counter to count the appearances of 3
-     iterate the array one element at a time to test the condition
-     i=0 to length-1
-  2. iterate the array two elements at a time to test the condition
-     i=0 to length-2
+  1. access all the elements from index 0 to length-1 to test if a value is 3
+  2. access pairs of elements from index 0 to length-2 to test if 3s are next
+     to each other
+  3. use a counter to count the appearances of 3
   1 and 2
     last element cannot be reached by the iteration 2, this is a special case
 
-Enhanced translations:
-  1a. value 3 appears -> nums[i] == 3
-  1b. value appears 3 times -> increment a count when value 3 appears
-  2a. values next to each other -> values nums[i] and nums[i+1]
-  2b. no 3s are next to each other -> true when nums[i] is 3 and nums[i+1] is not 3
-
-Solution from description:
-  return true if the value 3 appears in the array exactly 3 times, 
-    and no 3's are next to each other
-
-Translated Solution:
+Solution:
   count3 is 0
   for each pair of elements in array from i=0 to last index (length - 2)
     increment count3 if nums[i] is 3 and nums[i+1] is not 3

@@ -1,0 +1,50 @@
+Given n of 1 or more, return the factorial of n, which is n * (n-1) * (n-2) ... 1. Compute the result recursively 
+(without loops).
+
+factorial(1) → 1
+factorial(2) → 2
+factorial(3) → 6
+
+public int factorial(int n) {
+  /*
+    returns the factorial of n by repeatedly multiplying n with the 
+    factorial of the next lower value
+  */
+  
+  if (n == 1){
+    return 1;
+  }
+  return n * factorial(n-1);
+}
+
+/*
+Translation of description:
+  factorial takes an int n and returns an int as the factorial value of n, by
+  repeatedly multiplying n with the factorial of the next lower value n-1
+  
+Intermediate translations:
+  - base case
+    factorial 1 when n is 1
+  - next lower value
+    n-1
+  - factorial of the next lower value
+    factorial(n-1)
+  - multiplying n with the factorial of the next lower value
+    n * factorial(n-1)
+  
+Translated recursive definition of factorial(n):
+  factorial is 1 when n is 1
+  factorial is n * factorial of the next lower value
+  returns factorial
+  
+Solution:
+  return 1 if n is 1
+  else return n * factorial(n-1)
+  
+Translated iterative definition of factorial(n):
+  factorial is 1
+  repeat n times the following:
+    replace factorial with n * factorial
+    decrement n
+  return factorial
+*/

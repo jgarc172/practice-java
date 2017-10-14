@@ -1,0 +1,71 @@
+Given a string, compute recursively a new string where all the 'x' chars have been removed.
+
+noX("xaxb") → "ab"
+noX("abc") → "abc"
+noX("xx") → ""
+
+public String noX(String str) {
+  /*
+    returns a new string, by repleatedly copying the first character in str 
+    to the new string of the remaining substring of str,   except when the 
+    first character is 'x' nothing is copied
+    
+      firstChar + noX(str.substring(1))
+        or
+      noX(str.substring(1))
+  */
+  
+  if (str.equals("")){
+    return "";
+  }
+  
+  char firstChar = str.charAt(0);
+  if (firstChar == 'x'){
+    return noX(str.substring(1));
+  } else {
+    return firstChar + noX(str.substring(1));
+  }
+}
+
+/*
+Translated description:
+  noX takes a string str and returns a new string, by repleatedly copying
+  the first character in str to the new string of the remaining substring of str, 
+  except when the first character is 'x' nothing is copied
+  
+Intermediate translations:
+  - base case
+    new string is "" when str is ""
+  - a new string can be created by the concatenation operator (+)
+  - str is composed of two components:
+      first character + remaining substring of str
+  - accessing the first character of str
+     str.charAt(0)
+  - the remaining substring of str
+      str.substring(1)  when there is no "pi" or
+      str.substring(2) when it matches "pi"  
+  - the new string of the remaining substring of str
+      noX(str.substring(1))
+  - copying the first character to the new string
+      str.charAt(0) + noX(str.substring(1)) 
+  - nothing is copied to the remaining substring
+      noX(str.substring(1)) 
+      
+Translated recursive definition of noX(str):
+  new string is "" when str is ""
+  if first character is 'x' new string is noX of remaining substring
+  else new string is first character + noX of remaining substring
+  returns new string
+  
+Solution:
+  return "" if str is ""
+  if str.charAt(0) is "x", return noX(str.substring(1))
+  else return str.charAt(0) + countX(str.substring(1))
+  
+Translated iterative definition of noX(n):
+  new string is ""
+  while str is not ""
+    if first character is not 'x', add first character to new string
+    replace str with remaining substring
+  return new string
+*/

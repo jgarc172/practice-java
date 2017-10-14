@@ -1,42 +1,51 @@
+Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros 
+are grouped at the start of the array. The order of the non-zero numbers does not matter. 
+So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
+
+zeroFront([1, 0, 0, 1]) → [0, 0, 1, 1]
+zeroFront([0, 1, 1, 0, 1]) → [0, 0, 1, 1, 1]
+zeroFront([1, 0]) → [0, 1]
+
 public int[] zeroFront(int[] nums) {
-  // solution from description:
-  // Return an array that contains the exact same numbers as the given array, 
-  // but rearranged so that all the zeros are grouped at the start of the array
-  
-  // improved description:
-  // Given array nums -> int[] nums
-  // length of array is unknown
-  // indexes are not important
-  // ends of array are important: front and back
-  // values are important: zero and non-zero
-  // values that are 0 -> nums[i] == 0
-  // two sets of values are mixed
-  // sets must be separated
-  
-  // solution 1: use a separate empty array
-  // create an array result with the same length as nums -> int[] result
-  // identify the front of result with an index front
-  // identify the back of result with an index back
-  // iterate through the nums array by incrementing index i
-  // if the element is zero move it to the front -> result[front] = nums[i]
-  // increment front
-  // if the element is not zero move it to the back -> result[back] = nums[i]
-  // decrement back
-  
-  int length = nums.length;
-  int[] result = new int[length];
-  int front = 0;
-  int back = length - 1;
-  for (int i=0; i < length; i++){
-    int element = nums[i];
-    if (element == 0){
-      result[front] = element;
-      front++;
-    } else {
-      result[back] = element;
-      back--;
-    }
-  }
-  
-  return result;
+
+/*  
+  modifies given array by swapping all the 0s to the front
+*/
+
+ for (int i=0; i <= nums.length - 1; i++){
+   // start at the front looking for non 0 elements
+   if (nums[i] != 0){
+     // find next 0
+     for (int j=i+1; j <= nums.length - 1; j++){
+       if (nums[j] == 0){
+         // swap by moving the 0 to the front
+         int temp = nums[j];
+         nums[j] = nums[i];
+         nums[i] = temp;
+       }
+     }
+   }
+ }
+ return nums;
 }
+
+/*
+Translation of description:
+  zeroFront takes an int array nums, modifies it and returns it by swapping
+  all the zeros to the front and the non zeros to the back in no order
+  
+Intermediate translation:
+  - for each element in nums, it repeats the following:
+  1. identifies the location of the next element in the front that is not 0
+     nums[i] != 0
+  2. then it finds the location of the next 0
+     nums[next0] == 0
+  3. it swaps the values at those two locations
+     nums[i] == 0 and nums[next0] == number not 0
+  
+Solution:
+  for each element in nums from index i=0 to nums.length-1
+    if element is not 0, then
+      finds the index of the next 0
+      swaps the values at those two locations
+*/

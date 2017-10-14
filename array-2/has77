@@ -1,18 +1,21 @@
+Given an array of ints, return true if the array contains two 7's next to each other, or there are two 7's separated by one element, such as with {7, 1, 7}.
+
+has77([1, 7, 7]) → true
+has77([1, 7, 1, 7]) → true
+has77([1, 7, 1, 1, 7]) → false
+
 public boolean has77(int[] nums) {
   /*
    return true if the array contains two 7's next to each other, 
     or there are two 7's separated by one element
   */
-  int lastIndex = nums.length - 2;
+  
+  int lastIndex = nums.length - 3;
   for (int i=0; i <= lastIndex; i++){
-    if (nums[i] == 7){
-      if (nums[i+1] == 7){
-        return true;
-      } else if (i < lastIndex){
-        if (nums[i+2] == 7){
-          return true;
-        }
-      }
+    if (nums[i] == 7 && nums[i+1] == 7  ||
+        nums[i+1] == 7 && nums[i+2] == 7 ||
+        nums[i] == 7 && nums[i+2] == 7){
+      return true;
     }
   }
   
@@ -21,36 +24,26 @@ public boolean has77(int[] nums) {
 
 /*
 Solution from function name:
-  has77 is boolean
-    true if it has 77
+  has77 is given an int array and returns a boolean
     
-Solution from description:
-  return true if the array contains two 7's next to each other, 
-    or there are two 7's separated by one element
-    
-Given:
-  array of ints nums
-  
-Intermediate translations:
-  array contains an element -> check each element in array and inspect its value
-  array contains two elements -> check a pair of elements at a time
-  contains two 7s next to each other -> nums[i] == 7 and nums[i+1] == 7
-  contains two 7's separated by one element
-    -> nums[i] == 7, nums[i+2] == 7
-    
-Arrays and slices:
-  an array is a slice of the whole array, from index 0 to the last index
-  a shorter slice can be shorter and can start from 0 and end at or before the last index
-  an example of a slice is when looking at pairs of values
-  in this problem, we look at two or three elements at a time
-  the slice is then between index i and i+2 but on the last pair don't look at i+2
-  
-Solution:
-  for each pair or triple of elements in the array (0 to length - 2)
-    return true if it matches the following cases:
-      nums[i] is 7, if nums[i+1] is 7 return true, 
-        else if i < length-2 return true if nums[i+2]  == 7
+Translated description:
+  return true if, for any three contiguous elements in the array, there are
+    two 7's next to each other or there are two 7's separated by one element
     
 
+Intermediate translations:
+  - access three elements at a time to test for conditions, from index 0
+    to nums.length - 3
+  - contains two 7s next to each other -> 
+    nums[i] == 7 and nums[i+1] == 7 or nums[i+1] == 7 and nums[i+2] == 7
+  - contains two 7's separated by one element -> nums[i] == 7 and nums[i+2] == 7
+
+Solution:
+  for each pair or triple of elements in the array (0 to length - 3)
+    return true if it matches the following cases:
+      nums[i] is 7 and nums[i+1] is 7 or 
+      nums[i+1] is 7 and nums[i+2] is 7 or
+      nums[i] == 7 and nums[i+2] == 7
+  return false
   
 */

@@ -1,0 +1,68 @@
+Given a string, compute recursively (no loops) a new string where all the lowercase 'x' chars have been changed to 'y' chars.
+
+changeXY("codex") → "codey"
+changeXY("xxhixx") → "yyhiyy"
+changeXY("xhixhix") → "yhiyhiy"
+
+public String changeXY(String str) {
+  /*
+    returns a new string, by repleatedly copying the first character in str to
+    the new string of the remaining substring of str, except when the character 
+    is 'x' add 'y' instead 
+    
+      firstChar + changeXY(str.substring(1))
+        or
+      'y' + changeXY(str.substring(1))
+  */
+  if (str.length() == 0){
+    return "";
+  }
+  char firstChar = str.charAt(0);
+  if (firstChar == 'x'){
+    return 'y' + changeXY(str.substring(1));
+  }
+  return firstChar + changeXY(str.substring(1));
+}
+
+/*
+Translated description:
+  changeXY takes a string str and returns a new string, by repleatedly copying to
+  the first character in str the new string of the remaining substring of str, 
+  except when the character is 'x' add 'y' instead
+  
+Intermediate translations:
+  - base case
+    new string is "" when str is ""
+  - a new string can be created by the concatenation operator (+)
+  - str is composed of two components:
+      first character + remaining substring of str
+  - accessing the first character of str
+     str.charAt(0)
+  - the remaining substring of str
+      str.substring(1)  
+  - the new string of the remaining substring of str
+      changeXY(str.substring(1))
+  - copying the first character to the new string
+      str.charAt(0) + changeXY(str.substring(1)) 
+  - adding 'y' to the new string
+      'y' + changeXY(str.substring(1)) 
+  
+Translated recursive definition of changeXY(str):
+  new string is "" when length of str is < 1
+  if first character is 'x' new string is 'y' + changeXY of remaining substring
+  else new string is first character + changeXY of remaining substring
+  returns new string
+  
+Solution:
+  return "" if length of str is < 1
+  if str.charAt(0) is 'x', return 'y' + changeXY(str.substring(1))
+  else return str.charAt(0) + changeXY(str.substring(1))
+  
+Translated iterative definition of changeXY(str):
+  new string is ""
+  while str is not ""
+    if first character is 'x', add 'y' to new string
+    else, add first character to new string
+    replace str with remaining substring
+  return new string
+*/

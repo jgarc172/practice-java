@@ -1,0 +1,57 @@
+We have triangle made of blocks. The topmost row has 1 block, the next row down has 2 blocks, the next row has 3 blocks, and 
+so on. Compute recursively (no loops or multiplication) the total number of blocks in such a triangle with the given number 
+of rows.
+
+triangle(0) → 0
+triangle(1) → 1
+triangle(2) → 3
+
+public int triangle(int rows) {
+  /*
+    returns the total number of blocks in a triangle of rows of blocks by 
+    repeatedly adding the rows of blocks to the total blocks of the next row
+  */
+ 
+ if (rows == 0){
+   return 0;
+ }
+ return rows + triangle(rows-1); 
+}
+
+/*
+Translated description:
+  triangle takes an int rows that represents a triangle of rows of blocks and 
+  returns an int as the total number of blocks, by repeatedly adding the rows 
+  of blocks to the total blocks of the next row (rows-1)
+
+Intermediate translations:
+  - base case
+    total is 0 when rows is 0
+  - next row
+    rows - 1
+  - total blocks of the next row
+    triangle(rows-1)
+  - adding the rows of blocks to the total blocks of the next row 
+    rows + triangle(rows-1)
+  - a triangle of 3 rows looks like this
+    []
+   [][]
+  [][][]
+  
+Translated recursive definition of triange(rows):
+  total is 0 when rows is 0
+  total is rows + total blocks of the next row
+  return total
+  
+Solution:
+  return 0 if rows is 0
+  return rows + triangle(rows-1)
+  
+Translated iterative definition of triangle(rows):
+  total is 0
+  repeat rows times the following:
+    add rows to the total
+    decrement rows
+  return total
+  
+  */

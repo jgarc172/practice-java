@@ -1,3 +1,9 @@
+Given an array of ints, return true if the array contains either 3 even or 3 odd values all next to each other.
+
+modThree([2, 1, 3, 5]) → true
+modThree([2, 1, 2, 5]) → false
+modThree([2, 4, 2, 5]) → true
+
 public boolean modThree(int[] nums) {
   /*
     return true if the array contains either 3 even or 3 odd values 
@@ -34,42 +40,35 @@ public boolean modThree(int[] nums) {
 }
 
 /*
-Solution from function name:
-  modThree is boolean
+Translated description:
+  modThree takes an int array and returns a boolean
   
-Solution from description:
-  return true if . . .
-  else return false
-  
-Given:
-  an array of ints nums
-  
-Constraints:
-  true if the array contains either 3 even or 3 odd values all next to each other
+  true: when three adjacent elements are all even or all odd
+  false; otherwise
   
 Intermediate translations:
-  array contains -> read the values in the array
-  read a value -> nums[i] where i is 0 to end of array
-  contains even -> nums[i] is even -> nums[i] % 2 == 0
-  contains odd -> not even -> nums[i] % 2 != 0
-  contains three even next to each other -> nums[i], nums[i+1], nums[i+2] are even
-  same for three odd
-  
+  - access three element in the array at a time using index i
+  - this could be done in a nested loop of three elements using index j
+  - an element is even -> nums[i+j] % 2 == 0
+  - an element is odd -> nums[i+j] % 2 != 0
+  - increment counts odd and even
+  - test for odd is 3 or even is 3
+
 Array and subarray (slice, group):
-  nums array starts at index 0 to length - 1
-  group of three elements -> at index i, i+1, i+2
-  read three elements at a time:
-    start at index 0 and 
-    stop 2 elements before the last element -> length - 3
-  
+  outer loop of nums array starts at index 0 to length - 3
+  inner loop of group of three elements at index j = i, i+1, i+2
+
 Solution:
-  for each group of 3 elements in the array from 0 to length - 3
-     if 3 elements are even has3even is true, 
-     if 3 element are odd, has3odd is true
+  initialize counters even and odd to 0
+  initiliaze booleans has3even and has3odd to false
+  for each group of 3 elements in the array from i = 0 to length - 3
+    for each element in group
+      if element is even increment even
+      if element is odd increment odd
+    if even is 3, has3even is true, 
+    if odd is 3, has3odd is true
   return true if has3even or has3odd
   
-Intermediate translations of solution:
-  in the array from 0 to length - 3 -> outer loop 
-  for each group of 3 -> inner loop
+
   
 */

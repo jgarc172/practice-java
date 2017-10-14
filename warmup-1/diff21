@@ -1,36 +1,32 @@
+Given an int n, return the absolute difference between n and 21, except return double the absolute difference if n is over 21.
+
+diff21(19) → 2
+diff21(10) → 11
+diff21(21) → 0
+
 public int diff21(int n) {
-  // solution from description:
-  // return the absolute difference between n and 21
-  // except return double the absolute difference if n is over 21
-  
-
-  // improved description:
-  // return the absolute difference between n and 21 if n is equal or less than 21
-  // or
-  // return double the absolute difference if n is over 21
-  
-  // definitions:
-  // absolute difference -> positive value of the difference between two numbers
-  // if a > b then the positive difference is a - b
-  // if a < b then the positive difference is b - a
-
-  // translation:
-  // n is equal or less than 21 -> n <= 21
-  // positive difference -> 21 - n
-  // n is over 21 -> n > 21
-  // positive difference -> n - 21
-  // double the difference -> 2 * (n - 21)
-  
-  // solution:
-  // if n <= 21, then return the difference (21 - n)
-  // if n > 21, then return double the difference (n - 21)
-  
-  int difference = 0;
-  if (n <= 21){
-    difference = 21 - n;
-  }
+  /*
+    returns the absolute difference between n and 21 or 
+    returns double the absolute difference if n is over 21
+  */
+  int difference = Math.abs(n - 21);
   if (n > 21){
-    difference = 2 * (n -21);
+    difference = 2 * difference;
   }
   return difference;
 }
+
+/*
+Translated description:
+  diff21 takes an int n and returns the absolute difference between n and 21 or
+  returns double the absolute difference if n is over 21
+  
+Intermediate translations:
+  absolute difference of n and 21 -> Math.abs(n - 21)
+  
+Solution:
+  difference is Math.abs(n - 21)
+  if n is greater than 21
+    replace difference with 2 * difference
+  return difference
+*/

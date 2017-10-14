@@ -1,3 +1,9 @@
+Return true if the array contains, somewhere, three increasing adjacent numbers like .... 4, 5, 6, ... or 23, 24, 25.
+
+tripleUp([1, 4, 5, 6, 2]) → true
+tripleUp([1, 2, 3]) → true
+tripleUp([1, 2, 4]) → false
+
 public boolean tripleUp(int[] nums) {
   
   /*
@@ -6,7 +12,7 @@ public boolean tripleUp(int[] nums) {
   
   int lastIndex = nums.length - 3;
   for (int i=0; i <= lastIndex; i++){
-    if (nums[i+1] == nums[i]+1 && nums[i+2] == nums[i]+2){
+    if (nums[i+1] == nums[i]+1 && nums[i+2] == nums[i+1]+1){
       return true;
     }
   }
@@ -14,38 +20,25 @@ public boolean tripleUp(int[] nums) {
 }
 
 /*
-Solution from function definition:
-  tripleUp is true or false based on the array nums
+Translated description:
+  tripleUp takes an int array nums and returns a boolean
   
-Solution from description:
-  Return true
-  otherwise false
+  true:
+    if there are any three adjacent numbers in nums in increasing numbers
+  false:
+    otherwise
 
-Given:
-  an int array nums
-  
-Restrictions:
-  - true if array contains three increasing adjacent numbers
 
 Intermediate translations:
-  - adjacent numbers -> nums[i], nums[i+1], nums[i+2]
-  - increasing values -> nums[i+1] == nums[i] + 1 && nums[i+2] == nums[i] + 2
+  - three adjacent numbers -> numbers in positions i, i+1, i+2
+  - increasing numbers -> each next number is 1 more than the previous number
+    nums[i+1] == nums[i] + 1 && nums[i+2] == nums[i+1] + 1
+  - access all three adjacent elements using an index form 0 to nums.length-3
   
-Arrays and sub-arrays (slices)
-  - the nums array has nums.length elements
-  - adjacent values is a slice of 3 elements
-  when looping (iterating) the array nums, each iteration takes three elements
-  the last iteration should stop 2 elements before the last element
-  
-Solution without restriction:
-  return false;
-  
-Solution with restriction:
-  default solution is false
-  for each element in nums (except last two)
-    compare the element with the next two elements
-    if the three elements are increasing
+Solution:
+  for each triple elements in nums from index 0 to nums.length-3
+    if each next element is 1 more than the previous element
       return true
-  otherwise return the default false
+  otherwise return false
 
 */

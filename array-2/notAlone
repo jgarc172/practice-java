@@ -1,8 +1,16 @@
+We'll say that an element in an array is "alone" if there are values before and after it, and 
+those values are different from it. Return a version of the given array where every instance of the given value 
+which is alone is replaced by whichever value to its left or right is larger.
+
+notAlone([1, 2, 3], 2) → [1, 3, 3]
+notAlone([1, 2, 3, 2, 5, 2], 2) → [1, 3, 3, 5, 5, 2]
+notAlone([3, 4], 3) → [3, 4]
+
 public int[] notAlone(int[] nums, int val) {
  /*
  Solution:
   for every three elements in nums from 1 to last index - 1
-    if element is the given value and is alone
+    if element is the given value val and is alone
       replace it with the greater of the two other values
  */
  
@@ -18,36 +26,33 @@ public int[] notAlone(int[] nums, int val) {
 }
 
 public boolean alone(int a, int b, int c){
+  /*
+    element b is alone if it is not equal to a and not equal to c
+  */
   return b != a && b != c;
 }
 
 /*
-Solution from function definition:
-  notAlone takes an int array and an int and returns an int array
-  
-Given:
-  an int array nums and a given int value val
-  
-Solution from descripton:
-  Return a version of the given array 
-  
-Restrictions:
-  1. every instance of the given value which is alone is replaced by 
-    whichever value to its left or right is larger
-  2. an element in an array is "alone" if there are different values 
-    before and after it
-  
+Translated description:
+  notAlone takes an int array nums and an int val and returns a modified version 
+  of nums.
+
+Modification of nums:
+  nums is modified by selecting three elements at a time and determining if 
+  the middle element is alone, then replacing it by the greater of the left or
+  right elements
+
 Intermediate translations:
-  - an element at location i with elements before and after it
-    three elements in nums [i-1][i][i+1]
-    exceptions: at the first index of nums, and at the last index of nums
-  2. alone -> nums[i] is different than nums[i-1] and nums[i+1]
-  3. if nums[i-1] > nums[i+1] then assign nums[i] = nums[i-1]
-     otherwise assign nums[i] = nums[i+1]
+  - access three elements at a time using index i=1 to nums.length-2
+  - an element is alone if it is not the same as its left and right elements
+    nums[i] != nums[i-1] and nums[i] != nums[i+1]
+
   
 Solution:
-  for every three elements in nums from 1 to last index - 1
-    if element is the given value and is alone
+  define a function alone that takes three adjacent elements from nums and
+    return true if the middle element is alone
+  for every three elements in nums from 1 to nums.length-2
+    if element is the given value val and is alone
       replace it with the greater of the two other values
   
 */

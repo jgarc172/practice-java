@@ -1,9 +1,15 @@
+Given arrays nums1 and nums2 of the same length, for every element in nums1, consider the corresponding element 
+in nums2 (at the same index). Return the count of the number of times that the two elements differ by 2 or less, 
+but are not equal.
+
+matchUp([1, 2, 3], [2, 3, 10]) → 2
+matchUp([1, 2, 3], [2, 3, 5]) → 3
+matchUp([1, 2, 3], [2, 3, 3]) → 2
+
 public int matchUp(int[] nums1, int[] nums2) {
-  
   /*
       return the count of corresponding elements 
         when their absolute value difference is <= 2 but not 0
-
   */
 
   int matches = 0;
@@ -18,40 +24,21 @@ public int matchUp(int[] nums1, int[] nums2) {
 }
 
 /*
-  Solution from function name:
-    matchup is an integer
-    
-  Solution from description:
-    Return the count of the number of times that the two elements differ by 2 
-      or less, but are not equal
+Improved description:
+  Given two int arrays, nums1 and nums2, return int as the number of times 
+  corresponding elements differ by 2 or less
   
-  Given:
-    arrays nums1 and nums2 of the same length
-    
-  Restrictions:
-    for every element in nums1, 
-      - consider the corresponding element in nums2 (at the same index)
-      - count of the number of times that the two elements differ by 2 or less, 
-        but are not equal
-      
+  
   Intermediate translations:
-    corresponding element in nums1 and nums2 (at the same index) -> nums1[i] and nums2[i]
-    differ by 2 or less -> absolute difference <= 2
-    absolute difference ->  Math.abs(a - b)
-    not equal -> absolute difference is not 0
-    and -> &&
-  
-  Translated solution:
-    
+    - access all elements in each array
+    - corresponding elements -> nums1[i] and nums2[i]
+    - differ by 2 or less -> absolute difference <= 2
+    - use a counter to increment when test passes
+   
   Solution:
-  for each element in both arrays
+  for each element in each array
     increment the count when their value difference is <= 2 but not 0
 
-  Additional intermediate translations:
-  a count:
-    starts at 0 and is incremented when a desired condition is true
-  desired condition for this problem:
-    two elements differ by 2 or less, but are not equal
   
 
 */

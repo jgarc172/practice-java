@@ -1,96 +1,71 @@
+(This is a slightly harder version of the fix34 problem.) Return an array that contains exactly the same numbers as the 
+given array, but rearranged so that every 4 is immediately followed by a 5. Do not move the 4's, but every other number 
+may move. The array contains the same number of 4's and 5's, and every 4 has a number after it that is not a 4. In this 
+version, 5's may appear anywhere in the original array.
+
+fix45([5, 4, 9, 4, 9, 5]) → [9, 4, 5, 4, 5, 9]
+fix45([1, 4, 1, 5]) → [1, 4, 5, 1]
+fix45([1, 4, 1, 5, 5, 4, 1]) → [1, 4, 5, 1, 1, 4, 5]
+
 public int[] fix45(int[] nums) {
   /*
-  Solution:
-  define a function next5 that returns the next index of valid 5
-  for each element in nums using index i
-    if element is a 4 and next element is not a 5
-      find index of next 5
-      swap that value with the value at i+1
-  return nums
+    return nums rearranged so that every 4 is immediately followed by a 5
   */
   
-  int next5 = -1;
-  for (int i=0; i <= nums.length-1; i++){
+  int next5 = 0;
+  for (int i=0; i <= nums.length-2; i++){
     if (nums[i] == 4 && nums[i+1] != 5){
-      next5 = next5(nums, next5+1);
-      nums[next5] = nums[i+1];
-      nums[i+1] = 5;
+      while (next5 <= nums.length-1){
+        if (next5 == 0 && nums[next5] == 5){
+          swap(nums, i+1, next5);
+          break;
+        }
+        if (nums[next5] == 5 && nums[next5-1] != 4){
+          swap(nums, i+1, next5);
+          break;
+        }
+          next5++;
+      }
     }
   }
   return nums;
 }
 
-public int next5(int[] nums, int start){
+public void swap(int[] nums, int i, int j){
   /*
-    return the index of the next 5
-      except when the 5 is after a 4
+    swap values at locations i and j in array
   */
-  int next = -1;
-  for (int i=start; i <= nums.length-1; i++){
-    if (i == 0 && nums[i] == 5){
-      next = 0;
-      break;
-    }
-    if (i > 0 && nums[i] == 5 && nums[i-1] != 4){
-      next = i;
-      break;
-    }
-  }
-  return next;
+  int temp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = temp;
 }
 
 /*
-Solution from function definition:
-  fix45 takes an int array and returns an int array
-  
-Given:
-  an int array nums
-  
-Solution from description without restrictions:
-  Return an array that contains exactly the same numbers as the given array
-  
-  
-Restrictions:
-  1. the elements in the returned array are rearranged so that every 4 is 
-    immediately followed by a 5
-  2. do not move the 4s
-  3. every other number may move
-  4. the array contains the same number of 4s and 5s
-  5. every 4 has a number after it that is not a 4
-  6. 5s may appear anywhere in the original array
-  7. dont move a 5 that is already after a 4
+Translated description:
+  fix45 takes an int array nums and returns it rearranged so that every 4 is
+  immediately followed by a 5, by moving the next available 5 after each 4
   
 Intermediate translations:
-  1. if the element at position i is 4, then at position i+1 should be 5
-  2. the element 4 at position i stays the same 
-  4. all the 3s and 4s will be paired
-  5. the next element after a 4 may swap with the next available 5
-  6. 5s may appear before a 4
-  7. when searching for the next 5 skip the 5 after a 4
+  - for each two elements in nums, repeat the following:
+  1. identify a pair, 4 followed by a non 5
+       nums[i] == 4 and nums[i+1] != 5
+  2. identify the location of the next available 5 in the remaining subarray of nums
+       nums[j] == 5 && nums[j-1] != 4
+  3. swap the values at locations i+1 and j
+  
+Next available 5:
+  index j splits the nums array: 5s that are to the left of j are already placed
+  next to a 4; 4s that are to the right of j are available for placement only if
+  if it not already next to a 4
 
-  
-More translations:
-  - the elements in the array can be identified by index i
-  - the next position after 4 can be identified by i+1
-  - the next position of a valid 5 can be identified by a different index j
-  
-before
-nums    [4] [5] [4] [1] [5]
-      j  i
-before first swap:
-nums    [4] [5] [4] [1] [5] 
-                 i       j
-after swap:
-nums    [4] [5] [4] [5] [1] 
-                 i       j
-  
-Solution with restrictions:
-  define a function next5 that returns the next index of valid 5
-  for each element in nums using index i
-    if element is a 4 and next element is not a 5
-      find index of next 5
-      swap that value with the value at i+1
-  return nums
-      
-
+Solution:
+  initialize index j to 0
+  for each pair of elements in nums using index i=0 to nums.length-2
+    if nums[i] == 4 and nums[i+1] != 5
+      for each element in nums using index j to nums.length-1
+        if nums[j] == 5 and nums[j-1] != 4
+          swap the values at locations i+1 and j
+          break
+        increment j
+  return nums.
 */

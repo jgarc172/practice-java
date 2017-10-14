@@ -1,29 +1,37 @@
+Return a version of the given array where each zero value in the array is replaced by the largest odd value to the right 
+of the zero in the array. If there is no odd value to the right of the zero, leave the zero as a zero.
+
+zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]
+zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
+zeroMax([0, 1, 0]) → [1, 1, 0]
+
 public int[] zeroMax(int[] nums) {
   /*
-    Solution with restrictions:
-  for each element at i in nums
-    if the element is zero, get the maximum odd from remaining values 
-    if the maximum odd is not zero, replace the current element's value
+    returns a modified aray by replacing each 0 in the array with the largest 
+    odd value in the remaining array.
+  
   */
   
   int lastIndex = nums.length-1;
   for (int i=0; i <= lastIndex; i++){
     if (nums[i] == 0){
-      int max = maxOdd(nums, i+1, lastIndex);
-      if (max != 0){
-        nums[i] = max;
-      }
+      int max = maxOdd(nums, i+1);
+      nums[i] = max;
     }
   }
   
   return nums;
 }
 
-public int maxOdd(int[] nums, int from, int to){
+public int maxOdd(int[] nums, int from){
+  /*
+    return the largest odd value in the array
+    otherwise return 0
+  */
   int max = 0;
-  for (int i=from; i <= to; i++){
+  for (int i=from; i <= nums.length-1; i++){
     int value = nums[i];
-    if (value > max && value % 2 != 0)  {
+    if (value % 2 != 0 && value > max)  {
       max = value;
     }
   }
@@ -31,40 +39,24 @@ public int maxOdd(int[] nums, int from, int to){
 }
 
 /*
-Solution from function definition:
-  zeroMax takes an int array and returns an int array
+Translation of description:
+  zeroMax takes an int array nums, modifies it and returns it by replacing
+  each 0 in the array with the largest odd value in the remaining array.  If there
+  is no odd value, leave the zero as zero
   
-Given:
-  an int array nums
-  
-Solution from description without restrictions:
-  Return a version of the given array
-  
-Restrictions:
-  1. each zero value in the array is replaced by the largest odd value to the 
-    right of the zero in the array
-  2. If there is no odd value to the right of the zero, leave the zero as a zero
-  3. replace with only odd values
-  
-Intermediate translations:
-  - to the right of the zero at location i is a sub-array (slice) from
-    i+1 to the last index
-  
-  nums [ ][ ][ ][ ][0][ ][ ][ ]
-  to the right        [ ][ ][ ]
-  
-  1. if the current value is zero, get the maximum odd from right
-     if maximum odd is not zero, replace the current value, continue
-  2. else do nothing, continue
-  3. odd value -> true if value % 2 != 0
-  
-Solution without restrictions:
-  return nums;
-  
-Solution with restrictions:
-  for each element at i in nums
-    if the element is zero, get the maximum odd from remaining values strting at i+1
-    if the maximum odd is not zero, replace the current element's value
-    else ignore
+Intermediate translation:
+  - for each element in nums, it repeats the following:
+  1. identifies the location of the next element in the front that is a 0
+     nums[i] == 0
+  2. then it finds the maximum odd value in the remaining array
+     max = maxOdd(nums, i+1)
+  3. it replaces its value
+     nums[i] = max
+     
+Solution:
+  for each element in nums from index i=0 to nums.length-1
+    if element is 0
+      finds the maximum odd value in the remaining array
+      it replaces its value
     
 */

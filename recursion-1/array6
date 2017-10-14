@@ -1,0 +1,61 @@
+Given an array of ints, compute recursively if the array contains a 6. We'll use the convention of considering only the part 
+of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The 
+initial call will pass in index as 0.
+
+array6([1, 6, 4], 0) → true
+array6([1, 4], 0) → false
+array6([6], 0) → true
+
+public boolean array6(int[] nums, int index) {
+  /*
+    returns a boolean to indicate if nums contains a 6, by repeatedly comparing
+    the element at index with 6 and returning true when true or by continuing 
+    testing with the result of the next index
+    
+    true when nums[index] == 6
+  */
+  
+  if (index >= nums.length){
+    return false;
+  }
+  if (nums[index] == 6){
+    return true;
+  }
+  return array6(nums, index+1);
+}
+
+/*
+Translated description:
+  array6 takes an array of integers nums and an integer index, and returns 
+  a boolean to indicate if nums contains a 6, by repeatedly comparing the 
+  element at index with 6 and returning true when true or by continuing testing 
+  with the result of the next index
+  
+Intermediate translations:
+  - base case
+    false when index >= nums.length
+  - elements at index
+    nums[index] 
+  - compare an element at index with 6
+      true if nums[index] == 6
+  - the next index
+      index+1  
+  - the result of the next index
+      array6(nums, index+1)
+      
+Translated recursive definition of array6(nums, index):
+  contains is false if index is >= nums.length
+  if element at index is 6 contains is true
+  else contains is the result of the next index
+  returns contains
+  
+Solution:
+  return false if index >= nums.length
+  if nums[index] == 6, return true
+  else return array6(nums, index+1)
+  
+Translated iterative definition of array6(nums, index):
+  for each value of nums from index to nums.length-1
+    if value == 6, return true
+  return false
+*/

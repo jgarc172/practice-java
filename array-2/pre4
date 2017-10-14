@@ -1,27 +1,31 @@
+Given a non-empty array of ints, return a new array containing the elements from the original array that come before the first 4 in the original array. The original array will contain at least one 4. Note that it is valid in java to create an array of length 0.
+
+pre4([1, 2, 4, 1]) → [1, 2]
+pre4([3, 1, 4]) → [3, 1]
+pre4([1, 4, 4]) → [1]
+
 public int[] pre4(int[] nums) {
   /*
     return a new array containing the elements from the original array that 
      come before the first 4 in the original array
     
-  Solution:
-  - find the index of the first 4 to get length of new array
-  - create new array
-  - copy elements from original array from 0 to lengngth - 1
-
+    newArr[i] = nums[i]
   */
   
   int length = indexAt(nums, 4);
-  if (length < 0){
-    return new int[0];
-  }
   int[] newArr = new int[length];
-  for (int i=0; i <= newArr.length-1; i++){
+  
+  for (int i=0; i <= length-1; i++){
     newArr[i] = nums[i];
   }
   return newArr;
 }
 
 public int indexAt(int[] nums, int element){
+  /*
+    return the first index of element in array nums
+    return -1 if not found
+  */
   int index = -1;
   for (int i=0; i <= nums.length-1; i++){
     if (nums[i] == element){
@@ -33,31 +37,31 @@ public int indexAt(int[] nums, int element){
 }
 
 /*
-Solution from function definition:
-  pre4 takes an int array and returns an int array
-  
-Given:
-  a non-empty int array nums
-  
-Solution from description:
-  return a new array 
-  
-Restrictions:
-  1. new array contains the elements from the original array that 
-    come before the first 4 in the original array
-  2. the original array will contain at least one 4
-  3. length of new array is unknown until the 4 is located
+Translated description:
+  pre4 takes an int array nums and copies the subarray of elements located 
+  before the first 4 in nums to a new int array newArr which is then returned
+    newArr[i] = nums[i]
 
 Intermediate translations:
-  2. the first 4 will be located at some index i
-  3. the length of the new array will be i
-  1. copy the elements from the original array to the new array up to index i
-    not inclusive
-    
+  1. Identify the index location of the first 4 in nums.  This splits nums
+     array into two subarrays (slices): from index 0 to index before 4;
+     and from index at 4 to the last index of nums
+     
+nums    [ ][ ][ ][4][ ][ ][4 ][ ][ ][ ][ ]
+slices  [  pre  ][       post           ]
+
+     define a function indexAt that returns the index of the first 4
+  2. the index of the first 4 is used to determine the length of the new array
+      length = indexAt(nums, 4)
+      new int[length]
+  3. copy all the elements from nums to new array from index 0 to length-1
+     newArr[i] = nums[i]
+     
 Solution:
   - define a function that locates the index of the first 4
   - use the function to get length and create new array
-  - copy elements from original array from 0 to lengngth - 1
+  - for each element in nums from 0 to length - 1 of new array
+    copy the element to the corresponding index in new array
   
 
 */

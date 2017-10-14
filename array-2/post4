@@ -1,20 +1,24 @@
+Given a non-empty array of ints, return a new array containing the elements from the original array that come after the last 4 in the original array. The original array will contain at least one 4. Note that it is valid in java to create an array of length 0.
+
+post4([2, 4, 1, 2]) → [1, 2]
+post4([4, 1, 4, 2]) → [2]
+post4([4, 4, 1, 2, 3]) → [1, 2, 3]
+
 public int[] post4(int[] nums) {
   /*
     return a new array containing the elements from the original array that 
       come after the last 4 in the original array
+      
+      newArr[i] = nums[i + from]
   */
   
-  int index = lastIndexAt(nums, 4);
-  if (index < 0){
-    return new int[0];
-  }
-  int length = nums.length - (index+1);
+  int lastIndex = lastIndexAt(nums, 4);
+  int from = lastIndex + 1;
+  int length = nums.length - from;
   int[] newArr = new int[length];
   
-  int to = 0;
-  for (int from=index+1; from <= nums.length-1; from++){
-    newArr[to] = nums[from];
-    to++;
+  for (int i=0; i <= length-1; i++){
+    newArr[i] = nums[i + from];
   }
   return newArr;
 }
@@ -30,29 +34,31 @@ public int lastIndexAt(int[] nums, int element){
 }
 
 /*
-Solution from function definition:
-  post4 takes an int array and returns an int array
-  
-Given:
-  a non-empty array of ints nums
-  
-Solution from description:
-  return a new array
-  
-Restrictions:
-  1. new array contains the elements from the original array that come 
-    after the last 4 in the original array
-  2. original array will contain at least one 4
-  
-Intermediate translations:
-  2. the last 4 will be located at some index i
-  3. the length of the new array will be the difference of the length 
-    of nums minus i+1
-  1. copy the elements from nums to the new array from 
-    index+1 up to the last index of nums
+Translated description:
+  post4 takes an int array nums and copies the subarray of elements located 
+  after the last 4 in nums to a new int array newArr which is then returned
+    newArr[i] = nums[i]
 
+Intermediate translations:
+  1. Identify the index location of the last 4 in nums.  This splits nums
+     array into two subarrays (slices): from index 0 to index at 4;
+     and from index after 4 to the last index of nums
+     
+nums    [ ][ ][ ][4][ ][ ][4][ ][ ][ ][ ]
+slices  [  pre              ][  post    ]
+
+     define a function lastIndexAt that returns the index of the last 4
+  2. the index of the last 4 is used to determine the length of the new array
+      lastIndex = lastIndexAt(nums, 4)
+      new int[nums.length - (lastIndex+1)]
+  3. copy all the elements from nums to new array from index+1 to length-1
+     newArr[i] = nums[i + lastIndex + 1]
+     
 Solution:
   - define a function that locates the index of the last 4
   - use the function to get length and create new array
-  - copy last elements from nums to the new array
+  - for each element in nums from lastIndex+1 to length - 1 
+    copy the element to the corresponding index in new array
+  
+
 */

@@ -1,0 +1,68 @@
+Given a string, compute recursively (no loops) the number of lowercase 'x' chars in the string.
+
+countX("xxhixx") → 4
+countX("xhixhix") → 3
+countX("hi") → 0
+
+public int countX(String str) {
+  /*
+    returns the count of 'x' characters in the characters of str, by repeatedly
+    adding a 1 to the count when the first character in str matches 'x' 
+    
+      1 + countX(str.substring(1))
+  */
+  
+  if (str.equals("")){
+    return 0;
+  }
+  
+  char firstChar = str.charAt(0);
+ if (firstChar == 'x'){
+    return 1 + countX(str.substring(1));
+  } else {
+    return countX(str.substring(1));
+  }
+}
+
+/*
+Translated description:
+  countX takes a string str and returns an int as the count of lowercase 'x' 
+  characters in the characters of str,  by repeatedly adding a 1 to the count 
+  of the remaining substring of str when the first character in str matches 'x'; 
+  otherwise nothing is added to the count of the remaining substring
+  
+Intermediate translations:
+  - base case
+      0 when length of str is less than 2
+  - str is composed of two components:
+      first character + remaining characters
+  - accessing the first character of str
+     str.charAt(0)
+  - the remaining substring of str
+      str.substring(1)  
+  - the count of the remaining substring
+      countX(str.substring(1))
+  - adding a 1 to the count of the remaining substring
+      1 + countX(str.substring(1))
+  - not adding a 1 to the count
+      countX(str.substring(1))
+
+Translated recursive definition of countX(str):
+  count is 0 when str is ""
+  if first character is 'x' count is 1 + count of the remaining substring 
+  else count is the count of the remaining substring 
+  returns count
+  
+Solution:
+  return 0 if str is ""
+  if str.charAt(0) is "x", return 1 + countX(str.substring(1))
+  else return countX(str.substring(1))
+  
+Translated iterative definition of count8(n):
+  count is 0
+  while str is not ""
+    if first character is 'x', increment count
+    replace str with remaining substring
+  return count
+*/
+

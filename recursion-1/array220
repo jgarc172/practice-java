@@ -1,0 +1,61 @@
+Given an array of ints, compute recursively if the array contains somewhere a value followed in the array by that value 
+times 10. We'll use the convention of considering only the part of the array that begins at the given index. 
+In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
+
+array220([1, 2, 20], 0) → true
+array220([3, 30], 0) → true
+array220([3], 0) → false
+
+public boolean array220(int[] nums, int index) {
+  /*
+    returns true if there is a value in nums followed by the value times 10,
+    by repeatedly comparing the value at index and the value at index+1
+    
+      true when nums[index+1] == 10 * nums[index]
+  */
+ 
+ if (index > nums.length-2){
+   return false;
+ } 
+ if (nums[index+1] == 10 * nums[index]){
+   return true;
+ }
+ return array220(nums, index+1);
+}
+
+/*
+Translated description:
+  array220 takes an array of integers nums and an integer index, and returns a 
+  boolean to indicate if there is a value in nums followed by the value 
+  times 10, by repeatedly comparing the value at index and the value at index+1
+  and returning true when valid or by continuing testing with the result of the 
+  next index
+  
+Intermediate translations:
+  - base case
+    false when index > nums.length-1
+  - elements at index and at index+1
+    nums[index] and nums[index+1]
+  - an element's next element's value is 10 times 
+      true if nums[index+1] == 10 * nums[index]
+  - the next index
+      index+1  
+  - the result of the next index
+      array220(nums, index+1)
+  
+Translated recursive definition of array220(nums, index):
+  result is false when index is greater than length of nums - 2
+  result is true when nums[index+1] == 10 * nums[index] is true
+  else result is the result of the next index
+  returns result
+  
+Solution:
+  return false if index > nums.length-2
+  return true if nums[index+1] == 10 * nums[index]
+  else return array220(nums, index+1)
+  
+Translated iterative definition of array220(nums, index):
+  for each value of nums from index to nums.length-2
+    if nums[index+1] == 10 * nums[index], return true
+  return false
+*/

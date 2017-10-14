@@ -1,35 +1,31 @@
-/*
-  solution from description:
-    Return true if we are in trouble
-    We are in trouble if they are both smiling or if neither of them is smiling
-  
-  solution from function name:
-    monkeyTrouble is true or false (boolean)
-  
-  Input:
-    two monkeys, a and b
-    boolean parameters aSmile and bSmile indicate if each is smiling
-    
-  Intermediate translations:
-    
-    both smiling -> a smiles and b smiles
-    a smiles -> aSmiles == true
-    b smiles -> bSmiles == true
-    and -> &&
-    or -> ||
-    both smiling -> aSmile == true && bSmile == true -> aSmile && bSmile
-    neither of them is smiling -> both not smiling
-    both not smiling -> aSmile == false && bSmile == false -> !aSmile && !bSmile
-  
-  solution 1:
-    return true if they are both smiling or if neither of them is smiling  
-    return (aSmile && bSmile) || (!aSmile && !bSmile);
-  
-  simplified solution:
-    both monkeys have the same mood -> aSmile == bSmile
+We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling. 
+We are in trouble if they are both smiling or if neither of them is smiling. Return true if we are in trouble.
 
-*/
+monkeyTrouble(true, true) → true
+monkeyTrouble(false, false) → true
+monkeyTrouble(true, false) → false
+
 public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+  /*
+    return true if aSmile and bSmile have the same value: both smiling or both not
+    smiling
+  */
   
   return aSmile == bSmile;
 }
+
+/*
+Translated description:
+  monkeyTrouble takes two booleans, aSmile and bSmile, and returns true if
+  they are both smiling or both are not smiling
+  
+Intermediate translations:
+  both smiling -> aSmile is true and bSmile is true
+  neither is smiling -> aSmile is false and bSmile is false
+  both have the same value -> aSmile == bSmile
+  
+Solution:
+  return true if aSmile and bSmile have the same value: both smiling or both not
+    smiling
+  
+*/

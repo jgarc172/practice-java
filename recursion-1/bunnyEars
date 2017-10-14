@@ -1,0 +1,52 @@
+We have a number of bunnies and each bunny has two big floppy ears. We want to compute the total number of ears 
+across all the bunnies recursively (without loops or multiplication).
+
+bunnyEars(0) → 0
+bunnyEars(1) → 2
+bunnyEars(2) → 4
+
+public int bunnyEars(int bunnies) {
+  /*
+    returns the total number of bunny ears by reapeatedly adding two ears to 
+    the total number of bunny ears of the next lower number bunnies-1
+  */
+  
+  if (bunnies == 0){
+    return 0;
+  }
+  return 2 + bunnyEars(bunnies-1);
+}
+
+/*
+Translated description:
+  bunnyEars takes an int bunnies and returns an int as the total number of bunny 
+  ears, by reapeatedly adding two ears to the total number of bunny ears of the
+  next lower number bunnies-1
+
+Intermediate translations:
+  - base case
+    total is 0 when bunnies is 0
+  - next lower number
+    bunnies - 1
+  - total number of bunny ears of the next lower number
+    bunnyEars(bunnies-1)
+  - adding two ears to the total number of bunny ears of the next lower number 
+    2 + bunnyEars(bunnies-1)
+
+Translated recursive definition of bunnyEars(bunnies):
+    total is 0 when bunnies is 0
+    else total is 2 + total number of bunny ears of the next lower number
+    return total
+  
+Solution:
+  return 0 if bunnies is 0
+  else return 2 + bunnyEars(bunnies-1)
+  
+Translated iterative definition of bunnyEars(bunnies):
+  total is 0
+  repeat bunnies times the following:
+    add 2 to the total
+    decrement bunnies
+  return total
+  
+*/
