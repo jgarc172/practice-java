@@ -1,0 +1,53 @@
+public boolean cigarParty(int cigars, boolean isWeekend) {
+  
+  return (cigars >= 40 && cigars <= 60) || (isWeekend && cigars >= 40);
+  
+  /* alternate solution
+  if (cigars >= 40){
+    return (isWeekend || cigars <= 60);
+  }
+  return false;
+  */
+}
+
+/*
+Translated description:
+ cigarParty takes an int cigars and a boolean isWeekend and returns a boolean
+    cigarParty: int, boolean -> boolean
+  cigarParty is true when 
+    cigars is between 40 and 60 inclusive
+    or
+    isWeekend is true  and cigars is 40 or greater
+    
+Tools:
+  boolean operators on boolean values create a boolean value
+    or (||) and (&&)
+    
+  comparison operators on integers create a boolean value
+    >  -> boolean
+    == -> boolean
+    <  -> boolean
+    
+Intermediate translations
+  cigar is between 40 and 60 inclusive
+    cigars >= 40 && cigars <= 60  -> boolean
+    true when cigars >= 40 is true and cigars <= 60 is true
+    otherwise it is false
+    
+  isWeekend is true and cigars is 40 or grater
+    isWeekend && cigars >= 40
+    true when isWeekend is true and cigars >= 40 is true
+    otherwise it is false
+    
+Solution:
+  if (cigars >= 40 && cigars <= 60) || (isWeekend && cigars >= 40)
+    return true
+  else return false
+  
+Alternate Solution:
+  if cigars >= 40
+    if is Weekend || cigars <= 60
+      return true
+    else return false
+  else return false
+*/
