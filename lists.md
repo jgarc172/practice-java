@@ -26,7 +26,8 @@
 - in1020                   http://codingbat.com/prob/p144535
 - hasTeen                               http://codingbat.com/prob/p178986
 - loneTeen             http://codingbat.com/prob/p165701
-
+- in3050                   http://codingbat.com/prob/p132134
+- lastDigit                http://codingbat.com/prob/p125339
  
 
 ## int, int, boolean -> boolean
@@ -39,7 +40,7 @@
 
 - startHi                   http://codingbat.com/prob/p191022
 - mixStart               http://codingbat.com/prob/p151713
-
+- stringE                  http://codingbat.com/prob/p173784
  
 ## int -> int
 
@@ -50,7 +51,7 @@
 
 - intMax   http://codingbat.com/prob/p101887
 - max1020  http://codingbat.com/prob/p177372
- 
+- close10 http://codingbat.com/prob/p172021
 
 ## int[] -> int
 
@@ -73,11 +74,13 @@
 - backAround       http://codingbat.com/prob/p161642
 - front22                 http://codingbat.com/prob/p183592
 - delDel                   http://codingbat.com/prob/p100905
-
+- startOz                 http://codingbat.com/prob/p199720
+- endUp                  http://codingbat.com/prob/p125268
 
 ## string, int -> string
 
 - missingChar        http://codingbat.com/prob/p190570
+- everyNth             http://codingbat.com/prob/p196441
 
  
 
