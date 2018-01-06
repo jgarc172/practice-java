@@ -50,6 +50,11 @@
 - stringE                  http://codingbat.com/prob/p173784
 - doubleX       http://codingbat.com/prob/p186759
 
+- endsLy        http://codingbat.com/prob/p103895
+- hasBad        http://codingbat.com/prob/p139075
+- frontAgain    http://codingbat.com/prob/p196652
+
+
 
 ## int -> int
 
@@ -94,13 +99,35 @@
 - altPairs        http://codingbat.com/prob/p121596
 - stringYak       http://codingbat.com/prob/p126212
 
+- helloName       http://codingbat.com/prob/p171896
+- extraEnd        http://codingbat.com/prob/p184030
+- firstTwo        http://codingbat.com/prob/p163411
+- firstHalf       http://codingbat.com/prob/p172267
+- withoutEnd      http://codingbat.com/prob/p130896
+- left2           http://codingbat.com/prob/p197720
+- right2          http://codingbat.com/prob/p130781
+- withoutEnd2     http://codingbat.com/prob/p174254
+- middle2         http://codingbat.com/prob/p137729
+- middleThree     http://codingbat.com/prob/p115863
+- atFirst         http://codingbat.com/prob/p139076
+- lastTwo         http://codingbat.com/prob/p132118
+- setColor        http://codingbat.com/prob/p199216
+- extraFront      http://codingbat.com/prob/p172063
+- without2        http://codingbat.com/prob/p142247
+- deFront         http://codingbat.com/prob/p110141
+- withoutX        http://codingbat.com/prob/p141494
+- withoutX2       http://codingbat.com/prob/p151359
+
 
 ## string, int -> string
 
 - missingChar        http://codingbat.com/prob/p190570
 - everyNth             http://codingbat.com/prob/p196441
 - stringtimes    http://codingbat.com/prob/p142270
-- fronttimes    http://codingbat.com/prob/p101475
+- fronttimes     http://codingbat.com/prob/p101475
+
+- nTwice         http://codingbat.com/prob/p174148
+- twoChar        http://codingbat.com/prob/p144623
 
 
 ## string -> int
@@ -114,4 +141,21 @@
 - stringMatch     http://codingbat.com/prob/p198640
 
 
+## string, boolean -> string
+
+- theEnd         http://codingbat.com/prob/p162477
+
+
+
+## string, string -> string
+
+- makeAbba        http://codingbat.com/prob/p161056
+- makeTags        http://codingbat.com/prob/p147483
+- makeOutWords    http://codingbat.com/prob/p184030
+- comboString     http://codingbat.com/prob/p168564
+- nonStart        http://codingbat.com/prob/p143825
+- lastChars       http://codingbat.com/prob/p138183
+- conCat          http://codingbat.com/prob/p132118
+- minCat          http://codingbat.com/prob/p105745
+- startWord       http://codingbat.com/prob/p141494
 
