@@ -1,23 +1,28 @@
 ## boolean, boolean -> boolean
 
-- sleepIn                 http://codingbat.com/prob/p187868
-- monkeyTrouble                http://codingbat.com/prob/p181646
+- sleepIn          http://codingbat.com/prob/p187868
+- monkeyTrouble    http://codingbat.com/prob/p181646
+- answerCell       http://codingbat.com/prob/p110973
 
  
 ## boolean, int -> boolean
 
 - parrotTrouble    http://codingbat.com/prob/p140449
-
- 
-
+- cigarParty       http://codingbat.com/prob/p159531
+- squirrelPlay     http://codingbat.com/prob/p141061
+- in1To10          http://codingbat.com/prob/p137365
  
 
 ## int -> boolean
 
 - nearHundred     http://codingbat.com/prob/p184004
 - or35                       http://codingbat.com/prob/p112564
+- SpecialEleven   http://codingbat.com/prob/p100962
+- more20          http://codingbat.com/prob/p118290
+- old35           http://codingbat.com/prob/p159612
+- less20          http://codingbat.com/prob/p133158
+- nearTen         http://codingbat.com/prob/p193613
 
- 
 
 ## int, int -> boolean
 
@@ -28,11 +33,18 @@
 - loneTeen             http://codingbat.com/prob/p165701
 - in3050                   http://codingbat.com/prob/p132134
 - lastDigit                http://codingbat.com/prob/p125339
- 
+- love6           http://codingbat.com/prob/p137742
+- twoAsOne        http://codingbat.com/prob/p113261
+- lastDigit       http://codingbat.com/prob/p169213
+- lessBy10        http://codingbat.com/prob/p179196
+- shareDigit      http://codingbat.com/prob/p153748
+
 
 ## int, int, boolean -> boolean
 
-- posNeg                http://codingbat.com/prob/p159227
+- posNeg         http://codingbat.com/prob/p159227
+- inOrder        http://codingbat.com/prob/p154188
+- inOrderEqual   http://codingbat.com/prob/p140272
 
 
 ## int[] -> boolean
@@ -61,18 +73,41 @@
 - diff21    http://codingbat.com/prob/p116624
 
 
-## int[] -> int
+## int, boolean -> int
 
+- caughtSpeeding   http://codingbat.com/prob/p157733
+
+
+## int, int -> int
+
+- sumDouble    http://codingbat.com/prob/p154485
 - intMax       http://codingbat.com/prob/p101887
 - max1020      http://codingbat.com/prob/p177372
 - close10      http://codingbat.com/prob/p172021
+- dateFashion  http://codingbat.com/prob/p103360
+- sortaSum     http://codingbat.com/prob/p183071
+- teenSum      http://codingbat.com/prob/p178728
+- teaParty     http://codingbat.com/prob/p177181
+- maxMod5      http://codingbat.com/prob/p115384
+- redTicket    http://codingbat.com/prob/p170833
+- greenTicket  http://codingbat.com/prob/p120633
+- blueTicket   http://codingbat.com/prob/p192267
+- sumLimit     http://codingbat.com/prob/p118077
+
+
+## int, int, boolean -> int
+
+- withoutDoubles  http://codingbat.com/prob/p115233
+
+
+## int[] -> int
+
 - arrayCount9  http://codingbat.com/prob/p184031
 - array667     http://codingbat.com/prob/p110019
 
 
 ## int[] -> int
 
-- sumDouble         http://codingbat.com/prob/p154485
 - sum3                     http://codingbat.com/prob/p175763
 - sum2                     http://codingbat.com/prob/p190968
 - sum13                   http://codingbat.com/prob/p127384
@@ -117,6 +152,7 @@
 - deFront         http://codingbat.com/prob/p110141
 - withoutX        http://codingbat.com/prob/p141494
 - withoutX2       http://codingbat.com/prob/p151359
+- fizzString      http://codingbat.com/prob/p137136
 
 
 ## string, int -> string
@@ -128,6 +164,11 @@
 
 - nTwice         http://codingbat.com/prob/p174148
 - twoChar        http://codingbat.com/prob/p144623
+
+
+## int -> string
+
+- fizzString2    http://codingbat.com/prob/p115243
 
 
 ## string -> int
@@ -144,6 +185,7 @@
 ## string, boolean -> string
 
 - theEnd         http://codingbat.com/prob/p162477
+- alarmClock     http://codingbat.com/prob/p160543
 
 
 
