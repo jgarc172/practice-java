@@ -38,6 +38,9 @@
 - lastDigit       http://codingbat.com/prob/p169213
 - lessBy10        http://codingbat.com/prob/p179196
 - shareDigit      http://codingbat.com/prob/p153748
+- makeBrick       http://codingbat.com/prob/p183562
+- closeFar        http://codingbat.com/prob/p138990
+- evenlySpaced    http://codingbat.com/prob/p198700
 
 
 ## int, int, boolean -> boolean
@@ -93,6 +96,12 @@
 - greenTicket  http://codingbat.com/prob/p120633
 - blueTicket   http://codingbat.com/prob/p192267
 - sumLimit     http://codingbat.com/prob/p118077
+- loneSum      http://codingbat.com/prob/p148972
+- luckySum     http://codingbat.com/prob/p130788
+- noTeenSum    http://codingbat.com/prob/p182879
+- roundSum     http://codingbat.com/prob/p186753
+- blackJack    http://codingbat.com/prob/p117019
+- makeChocolate http://codingbat.com/prob/p191363
 
 
 ## int, int, boolean -> int
